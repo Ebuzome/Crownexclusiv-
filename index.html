@@ -36,17 +36,17 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            color: var(--text);
-            background-color: var(--base);
+            color: var(--dark-text);
+            background-color: var(--dark-base);
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
             transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        body.dark-mode {
-            background-color: var(--dark-base);
-            color: var(--dark-text);
+        body.light-mode {
+            background-color: var(--base);
+            color: var(--text);
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -230,14 +230,14 @@
         }
 
         header.scrolled {
-            background-color: rgba(255, 248, 245, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
             padding: 1rem 0;
         }
 
-        body.dark-mode header.scrolled {
-            background-color: rgba(26, 26, 26, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        body.light-mode header.scrolled {
+            background-color: rgba(255, 248, 245, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
 
         .header-container {
@@ -250,10 +250,14 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--dark-accent);
             text-decoration: none;
             display: flex;
             align-items: center;
+        }
+
+        body.light-mode .logo {
+            color: var(--accent);
         }
 
         .logo span {
@@ -268,11 +272,15 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text);
+            color: var(--dark-text);
             font-weight: 500;
             font-size: 1.05rem;
             transition: var(--transition);
             position: relative;
+        }
+
+        body.light-mode .nav-links a {
+            color: var(--text);
         }
 
         .nav-links a::after {
@@ -282,11 +290,19 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent);
+            background-color: var(--dark-accent);
             transition: var(--transition);
         }
 
+        body.light-mode .nav-links a::after {
+            background-color: var(--accent);
+        }
+
         .nav-links a:hover {
+            color: var(--dark-accent);
+        }
+
+        body.light-mode .nav-links a:hover {
             color: var(--accent);
         }
 
@@ -299,19 +315,27 @@
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: var(--text);
+            color: var(--dark-text);
             cursor: pointer;
+        }
+
+        body.light-mode .mobile-menu-btn {
+            color: var(--text);
         }
 
         /* Night mode toggle */
         .theme-toggle {
             background: transparent;
             border: none;
-            color: var(--text);
+            color: var(--dark-text);
             font-size: 1.5rem;
             cursor: pointer;
             margin-left: 1rem;
             transition: transform 0.3s ease;
+        }
+
+        body.light-mode .theme-toggle {
+            color: var(--text);
         }
 
         .theme-toggle:hover {
@@ -395,12 +419,12 @@
 
         /* ===== ABOUT SECTION ===== */
         .about {
-            background-color: var(--neutral);
+            background-color: var(--dark-neutral);
             position: relative;
         }
 
-        body.dark-mode .about {
-            background-color: var(--dark-neutral);
+        body.light-mode .about {
+            background-color: var(--neutral);
         }
 
         .about-container {
@@ -413,11 +437,11 @@
         .about-content h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: var(--accent);
+            color: var(--dark-accent);
         }
 
-        body.dark-mode .about-content h2 {
-            color: var(--dark-accent);
+        body.light-mode .about-content h2 {
+            color: var(--accent);
         }
 
         .about-content p {
@@ -440,9 +464,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, var(--primary) 0%, transparent 100%);
+            background: linear-gradient(45deg, var(--dark-primary) 0%, transparent 100%);
             opacity: 0.2;
             z-index: 1;
+        }
+
+        body.light-mode .about-image::before {
+            background: linear-gradient(45deg, var(--primary) 0%, transparent 100%);
         }
 
         /* ===== PRODUCTS SECTION ===== */
@@ -458,7 +486,7 @@
         }
 
         .product-card {
-            background: var(--neutral);
+            background: var(--dark-neutral);
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -469,8 +497,8 @@
             flex-direction: column;
         }
 
-        body.dark-mode .product-card {
-            background: var(--dark-neutral);
+        body.light-mode .product-card {
+            background: var(--neutral);
         }
 
         .product-card:hover {
@@ -493,12 +521,12 @@
 
         .product-content h3 {
             font-size: 1.5rem;
-            color: var(--accent);
+            color: var(--dark-accent);
             margin-bottom: 0.5rem;
         }
 
-        body.dark-mode .product-content h3 {
-            color: var(--dark-accent);
+        body.light-mode .product-content h3 {
+            color: var(--accent);
         }
 
         .product-benefit {
@@ -518,12 +546,12 @@
             margin-top: auto;
             padding-top: 1rem;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--dark-accent);
             font-size: 1.3rem;
         }
 
-        body.dark-mode .product-price {
-            color: var(--dark-accent);
+        body.light-mode .product-price {
+            color: var(--accent);
         }
 
         .original-price {
@@ -540,11 +568,11 @@
 
         /* ===== TESTIMONIALS SECTION ===== */
         .testimonials {
-            background-color: rgba(224, 164, 200, 0.05);
+            background-color: rgba(201, 139, 179, 0.1);
         }
 
-        body.dark-mode .testimonials {
-            background-color: rgba(201, 139, 179, 0.1);
+        body.light-mode .testimonials {
+            background-color: rgba(224, 164, 200, 0.05);
         }
 
         .testimonials-grid {
@@ -554,7 +582,7 @@
         }
 
         .testimonial-card {
-            background: var(--neutral);
+            background: var(--dark-neutral);
             border-radius: 15px;
             padding: 2rem;
             box-shadow: var(--shadow);
@@ -562,8 +590,8 @@
             transition: var(--transition);
         }
 
-        body.dark-mode .testimonial-card {
-            background: var(--dark-neutral);
+        body.light-mode .testimonial-card {
+            background: var(--neutral);
         }
 
         .testimonial-card:hover {
@@ -576,7 +604,7 @@
             left: 20px;
             width: 50px;
             height: 50px;
-            background-color: var(--primary);
+            background-color: var(--dark-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -585,31 +613,31 @@
             font-size: 1.5rem;
         }
 
-        body.dark-mode .testimonial-icon {
-            background-color: var(--dark-primary);
+        body.light-mode .testimonial-icon {
+            background-color: var(--primary);
         }
 
         .testimonial-content {
             margin-top: 1.5rem;
             font-style: italic;
             font-size: 1.1rem;
-            color: var(--text);
+            color: var(--dark-text);
             margin-bottom: 1.5rem;
         }
 
-        body.dark-mode .testimonial-content {
-            color: var(--dark-text);
+        body.light-mode .testimonial-content {
+            color: var(--text);
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--dark-accent);
         }
 
-        body.dark-mode .testimonial-author {
-            color: var(--dark-accent);
+        body.light-mode .testimonial-author {
+            color: var(--accent);
         }
 
         .testimonial-author::before {
@@ -627,14 +655,14 @@
         .service-card {
             text-align: center;
             padding: 2.5rem 1.5rem;
-            background: var(--neutral);
+            background: var(--dark-neutral);
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
 
-        body.dark-mode .service-card {
-            background: var(--dark-neutral);
+        body.light-mode .service-card {
+            background: var(--neutral);
         }
 
         .service-card:hover {
@@ -645,7 +673,7 @@
         .service-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            background: linear-gradient(135deg, var(--dark-primary) 0%, var(--dark-accent) 100%);
             margin: 0 auto 1.5rem;
             border-radius: 50%;
             display: flex;
@@ -655,18 +683,97 @@
             font-size: 2rem;
         }
 
-        body.dark-mode .service-icon {
-            background: linear-gradient(135deg, var(--dark-primary) 0%, var(--dark-accent) 100%);
+        body.light-mode .service-icon {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
         }
 
         .service-card h3 {
             font-size: 1.4rem;
             margin-bottom: 1rem;
+            color: var(--dark-accent);
+        }
+
+        body.light-mode .service-card h3 {
             color: var(--accent);
         }
 
-        body.dark-mode .service-card h3 {
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            background-color: rgba(26, 26, 26, 0.8);
+        }
+
+        body.light-mode .faq {
+            background-color: rgba(224, 164, 200, 0.05);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: var(--dark-neutral);
+            transition: var(--transition);
+        }
+
+        body.light-mode .faq-item {
+            background: var(--neutral);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--dark-neutral);
+        }
+
+        body.light-mode .faq-question {
+            background: var(--neutral);
+        }
+
+        .faq-question:hover {
             color: var(--dark-accent);
+        }
+
+        body.light-mode .faq-question:hover {
+            color: var(--accent);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: rgba(26, 26, 26, 0.5);
+        }
+
+        body.light-mode .faq-answer {
+            background: rgba(224, 164, 200, 0.1);
+        }
+
+        .faq-answer p {
+            padding: 0 0 1.5rem;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem;
         }
 
         /* ===== QUOTE SECTION ===== */
@@ -712,94 +819,15 @@
             right: -40px;
         }
 
-        /* ===== FAQ SECTION ===== */
-        .faq {
-            background-color: rgba(224, 164, 200, 0.05);
-        }
-
-        body.dark-mode .faq {
-            background-color: rgba(26, 26, 26, 0.8);
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            margin-bottom: 1.5rem;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            background: var(--neutral);
-            transition: var(--transition);
-        }
-
-        body.dark-mode .faq-item {
-            background: var(--dark-neutral);
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--neutral);
-        }
-
-        body.dark-mode .faq-question {
-            background: var(--dark-neutral);
-        }
-
-        .faq-question:hover {
-            color: var(--accent);
-        }
-
-        body.dark-mode .faq-question:hover {
-            color: var(--dark-accent);
-        }
-
-        .faq-question i {
-            transition: transform 0.3s ease;
-        }
-
-        .faq-answer {
-            padding: 0 1.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            background: rgba(224, 164, 200, 0.1);
-        }
-
-        body.dark-mode .faq-answer {
-            background: rgba(26, 26, 26, 0.5);
-        }
-
-        .faq-answer p {
-            padding: 0 0 1.5rem;
-        }
-
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 1.5rem;
-        }
-
         /* ===== FOOTER ===== */
         footer {
-            background: var(--accent);
+            background: var(--dark-accent);
             color: var(--neutral);
             padding: 4rem 0 2rem;
         }
 
-        body.dark-mode footer {
-            background: var(--dark-accent);
+        body.light-mode footer {
+            background: var(--accent);
         }
 
         .footer-container {
@@ -914,7 +942,7 @@
                 top: 80px;
                 right: -100%;
                 flex-direction: column;
-                background: var(--neutral);
+                background: var(--dark-neutral);
                 width: 250px;
                 height: calc(100vh - 80px);
                 padding: 2rem;
@@ -923,8 +951,8 @@
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             }
 
-            body.dark-mode .nav-links {
-                background: var(--dark-neutral);
+            body.light-mode .nav-links {
+                background: var(--neutral);
             }
             
             .nav-links.show {
@@ -986,10 +1014,11 @@
                     <li><a href="products.html">Products</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#faq">FAQ</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
             <button class="theme-toggle" id="theme-toggle">
-                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
             </button>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
@@ -1037,7 +1066,7 @@
             </div>
             <div class="products-grid">
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1595425977377-6a1eda7b4daf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                    <div class="product-image" style="background-image: url('assets/images/illuminea-Extrait-De-Parfum®-120000.jpg');"></div>
                     <div class="product-content">
                         <h3>illuminea Extrait De Parfum®</h3>
                         <div class="product-benefit">
@@ -1055,7 +1084,7 @@
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1610557893780-8d0e6b1b5d6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                    <div class="product-image" style="background-image: url('assets/images/Lash-and-Brow-Building-Serum-10000.jpg');"></div>
                     <div class="product-content">
                         <h3>Lash & Brow Building Serum</h3>
                         <div class="product-benefit">
@@ -1073,7 +1102,7 @@
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1620916297395-9d2d5a4d8f08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                    <div class="product-image" style="background-image: url('assets/images/Clear-Proof®-Blemish-Control-Toner-22000.jpg');"></div>
                     <div class="product-content">
                         <h3>Clear Proof® Blemish Control Toner</h3>
                         <div class="product-benefit">
@@ -1375,25 +1404,26 @@
             });
         });
         
-        // Night mode toggle
+        // Night mode toggle - default to dark mode
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         
-        // Check for saved theme preference
-        if (localStorage.getItem('theme') === 'dark') {
-            body.classList.add('dark-mode');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
+        // Set default to dark mode
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         
         themeToggle.addEventListener('click', function() {
             body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
             
-            if (body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            } else {
+            if (body.classList.contains('light-mode')) {
                 localStorage.setItem('theme', 'light');
                 themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
             }
         });
     </script>
