@@ -6,7 +6,7 @@
     <title>CrownExclusiv | Premium Skincare</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ===== CSS RESET ===== */
@@ -25,20 +25,33 @@
             --text: #2c2c2c;
             --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
             --transition: all 0.4s ease;
+            
+            /* Dark mode variables */
+            --dark-base: #1a1a1a;
+            --dark-text: #f0f0f0;
+            --dark-accent: #d97aa8;
+            --dark-primary: #c98bb3;
+            --dark-neutral: #2d2d2d;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: var(--text);
             background-color: var(--base);
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-base);
+            color: var(--dark-text);
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
             line-height: 1.2;
             margin-bottom: 1rem;
         }
@@ -146,7 +159,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--neutral);
+            background-color: #e8c9b8; /* Pink gold background */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -160,9 +173,9 @@
         }
 
         .preloader-logo {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 4.5rem;
-            font-weight: 800;
+            font-weight: 700;
             color: var(--accent);
             position: relative;
             margin-bottom: 2rem;
@@ -222,6 +235,11 @@
             padding: 1rem 0;
         }
 
+        body.dark-mode header.scrolled {
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -229,9 +247,9 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--accent);
             text-decoration: none;
             display: flex;
@@ -283,6 +301,21 @@
             font-size: 1.8rem;
             color: var(--text);
             cursor: pointer;
+        }
+
+        /* Night mode toggle */
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg);
         }
 
         /* ===== HERO SECTION ===== */
@@ -366,6 +399,10 @@
             position: relative;
         }
 
+        body.dark-mode .about {
+            background-color: var(--dark-neutral);
+        }
+
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -377,6 +414,10 @@
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
             color: var(--accent);
+        }
+
+        body.dark-mode .about-content h2 {
+            color: var(--dark-accent);
         }
 
         .about-content p {
@@ -405,6 +446,10 @@
         }
 
         /* ===== PRODUCTS SECTION ===== */
+        .products {
+            position: relative;
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -422,6 +467,10 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+        }
+
+        body.dark-mode .product-card {
+            background: var(--dark-neutral);
         }
 
         .product-card:hover {
@@ -448,10 +497,14 @@
             margin-bottom: 0.5rem;
         }
 
+        body.dark-mode .product-content h3 {
+            color: var(--dark-accent);
+        }
+
         .product-benefit {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             font-size: 1.1rem;
         }
 
@@ -459,6 +512,25 @@
             color: var(--gold);
             margin-right: 10px;
             font-size: 1.2rem;
+        }
+
+        .product-price {
+            margin-top: auto;
+            padding-top: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+
+        body.dark-mode .product-price {
+            color: var(--dark-accent);
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1rem;
+            margin-right: 10px;
         }
 
         .btn-container {
@@ -469,6 +541,10 @@
         /* ===== TESTIMONIALS SECTION ===== */
         .testimonials {
             background-color: rgba(224, 164, 200, 0.05);
+        }
+
+        body.dark-mode .testimonials {
+            background-color: rgba(201, 139, 179, 0.1);
         }
 
         .testimonials-grid {
@@ -484,6 +560,10 @@
             box-shadow: var(--shadow);
             position: relative;
             transition: var(--transition);
+        }
+
+        body.dark-mode .testimonial-card {
+            background: var(--dark-neutral);
         }
 
         .testimonial-card:hover {
@@ -505,6 +585,10 @@
             font-size: 1.5rem;
         }
 
+        body.dark-mode .testimonial-icon {
+            background-color: var(--dark-primary);
+        }
+
         .testimonial-content {
             margin-top: 1.5rem;
             font-style: italic;
@@ -513,11 +597,19 @@
             margin-bottom: 1.5rem;
         }
 
+        body.dark-mode .testimonial-content {
+            color: var(--dark-text);
+        }
+
         .testimonial-author {
             display: flex;
             align-items: center;
             font-weight: 600;
             color: var(--accent);
+        }
+
+        body.dark-mode .testimonial-author {
+            color: var(--dark-accent);
         }
 
         .testimonial-author::before {
@@ -541,6 +633,10 @@
             transition: var(--transition);
         }
 
+        body.dark-mode .service-card {
+            background: var(--dark-neutral);
+        }
+
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -559,10 +655,18 @@
             font-size: 2rem;
         }
 
+        body.dark-mode .service-icon {
+            background: linear-gradient(135deg, var(--dark-primary) 0%, var(--dark-accent) 100%);
+        }
+
         .service-card h3 {
             font-size: 1.4rem;
             margin-bottom: 1rem;
             color: var(--accent);
+        }
+
+        body.dark-mode .service-card h3 {
+            color: var(--dark-accent);
         }
 
         /* ===== QUOTE SECTION ===== */
@@ -582,7 +686,7 @@
         }
 
         .quote-content p {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
             font-weight: 600;
             font-style: italic;
@@ -608,11 +712,94 @@
             right: -40px;
         }
 
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            background-color: rgba(224, 164, 200, 0.05);
+        }
+
+        body.dark-mode .faq {
+            background-color: rgba(26, 26, 26, 0.8);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: var(--neutral);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .faq-item {
+            background: var(--dark-neutral);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--neutral);
+        }
+
+        body.dark-mode .faq-question {
+            background: var(--dark-neutral);
+        }
+
+        .faq-question:hover {
+            color: var(--accent);
+        }
+
+        body.dark-mode .faq-question:hover {
+            color: var(--dark-accent);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: rgba(224, 164, 200, 0.1);
+        }
+
+        body.dark-mode .faq-answer {
+            background: rgba(26, 26, 26, 0.5);
+        }
+
+        .faq-answer p {
+            padding: 0 0 1.5rem;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem;
+        }
+
         /* ===== FOOTER ===== */
         footer {
             background: var(--accent);
             color: var(--neutral);
             padding: 4rem 0 2rem;
+        }
+
+        body.dark-mode footer {
+            background: var(--dark-accent);
         }
 
         .footer-container {
@@ -723,7 +910,25 @@
             }
             
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: var(--neutral);
+                width: 250px;
+                height: calc(100vh - 80px);
+                padding: 2rem;
+                transition: right 0.4s ease;
+                gap: 1.5rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            body.dark-mode .nav-links {
+                background: var(--dark-neutral);
+            }
+            
+            .nav-links.show {
+                right: 0;
             }
             
             .mobile-menu-btn {
@@ -779,10 +984,13 @@
                 <ul class="nav-links">
                     <li><a href="#" class="active">Home</a></li>
                     <li><a href="products.html">Products</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                 </ul>
             </nav>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -809,13 +1017,13 @@
     </section>
 
     <!-- About Section -->
-    <section class="about">
+    <section id="about" class="about">
         <div class="container about-container">
             <div class="about-content">
                 <h2>Elegance in Every Drop</h2>
                 <p>CrownExclusiv blends elegance and effectiveness. We curate premium Mary Kay products for women who believe that glowing skin is power.</p>
                 <p>Our carefully selected formulations combine cutting-edge science with luxurious textures to deliver transformative results. Each product is designed to enhance your natural beauty while providing the ultimate skincare experience.</p>
-                <a href="#" class="btn btn-primary">Discover Our Story</a>
+                <a href="products.html" class="btn btn-primary">Discover Our Products</a>
             </div>
             <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
         </div>
@@ -829,36 +1037,57 @@
             </div>
             <div class="products-grid">
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1595425977377-6a1eda7b4daf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
                     <div class="product-content">
-                        <h3>Glow & Go Serum</h3>
+                        <h3>illuminea Extrait De Parfum®</h3>
                         <div class="product-benefit">
                             <i class="fas fa-spa"></i>
-                            <span>Boosts radiance, brightens dark spots</span>
+                            <span>A captivating fragrance that evokes elegance</span>
                         </div>
-                        <p>Our lightweight serum delivers potent antioxidants and vitamins to revitalize your complexion and create a luminous glow.</p>
+                        <div class="product-benefit">
+                            <i class="fas fa-wind"></i>
+                            <span>Long-lasting scent with floral and woody notes</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="original-price">₦150,000.00</span>
+                            ₦120,000.00
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1610557893780-8d0e6b1b5d6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                    <div class="product-content">
+                        <h3>Lash & Brow Building Serum</h3>
+                        <div class="product-benefit">
+                            <i class="fas fa-eye"></i>
+                            <span>Promotes thicker, fuller lashes and brows</span>
+                        </div>
+                        <div class="product-benefit">
+                            <i class="fas fa-seedling"></i>
+                            <span>Nourishes and strengthens hair follicles</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="original-price">₦12,500.00</span>
+                            ₦10,000.00
+                        </div>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1620916297395-9d2d5a4d8f08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
                     <div class="product-content">
-                        <h3>Velvet Skin Cream</h3>
+                        <h3>Clear Proof® Blemish Control Toner</h3>
                         <div class="product-benefit">
-                            <i class="fas fa-tint"></i>
-                            <span>Deep hydration for all-day smoothness</span>
+                            <i class="fas fa-leaf"></i>
+                            <span>Helps prevent breakouts and control oil</span>
                         </div>
-                        <p>Experience 24-hour hydration with our luxurious cream that melts into your skin, leaving it velvety soft and perfectly nourished.</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1608248543828-4f0f46cce8c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
-                    <div class="product-content">
-                        <h3>Midnight Radiance Oil</h3>
                         <div class="product-benefit">
-                            <i class="fas fa-moon"></i>
-                            <span>Repairs and renews while you sleep</span>
+                            <i class="fas fa-magic"></i>
+                            <span>Refines pores and clarifies skin</span>
                         </div>
-                        <p>Wake up to rejuvenated skin with our overnight treatment oil that works with your skin's natural renewal process.</p>
+                        <div class="product-price">
+                            <span class="original-price">₦25,000.00</span>
+                            ₦22,000.00
+                        </div>
                     </div>
                 </div>
             </div>
@@ -970,6 +1199,80 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How often should I use CrownExclusiv skincare products?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most CrownExclusiv products are designed for daily use. For best results, we recommend using cleansers and toners twice daily, while serums and creams should be applied once or twice daily depending on your skin type.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are your products suitable for sensitive skin?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer a range of products specifically formulated for sensitive skin. All our formulations are dermatologist-tested and free from harsh chemicals. We recommend patch testing new products before full application.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long does shipping take within Nigeria?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer express shipping to major cities within 24-48 hours. For other locations, delivery typically takes 3-5 business days. All orders are processed within 24 hours of payment confirmation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I return products if they don't suit my skin?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 14-day satisfaction guarantee. If you're not completely satisfied with your purchase, you may return unopened products for a full refund or exchange. Please contact our customer service for assistance.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer international shipping?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently, we only ship within Nigeria. However, we're working to expand our shipping options to other West African countries in the near future.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I track my order?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once your order ships, you'll receive a tracking number via SMS and email. You can track your order status through our website or by contacting our customer support team via WhatsApp.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are your products cruelty-free?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! CrownExclusiv is committed to cruelty-free beauty. None of our products or ingredients are tested on animals at any stage of production.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Quote Section -->
     <section class="quote-section">
         <div class="container">
@@ -1048,6 +1351,51 @@
         
         // Initialize slideshow
         showSlide(0);
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('show');
+            });
+        });
+        
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+        
+        // Night mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
     </script>
 </body>
 </html>
