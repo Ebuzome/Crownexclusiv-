@@ -132,7 +132,6 @@
             height: 4px;
             background: var(--gold);
             border-radius: 2px;
-        
         }
 
         /* ===== HEADER ===== */
@@ -845,10 +844,6 @@
                 font-size: 2rem;
             }
             
-            .preloader-logo {
-                font-size: 3.5rem;
-            }
-            
             .products-grid {
                 grid-template-columns: 1fr;
             }
@@ -860,7 +855,6 @@
     </style>
 </head>
 <body>
-  
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -969,7 +963,6 @@
     </footer>
 
     <script>
-       
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
@@ -1374,7 +1367,7 @@
                                 <tr>
                                     <td>10 pcs</td>
                                     <td>${formatPrice(product.price * 0.9)}</td>
-                                    <td>${formatPrice(product.price * 9 * 10)}</td>
+                                    <td>${formatPrice(product.price * 0.9 * 10)}</td>
                                     <td><span class="bulk-tag">10% OFF</span></td>
                                 </tr>
                                 <tr>
