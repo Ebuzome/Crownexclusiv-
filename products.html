@@ -1,1 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrownExclusiv | Premium Skincare Products</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== CSS RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --base: #fff8f5;
+            --primary: #e0a4c8;
+            --accent: #b03060;
+            --gold: #c9a94d;
+            --neutral: #ffffff;
+            --text: #2c2c2c;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.4s ease;
+            
+            /* Dark mode variables */
+            --dark-base: #1a1a1a;
+            --dark-text: #f0f0f0;
+            --dark-accent: #d97aa8;
+            --dark-primary: #c98bb3;
+            --dark-neutral: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-text);
+            background-color: var(--dark-base);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body.light-mode {
+            background-color: var(--base);
+            color: var(--text);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--neutral);
+            box-shadow: 0 10px 20px rgba(176, 48, 96, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(176, 48, 96, 0.35);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent);
+            color: var(--neutral);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .gold-underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        .gold-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--gold);
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .gold-underline:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            padding: 1rem 0;
+        }
+
+        body.light-mode header.scrolled {
+            background-color: rgba(255, 248, 245, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--dark-accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        body.light-mode .logo {
+            color: var(--accent);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        body.light-mode .nav-links a {
+            color: var(--text);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--dark-accent);
+            transition: var(--transition);
+        }
+
+        body.light-mode .nav-links a::after {
+            background-color: var(--accent);
+        }
+
+        .nav-links a:hover {
+            color: var(--dark-accent);
+        }
+
+        body.light-mode .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--dark-text);
+            cursor: pointer;
+        }
+
+        body.light-mode .mobile-menu-btn {
+            color: var(--text);
+        }
+
+        /* Night mode toggle */
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--dark-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        body.light-mode .theme-toggle {
+            color: var(--text);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 70vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/images/hero3.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--neutral);
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== PRODUCTS SECTION ===== */
+        .products {
+            position: relative;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: var(--dark-neutral);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.light-mode .product-card {
+            background: var(--neutral);
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-image {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--dark-accent);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        body.light-mode .wishlist-btn {
+            color: var(--accent);
+        }
+
+        .wishlist-btn:hover, .wishlist-btn.active {
+            background: #ff4757;
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .wishlist-btn.active {
+            background: #ff4757;
+            color: white;
+        }
+
+        .product-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-content h3 {
+            font-size: 1.5rem;
+            color: var(--dark-accent);
+            margin-bottom: 0.5rem;
+            min-height: 60px;
+        }
+
+        body.light-mode .product-content h3 {
+            color: var(--accent);
+        }
+
+        .product-price {
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-accent);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        body.light-mode .product-price {
+            color: var(--accent);
+        }
+
+        .product-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: auto;
+        }
+
+        /* ===== FILTERS SECTION ===== */
+        .filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--dark-accent);
+            background: transparent;
+            color: var(--dark-text);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        body.light-mode .filter-btn {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--dark-accent);
+            color: white;
+        }
+
+        body.light-mode .filter-btn:hover, 
+        body.light-mode .filter-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* ===== PAGINATION ===== */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .page-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--dark-accent);
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .page-btn {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: var(--dark-accent);
+            color: white;
+        }
+
+        body.light-mode .page-btn:hover, 
+        body.light-mode .page-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark-accent);
+            color: var(--neutral);
+            padding: 4rem 0 2rem;
+        }
+
+        body.light-mode footer {
+            background: var(--accent);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            max-width: 400px;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links h4 {
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--neutral);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .whatsapp-contact {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-contact i {
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: var(--dark-neutral);
+                width: 250px;
+                height: calc(100vh - 80px);
+                padding: 2rem;
+                transition: right 0.4s ease;
+                gap: 1.5rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            body.light-mode .nav-links {
+                background: var(--neutral);
+            }
+            
+            .nav-links.show {
+                right: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">CrownExclusiv</div>
+            <div class="preloader-subtitle">Premium Skincare</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Crown<span>Exclusiv</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#" class="active">Products</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-sun"></i>
+            </button>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Premium Skincare <span class="gold-underline">Collection</span></h1>
+                <p>Discover our curated selection of Mary Kay products</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Skincare Products</h2>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="skincare">Skincare</button>
+                <button class="filter-btn" data-filter="makeup">Makeup</button>
+                <button class="filter-btn" data-filter="fragrance">Fragrance</button>
+                <button class="filter-btn" data-filter="body">Body Care</button>
+            </div>
+            
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <h3>CrownExclusiv</h3>
+                    <p>Premium Mary Kay skincare products curated for the sophisticated woman who believes in the power of glowing skin.</p>
+                    <div class="social-links">
+                        <h4>Connect With Us</h4>
+                        <div class="social-icons">
+                            <a href="https://facebook.com/Crownexclusiv" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://instagram.com/Crownexclusiv/marykayinnigeria" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://tiktok.com/@marykaynigeria" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://wa.me/2348139151223" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                        <div class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+234 813 915 1223</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 CrownExclusiv | Mary Kay Cosmetic Enterprise. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('show');
+            });
+        });
+        
+        // Night mode toggle - default to dark mode
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        // Set default to dark mode
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+
+        // Product data
+        const products = [
+            { id: 1, name: "Brush Cleaner", price: 8000, image: "Brush-Cleaner-8000.jpg", category: "makeup" },
+            { id: 2, name: "Citrus Sorbet Hand Cream and Lip Balm", price: 10000, image: "Citrus-Sorbet-Hand-Cream-and-Lip-Balm-10000.jpg", category: "body" },
+            { id: 3, name: "CityScape Eau de Parfum", price: 110000, image: "CityScape-Eau-de-Parfum-110000.jpg", category: "fragrance" },
+            { id: 4, name: "Clear Proof® Oil-Free Moisturizer for Acne-Prone Skin", price: 22000, image: "Clear-Proof®-Oil-Free-Moisturizer-for-Acne-Prone-Skin-22000.jpg", category: "skincare" },
+            { id: 5, name: "Clear Proof® Blemish Control Toner", price: 22000, image: "Clear-Proof®-Blemish-Control-Toner-22000.jpg", category: "skincare" },
+            { id: 6, name: "Clear Proof® Blemish Control Toner", price: 22000, image: "Clear-Proof®-Blemish-Control-Toner-22000.jpg", category: "skincare" },
+            { id: 7, name: "Elige Eau de Parfum", price: 80000, image: "Elige-Eau-de-Parfum-80000.jpg", category: "fragrance" },
+            { id: 8, name: "Forever Diamonds® Eau de Parfum", price: 70000, image: "Forever-Diamonds®-Eau-de-Parfum-70000.jpg", category: "fragrance" },
+            { id: 9, name: "Gel Cream Blush", price: 12000, image: "Gel-Cream-Blush-12000.jpg", category: "makeup" },
+            { id: 10, name: "Hands® Protecting Softener Satin", price: 45000, image: "Hands®-Protecting-Softener-Satin-45000.jpg", category: "body" },
+            { id: 11, name: "Highlight and Contour Sponge", price: 8000, image: "Highlight-and-Contour-Sponge-8000.jpg", category: "makeup" },
+            { id: 12, name: "If You Believe Eau de toilette", price: 60000, image: "If-You-Believe-Eau-de-toilette-60000.jpg", category: "fragrance" },
+            { id: 13, name: "Illuminea Dreams Eau de Parfum", price: 120000, image: "Illuminea-Dreams-Eau-de-Parfum-120000.jpg", category: "fragrance" },
+            { id: 14, name: "Illuminea Extrait De Parfum", price: 120000, image: "Illuminea-Extrait-De-Parfum-120000.jpg", category: "fragrance" },
+            { id: 15, name: "Lash and Brow Building Serum", price: 10000, image: "Lash-and-Brow-Building-Serum-10000.jpg", category: "skincare" },
+            { id: 16, name: "Lip and eye liner", price: 5000, image: "Lip-and-eye-liner-5000.jpg", category: "makeup" },
+            { id: 17, name: "Lipgloss", price: 14000, image: "Lipgloss-14000.jpg", category: "makeup" },
+            { id: 18, name: "Lipstick", price: 16000, image: "Lipstick-16000.jpg", category: "makeup" },
+            { id: 19, name: "Live Fearlessly® Eau de Parfum", price: 72000, image: "Live-Fearlessly®-Eau-de-Parfum-72000.jpg", category: "fragrance" },
+            { id: 20, name: "MK High Intensity® Cologne Spray", price: 70000, image: "MK-High-Intensity®-Cologne-Spray-70000.jpg", category: "fragrance" },
+            { id: 21, name: "Mary Kay® CC Cream Sunscreen Broad Spectrum", price: 25000, image: "Mary-Kay®-CC-Cream-Sunscreen-Broad-Spectrum-25000.jpg", category: "makeup" },
+            { id: 22, name: "Mary Kay Foundation Primer Sunscreen", price: 25000, image: "Mary-Kay-Foundation-Primer-Sunscreen-25000.jpg", category: "makeup" },
+            { id: 23, name: "Mary Kay Lash Love Mascara", price: 12000, image: "Mary-Kay-Lash-Love-Mascara-12000.jpg", category: "makeup" },
+            { id: 24, name: "Mary Kay Perfecting Concealer", price: 25000, image: "Mary-Kay-Perfecting-Concealer-25000.jpg", category: "makeup" },
+            { id: 25, name: "Mary Kay Timewise 3d foundation", price: 35000, image: "Mary-Kay-Timewise-3d-foundation-35000.jpg", category: "makeup" },
+            { id: 26, name: "Mary Kay Timewise Deep Cleansing Charcoal mask", price: 28000, image: "Mary-Kay-Timewise-Deep-Cleansing-Charcoal-mask-28000.jpg", category: "skincare" },
+            { id: 27, name: "Mary Kay Timewise Targeted Toning Body Lotion", price: 54000, image: "Mary-Kay-Timewise-Targeted-Toning-Body-Lotion-54000.jpg", category: "body" },
+            { id: 28, name: "Mary Kay Ultimate Mascara", price: 15000, image: "Mary-Kay-Ultimate-Mascara-15000.jpg", category: "makeup" },
+            { id: 29, name: "Mary Kay White Tea and Citrus Satin Body", price: 35000, image: "Mary-Kay-White-Tea-and-Citrus-Satin-Body-35000.jpg", category: "body" },
+            { id: 30, name: "Mary Kay essential Brush Collection", price: 75000, image: "Mary-Kay-essential-Brush-Collection-75000.jpg", category: "makeup" },
+            { id: 31, name: "Mary Kay illuminea Body Souffle", price: 54000, image: "Mary-Kay-illuminea-Body-Souffle-54000.jpg", category: "body" },
+            { id: 32, name: "Mary Kay® Silky Setting Powder", price: 12000, image: "Mary-Kay®-Silky-Setting-Powder-12000.jpg", category: "makeup" },
+            { id: 33, name: "Mary kay Clearproof Clarifying cleanser", price: 22000, image: "Mary-kay-Clearproof-Clarifying-cleanser-22000.jpg", category: "skincare" },
+            { id: 34, name: "Mary kay Silkening Dry Oil", price: 28000, image: "Mary-kay-Silkening-Dry-Oil-28000.jpg", category: "body" },
+            { id: 35, name: "Nourishing Shea cream", price: 10000, image: "Nourishing-Shea-cream-10000.jpg", category: "body" },
+            { id: 36, name: "Oil free Makeup Remover", price: 12000, image: "Oil-free-Makeup-Remover-12000.jpg", category: "skincare" },
+            { id: 37, name: "Shea hand soap", price: 8000, image: "Shea-hand-soap-8000.jpg", category: "body" },
+            { id: 38, name: "Thinking of Love Eau de Parfum", price: 50000, image: "Thinking-of-Love-Eau-de-Parfum-50000.jpg", category: "fragrance" },
+            { id: 39, name: "TimeWise® 3-In-1 Cleansing Bar (with soap dish)", price: 39000, image: "TimeWise®-3-In-1-Cleansing-Bar-(with-soap-dish)-39000.jpg", category: "skincare" },
+            { id: 40, name: "White Tea & Citrus Satin Body® Indulgent Shea Wash", price: 25000, image: "White-Tea-&-Citrus-Satin-Body®-Indulgent-Shea-Wash-25000.jpg", category: "body" },
+            { id: 41, name: "White Tea & Citrus Satin Body® Revitalizing Shea Scrub", price: 25000, image: "White-Tea-&-Citrus-Satin-Body®-Revitalizing-Shea-Scrub-25000.jpg", category: "body" },
+            { id: 42, name: "White Tea & Citrus Satin Body® Silkening Shea Lotion", price: 22000, image: "White-Tea-&-Citrus-Satin-Body®-Silkening-Shea-Lotion-22000.jpg", category: "body" },
+            { id: 43, name: "illuminea Extrait® De Parfum", price: 120000, image: "illuminea-Extrait®-De-Parfum-120000.jpg", category: "fragrance" }
+        ];
+
+        // Initialize variables
+        let currentFilter = 'all';
+        const productsGrid = document.getElementById('productsGrid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const wishlist = [];
+
+        // Format price as ₦ with commas
+        function formatPrice(price) {
+            return '₦' + price.toLocaleString();
+        }
+
+        // Render products
+        function renderProducts() {
+            productsGrid.innerHTML = '';
+            
+            const filteredProducts = currentFilter === 'all' 
+                ? products 
+                : products.filter(product => product.category === currentFilter);
+            
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image" style="background-image: url('assets/images/${product.image}');">
+                        <button class="wishlist-btn" data-id="${product.id}">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="product-content">
+                        <h3>${product.name}</h3>
+                        <div class="product-price">${formatPrice(product.price)}</div>
+                        <div class="product-actions">
+                            <button class="btn btn-whatsapp whatsapp-btn" data-id="${product.id}">
+                                <i class="fab fa-whatsapp"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `;
+                productsGrid.appendChild(productCard);
+            });
+            
+            // Add event listeners
+            setupEventListeners();
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Wishlist buttons
+            document.querySelectorAll('.wishlist-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    const product = products.find(p => p.id === productId);
+                    
+                    if (this.classList.contains('active')) {
+                        // Remove from wishlist
+                        const index = wishlist.indexOf(productId);
+                        if (index > -1) wishlist.splice(index, 1);
+                        this.classList.remove('active');
+                        this.innerHTML = '<i class="far fa-heart"></i>';
+                    } else {
+                        // Add to wishlist
+                        wishlist.push(productId);
+                        this.classList.add('active');
+                        this.innerHTML = '<i class="fas fa-heart"></i>';
+                    }
+                });
+            });
+            
+            // WhatsApp buttons
+            document.querySelectorAll('.whatsapp-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    const product = products.find(p => p.id === productId);
+                    
+                    const message = encodeURIComponent(
+                        `Hi, I'm interested in buying "${product.name}" for ${formatPrice(product.price)}.`
+                    );
+                    
+                    window.open(`https://wa.me/2348139151223?text=${message}`, '_blank');
+                });
+            });
+        }
+
+        // Filter products
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentFilter = this.getAttribute('data-filter');
+                
+                // Update active button
+                filterButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Re-render products
+                renderProducts();
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+        });
+    </script>
+</body>
+</html>
