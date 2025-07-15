@@ -221,6 +221,38 @@
             color: var(--text);
         }
 
+        .header-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .header-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .header-icon {
+            color: var(--text);
+        }
+
+        .icon-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: var(--neutral);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
         /* ===== HERO SECTION ===== */
         .hero {
             height: 100vh;
@@ -383,18 +415,6 @@
             transform: scale(1.05);
         }
 
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: var(--accent);
-            color: var(--neutral);
-            padding: 5px 15px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-
         .product-info {
             padding: 25px;
             flex-grow: 1;
@@ -420,39 +440,13 @@
         }
 
         .product-price {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin: 10px 0;
-        }
-
-        .price-fake {
-            font-size: 1rem;
-            color: #999;
-            text-decoration: line-through;
-            margin-right: 8px;
-        }
-
-        .price-real {
             font-size: 1.4rem;
             font-weight: 700;
             color: var(--dark-text);
+            margin: 10px 0;
         }
 
-        body.light-mode .price-real {
-            color: var(--text);
-        }
-
-        .discount-tag {
-            background: var(--primary);
-            color: var(--dark-text);
-            padding: 3px 10px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 4px;
-        }
-
-        body.light-mode .discount-tag {
+        body.light-mode .product-price {
             color: var(--text);
         }
 
@@ -649,10 +643,14 @@
         }
 
         .modal-price {
-            display: flex;
-            align-items: center;
-            gap: 15px;
             margin-bottom: 20px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .modal-price {
+            color: var(--text);
         }
 
         .modal-description {
@@ -741,16 +739,6 @@
 
         .bulk-table tr:last-child td {
             border-bottom: none;
-        }
-
-        .bulk-tag {
-            background: var(--accent);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: 10px;
         }
 
         .modal-actions {
@@ -1173,6 +1161,233 @@
             100% { transform: translateY(0px); }
         }
 
+        /* ===== MOBILE MENU PANEL ===== */
+        .mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 85%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--dark-neutral);
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        body.light-mode .mobile-menu-panel {
+            background: var(--neutral);
+        }
+
+        .mobile-menu-panel.active {
+            left: 0;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--dark-text);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        body.light-mode .close-menu {
+            color: var(--text);
+        }
+
+        .close-menu:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .mobile-nav {
+            list-style: none;
+            margin-top: 40px;
+        }
+
+        .mobile-nav li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        body.light-mode .mobile-nav a {
+            color: var(--text);
+        }
+
+        .mobile-nav a:hover {
+            color: var(--dark-accent);
+        }
+
+        body.light-mode .mobile-nav a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-nav i {
+            width: 25px;
+            text-align: center;
+        }
+
+        /* ===== WISHLIST PANEL ===== */
+        .wishlist-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--dark-neutral);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 30px;
+            border-left: 3px solid var(--primary);
+        }
+
+        body.light-mode .wishlist-panel {
+            background: var(--neutral);
+        }
+
+        .wishlist-panel.active {
+            right: 0;
+        }
+
+        .wishlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-mode .wishlist-header {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .wishlist-title {
+            font-size: 1.5rem;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .wishlist-title {
+            color: var(--text);
+        }
+
+        .close-wishlist {
+            background: none;
+            border: none;
+            color: var(--dark-text);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        body.light-mode .close-wishlist {
+            color: var(--text);
+        }
+
+        .close-wishlist:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .wishlist-items {
+            min-height: 300px;
+        }
+
+        .wishlist-empty {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .wishlist-empty {
+            color: var(--text);
+        }
+
+        .wishlist-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-mode .wishlist-item {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .wishlist-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-right: 15px;
+            background: #f8f8f8;
+        }
+
+        .wishlist-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .wishlist-item-details {
+            flex-grow: 1;
+        }
+
+        .wishlist-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .wishlist-item-name {
+            color: var(--text);
+        }
+
+        .wishlist-item-price {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .wishlist-item-price {
+            color: var(--text);
+        }
+
+        .wishlist-item-remove {
+            color: var(--dark-text);
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 15px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        body.light-mode .wishlist-item-remove {
+            color: var(--text);
+        }
+
+        .wishlist-item-remove:hover {
+            color: #e74c3c;
+            transform: scale(1.2);
+        }
+
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1200px) {
             .products-grid {
@@ -1295,6 +1510,34 @@
         </div>
     </header>
 
+    <!-- Mobile Menu Panel -->
+    <div class="mobile-menu-panel" id="mobileMenuPanel">
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav">
+            <li>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+                <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Wishlist Panel -->
+    <div class="wishlist-panel" id="wishlistPanel">
+        <div class="wishlist-header">
+            <h3 class="wishlist-title">Your Wishlist</h3>
+            <button class="close-wishlist" id="closeWishlist">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <div class="wishlist-empty">Your wishlist is empty</div>
+        </div>
+    </div>
+
     <!-- Hero Section with Slideshow -->
     <section class="hero">
         <div class="hero-slideshow">
@@ -1321,13 +1564,13 @@
     <section class="promo-strip">
         <div class="promo-container">
             <div class="promo-item">New Arrivals</div>
-            <div class="promo-item">25% Off Skincare</div>
+            <div class="promo-item">Premium Skincare</div>
             <div class="promo-item">100 Pcs Mega Deal</div>
             <div class="promo-item">Limited Edition Fragrances</div>
             <div class="promo-item">Premium Beauty Collection</div>
             <div class="promo-item">Free Shipping Nationwide</div>
             <div class="promo-item">New Arrivals</div>
-            <div class="promo-item">25% Off Skincare</div>
+            <div class="promo-item">Premium Skincare</div>
             <div class="promo-item">100 Pcs Mega Deal</div>
             <div class="promo-item">Limited Edition Fragrances</div>
             <div class="promo-item">Premium Beauty Collection</div>
@@ -1367,7 +1610,7 @@
     <div class="cart-panel" id="cartPanel">
         <div class="cart-header">
             <h3 class="cart-title">Your Shopping Cart</h3>
-            <button class="close-cart">
+            <button class="close-cart" id="closeCart">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -1477,14 +1720,6 @@
             { id: 43, name: "Illuminea Extrait De Parfum", price: 120000, image: "illuminea-Extrait®-De-Parfum-120000.jpg" }
         ];
 
-        // Generate fake discounts for display
-        products.forEach(product => {
-            const discounts = [10, 20, 35];
-            product.displayDiscount = discounts[Math.floor(Math.random() * discounts.length)];
-            // Generate fake price (20-50% higher than real price)
-            product.fakePrice = Math.round(product.price * (1 + 0.2 + Math.random() * 0.3));
-        });
-
         // Initialize variables
         let currentPage = 1;
         const itemsPerPage = 12;
@@ -1501,10 +1736,15 @@
         const cartCount = document.getElementById('cartCount');
         const cartPanel = document.getElementById('cartPanel');
         const cartOverlay = document.getElementById('cartOverlay');
-        const closeCart = document.querySelector('.close-cart');
+        const closeCart = document.getElementById('closeCart');
         const cartItems = document.getElementById('cartItems');
         const cartTotal = document.getElementById('cartTotal');
         const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+        const closeMenu = document.getElementById('closeMenu');
+        const wishlistPanel = document.getElementById('wishlistPanel');
+        const closeWishlist = document.getElementById('closeWishlist');
+        const wishlistItems = document.getElementById('wishlistItems');
         const modalOverlay = document.getElementById('modalOverlay');
         const modalClose = document.getElementById('modalClose');
         const modalContent = document.getElementById('modalContent');
@@ -1539,9 +1779,16 @@
             updateWishlistCount();
             updateCartCount();
             updateCartTotal();
+            renderWishlistItems();
             
             // Setup cart functionality
             setupCart();
+            
+            // Setup wishlist functionality
+            setupWishlist();
+            
+            // Setup mobile menu
+            setupMobileMenu();
         });
 
         // ========== HEADER FUNCTIONS ========== //
@@ -1593,7 +1840,6 @@
                 productCard.setAttribute('data-aos', 'fade-up');
                 productCard.innerHTML = `
                     <div class="product-image">
-                        <div class="product-badge">-${product.displayDiscount}%</div>
                         <img src="assets/images/${product.image}" alt="${product.name}" loading="lazy">
                         <button class="wishlist-btn ${wishlist.some(item => item.id === product.id) ? 'active' : ''}" data-id="${product.id}">
                             <i class="fas fa-heart"></i>
@@ -1601,10 +1847,7 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">${product.name}</h3>
-                        <div class="product-price">
-                            <del class="price-fake">₦${product.fakePrice.toLocaleString()}</del>
-                            <span class="price-real">₦${product.price.toLocaleString()}</span>
-                        </div>
+                        <div class="product-price">₦${product.price.toLocaleString()}</div>
                         <div class="availability">
                             <i class="fas fa-check-circle"></i> In Stock
                         </div>
@@ -1741,11 +1984,7 @@
                 </div>
                 <div class="modal-details">
                     <h3 class="modal-title">${product.name}</h3>
-                    <div class="modal-price">
-                        <del class="price-fake">₦${product.fakePrice.toLocaleString()}</del>
-                        <span class="price-real">₦${product.price.toLocaleString()}</span>
-                        <span class="discount-tag">-${product.displayDiscount}% OFF</span>
-                    </div>
+                    <div class="modal-price">₦${product.price.toLocaleString()}</div>
                     <p class="modal-description">
                         Premium beauty product crafted with the finest ingredients for ultimate care and effectiveness. 
                         Features carefully selected components to provide maximum benefits for your skin and beauty needs. 
@@ -1771,7 +2010,6 @@
                                     <th>Quantity</th>
                                     <th>Price per Unit</th>
                                     <th>Total Price</th>
-                                    <th>Discount</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1779,25 +2017,21 @@
                                     <td>10 pcs</td>
                                     <td>₦${Math.round(product.price * 0.9).toLocaleString()}</td>
                                     <td>₦${Math.round(product.price * 0.9 * 10).toLocaleString()}</td>
-                                    <td><span class="bulk-tag">-10%</span></td>
                                 </tr>
                                 <tr>
                                     <td>25 pcs</td>
                                     <td>₦${Math.round(product.price * 0.85).toLocaleString()}</td>
                                     <td>₦${Math.round(product.price * 0.85 * 25).toLocaleString()}</td>
-                                    <td><span class="bulk-tag">-15%</span></td>
                                 </tr>
                                 <tr>
                                     <td>50 pcs</td>
                                     <td>₦${Math.round(product.price * 0.8).toLocaleString()}</td>
                                     <td>₦${Math.round(product.price * 0.8 * 50).toLocaleString()}</td>
-                                    <td><span class="bulk-tag">-20%</span></td>
                                 </tr>
                                 <tr>
                                     <td>100 pcs</td>
                                     <td>₦${Math.round(product.price * 0.75).toLocaleString()}</td>
                                     <td>₦${Math.round(product.price * 0.75 * 100).toLocaleString()}</td>
-                                    <td><span class="bulk-tag">-25%</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1947,6 +2181,7 @@
                 
                 localStorage.setItem('wishlist', JSON.stringify(wishlist));
                 updateWishlistCount();
+                renderWishlistItems();
             }
         }
 
@@ -1954,10 +2189,59 @@
             wishlist = wishlist.filter(item => item.id !== productId);
             localStorage.setItem('wishlist', JSON.stringify(wishlist));
             updateWishlistCount();
+            renderWishlistItems();
         }
 
         function updateWishlistCount() {
             wishlistCount.textContent = wishlist.length;
+        }
+
+        function renderWishlistItems() {
+            wishlistItems.innerHTML = '';
+            
+            if (wishlist.length === 0) {
+                wishlistItems.innerHTML = '<div class="wishlist-empty">Your wishlist is empty</div>';
+                return;
+            }
+            
+            wishlist.forEach(item => {
+                const wishlistItem = document.createElement('div');
+                wishlistItem.className = 'wishlist-item';
+                wishlistItem.innerHTML = `
+                    <div class="wishlist-item-image">
+                        <img src="assets/images/${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="wishlist-item-details">
+                        <div class="wishlist-item-name">${item.name}</div>
+                        <div class="wishlist-item-price">₦${item.price.toLocaleString()}</div>
+                    </div>
+                    <button class="wishlist-item-remove" data-id="${item.id}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                wishlistItems.appendChild(wishlistItem);
+            });
+            
+            // Add event listeners to wishlist item buttons
+            document.querySelectorAll('.wishlist-item-remove').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    removeFromWishlist(productId);
+                });
+            });
+        }
+
+        function setupWishlist() {
+            wishlistIcon.addEventListener('click', () => {
+                wishlistPanel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                renderWishlistItems();
+            });
+
+            closeWishlist.addEventListener('click', () => {
+                wishlistPanel.classList.remove('active');
+                document.body.style.overflow = '';
+            });
         }
 
         // ========== CART FUNCTIONS ========== //
@@ -2116,6 +2400,19 @@
             });
         }
 
+        // ========== MOBILE MENU FUNCTIONS ========== //
+        function setupMobileMenu() {
+            mobileToggle.addEventListener('click', () => {
+                mobileMenuPanel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeMenu.addEventListener('click', () => {
+                mobileMenuPanel.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
         // ========== NOTIFICATION FUNCTIONS ========== //
         function showNotification(message) {
             const notification = document.createElement('div');
@@ -2140,13 +2437,6 @@
                 }, 500);
             }, 3000);
         }
-
-        // ========== PANEL TOGGLE FUNCTIONS ========== //
-        // Mobile navigation toggle
-        mobileToggle.addEventListener('click', function() {
-            // Toggle mobile nav functionality
-            // Implement as needed
-        });
     </script>
 </body>
 </html>
