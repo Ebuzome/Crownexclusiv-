@@ -704,43 +704,6 @@
             border-color: var(--accent);
         }
 
-        .bulk-pricing {
-            margin-bottom: 25px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        body.light-mode .bulk-pricing {
-            background: #f9f9f9;
-        }
-
-        .bulk-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .bulk-table th, .bulk-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--dark-text);
-        }
-
-        body.light-mode .bulk-table th, 
-        body.light-mode .bulk-table td {
-            border-bottom: 1px solid #e0e0e0;
-            color: var(--text);
-        }
-
-        .bulk-table th {
-            font-weight: 600;
-        }
-
-        .bulk-table tr:last-child td {
-            border-bottom: none;
-        }
-
         .modal-actions {
             display: flex;
             gap: 15px;
@@ -2000,41 +1963,6 @@
                             <div class="quantity-option" data-qty="50">50 Units</div>
                             <div class="quantity-option" data-qty="100">100 Units</div>
                         </div>
-                    </div>
-                    
-                    <div class="bulk-pricing">
-                        <div class="quantity-title">Bulk Purchase Options:</div>
-                        <table class="bulk-table">
-                            <thead>
-                                <tr>
-                                    <th>Quantity</th>
-                                    <th>Price per Unit</th>
-                                    <th>Total Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>10 pcs</td>
-                                    <td>₦${Math.round(product.price * 0.9).toLocaleString()}</td>
-                                    <td>₦${Math.round(product.price * 0.9 * 10).toLocaleString()}</td>
-                                </tr>
-                                <tr>
-                                    <td>25 pcs</td>
-                                    <td>₦${Math.round(product.price * 0.85).toLocaleString()}</td>
-                                    <td>₦${Math.round(product.price * 0.85 * 25).toLocaleString()}</td>
-                                </tr>
-                                <tr>
-                                    <td>50 pcs</td>
-                                    <td>₦${Math.round(product.price * 0.8).toLocaleString()}</td>
-                                    <td>₦${Math.round(product.price * 0.8 * 50).toLocaleString()}</td>
-                                </tr>
-                                <tr>
-                                    <td>100 pcs</td>
-                                    <td>₦${Math.round(product.price * 0.75).toLocaleString()}</td>
-                                    <td>₦${Math.round(product.price * 0.75 * 100).toLocaleString()}</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                     
                     <div class="modal-actions">
