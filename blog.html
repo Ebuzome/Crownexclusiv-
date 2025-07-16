@@ -6,7 +6,6 @@
     <title>CrownExclusiv | Beauty Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         /* === GLOBAL STYLES === */
         :root {
@@ -35,17 +34,17 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            color: var(--dark-text);
-            background-color: var(--dark-base);
+            color: var(--text);
+            background-color: var(--base);
             overflow-x: hidden;
             line-height: 1.6;
             position: relative;
             transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        body.light-mode {
-            background-color: var(--base);
-            color: var(--text);
+        body.dark-mode {
+            background-color: var(--dark-base);
+            color: var(--dark-text);
         }
 
         h1, h2, h3, h4 {
@@ -128,14 +127,14 @@
         }
 
         header.scrolled {
-            background-color: rgba(26, 26, 26, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 248, 245, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             padding: 1rem 0;
         }
 
-        body.light-mode header.scrolled {
-            background-color: rgba(255, 248, 245, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        body.dark-mode header.scrolled {
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         .header-container {
@@ -148,14 +147,14 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
             font-weight: 600;
-            color: var(--dark-accent);
+            color: var(--accent);
             text-decoration: none;
             display: flex;
             align-items: center;
         }
 
-        body.light-mode .logo {
-            color: var(--accent);
+        body.dark-mode .logo {
+            color: var(--dark-accent);
         }
 
         .logo span {
@@ -170,15 +169,15 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark-text);
+            color: var(--text);
             font-weight: 500;
             font-size: 1.05rem;
             transition: var(--transition);
             position: relative;
         }
 
-        body.light-mode .nav-links a {
-            color: var(--text);
+        body.dark-mode .nav-links a {
+            color: var(--dark-text);
         }
 
         .nav-links a::after {
@@ -188,20 +187,20 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--dark-accent);
+            background-color: var(--accent);
             transition: var(--transition);
         }
 
-        body.light-mode .nav-links a::after {
-            background-color: var(--accent);
+        body.dark-mode .nav-links a::after {
+            background-color: var(--dark-accent);
         }
 
         .nav-links a:hover {
-            color: var(--dark-accent);
+            color: var(--accent);
         }
 
-        body.light-mode .nav-links a:hover {
-            color: var(--accent);
+        body.dark-mode .nav-links a:hover {
+            color: var(--dark-accent);
         }
 
         .nav-links a:hover::after {
@@ -213,12 +212,12 @@
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: var(--dark-text);
+            color: var(--text);
             cursor: pointer;
         }
 
-        body.light-mode .mobile-toggle {
-            color: var(--text);
+        body.dark-mode .mobile-toggle {
+            color: var(--dark-text);
         }
 
         .header-icons {
@@ -230,11 +229,11 @@
             position: relative;
             cursor: pointer;
             font-size: 1.3rem;
-            color: var(--dark-text);
+            color: var(--text);
         }
 
-        body.light-mode .header-icon {
-            color: var(--text);
+        body.dark-mode .header-icon {
+            color: var(--dark-text);
         }
 
         .icon-badge {
@@ -252,100 +251,88 @@
             font-size: 0.7rem;
             font-weight: 600;
         }
-        
-        /* ===== BLOG HOMEPAGE ===== */
+
+        /* ===== BLOG HERO SECTION ===== */
         .blog-hero {
             height: 70vh;
             position: relative;
-            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('assets/images/hero3.jpg') center/cover;
+            overflow: hidden;
+            background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 20px;
+            color: var(--neutral);
+            margin-top: 80px;
         }
 
         .blog-hero-content {
-            max-width: 800px;
-            color: var(--neutral);
-            z-index: 2;
+            position: relative;
+            z-index: 3;
+            width: 90%;
+            max-width: 900px;
         }
 
-        .blog-hero-title {
+        .blog-hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .blog-hero-subtitle {
+        .blog-hero-content p {
             font-size: 1.5rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
-        .categories-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 3rem;
-        }
-
-        .category-btn {
-            padding: 10px 25px;
-            border-radius: 30px;
-            background: transparent;
-            border: 1px solid var(--dark-text);
-            color: var(--dark-text);
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-        }
-
-        body.light-mode .category-btn {
-            border: 1px solid var(--text);
-            color: var(--text);
-        }
-
-        .category-btn:hover, .category-btn.active {
-            background: var(--accent);
-            color: var(--neutral);
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
-
+        /* ===== BLOG GRID ===== */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 4rem;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .blog-card {
-            background: var(--dark-neutral);
+            background: var(--neutral);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            position: relative;
             display: flex;
             flex-direction: column;
             height: 100%;
         }
 
-        body.light-mode .blog-card {
-            background: var(--neutral);
+        body.dark-mode .blog-card {
+            background: var(--dark-neutral);
         }
 
         .blog-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .blog-image {
             height: 250px;
             overflow: hidden;
             position: relative;
+            background: #f8f8f8;
         }
 
         .blog-image img {
@@ -366,157 +353,176 @@
             flex-direction: column;
         }
 
-        .blog-meta {
-            display: flex;
-            justify-content: space-between;
+        .blog-tag {
+            background: var(--accent);
+            color: var(--neutral);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
             margin-bottom: 15px;
-            font-size: 0.9rem;
-            color: var(--gold);
+            align-self: flex-start;
         }
 
         .blog-title {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: var(--dark-text);
-            min-height: 70px;
+            color: var(--text);
+            font-weight: 600;
         }
 
-        body.light-mode .blog-title {
-            color: var(--text);
+        body.dark-mode .blog-title {
+            color: var(--dark-text);
         }
 
         .blog-excerpt {
+            color: var(--text);
             margin-bottom: 20px;
-            color: var(--dark-text);
             flex-grow: 1;
         }
 
-        body.light-mode .blog-excerpt {
-            color: var(--text);
+        body.dark-mode .blog-excerpt {
+            color: var(--dark-text);
         }
 
-        .read-more {
-            display: inline-block;
-            padding: 10px 20px;
-            background: transparent;
-            border: 1px solid var(--dark-text);
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .blog-meta {
             color: var(--dark-text);
+        }
+
+        .blog-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .blog-read-more {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 8px 20px;
             border-radius: 30px;
             text-decoration: none;
             transition: var(--transition);
             font-weight: 500;
-            align-self: flex-start;
         }
 
-        body.light-mode .read-more {
-            border: 1px solid var(--text);
-            color: var(--text);
+        body.dark-mode .blog-read-more {
+            color: var(--dark-accent);
+            border-color: var(--dark-accent);
         }
 
-        .read-more:hover {
+        .blog-read-more:hover {
             background: var(--accent);
             color: var(--neutral);
-            border-color: var(--accent);
         }
 
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 40px;
-        }
-
-        .page-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 0;
-            border: 1px solid var(--dark-text);
-            background: var(--dark-neutral);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            color: var(--dark-text);
-        }
-
-        body.light-mode .page-btn {
-            border: 1px solid var(--text);
-            background: var(--neutral);
-            color: var(--text);
-        }
-
-        .page-btn:hover, .page-btn.active {
-            background: var(--accent);
+        body.dark-mode .blog-read-more:hover {
+            background: var(--dark-accent);
             color: var(--neutral);
-            transform: translateY(-3px);
         }
-        
-        /* ===== INDIVIDUAL BLOG POST ===== */
-        .post-container {
+
+        /* ===== BLOG POST PAGE ===== */
+        .blog-post-container {
             max-width: 900px;
-            margin: 0 auto;
-            padding: 100px 20px 80px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
         }
 
-        .post-header {
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .back-to-blog {
+            color: var(--dark-accent);
+        }
+
+        .back-to-blog:hover {
+            transform: translateX(-5px);
+        }
+
+        .blog-post-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
-        .post-title {
-            font-size: 3rem;
+        .blog-post-title {
+            font-size: 2.8rem;
             margin-bottom: 20px;
-            color: var(--dark-text);
-        }
-
-        body.light-mode .post-title {
             color: var(--text);
         }
 
-        .post-meta {
+        body.dark-mode .blog-post-title {
+            color: var(--dark-text);
+        }
+
+        .blog-post-meta {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-bottom: 30px;
-            color: var(--gold);
+            margin-bottom: 20px;
+            color: var(--text);
         }
 
-        .post-image {
+        body.dark-mode .blog-post-meta {
+            color: var(--dark-text);
+        }
+
+        .blog-post-image {
             height: 500px;
             border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow);
+            margin: 40px 0;
         }
 
-        .post-image img {
+        .blog-post-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .post-content {
-            color: var(--dark-text);
+        .blog-post-content {
+            color: var(--text);
             line-height: 1.8;
             font-size: 1.1rem;
-            margin-bottom: 50px;
         }
 
-        body.light-mode .post-content {
-            color: var(--text);
+        body.dark-mode .blog-post-content {
+            color: var(--dark-text);
         }
 
-        .post-content p {
+        .blog-post-content p {
             margin-bottom: 25px;
         }
 
-        .post-actions {
+        .blog-post-content h3 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+        }
+
+        .blog-post-actions {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin: 40px 0;
+            justify-content: center;
         }
 
         .action-btn {
@@ -524,19 +530,18 @@
             align-items: center;
             gap: 8px;
             padding: 12px 25px;
-            border-radius: 30px;
-            background: var(--dark-neutral);
-            color: var(--dark-text);
-            border: none;
+            border-radius: 50px;
+            background: var(--neutral);
+            border: 1px solid #e0e0e0;
             cursor: pointer;
             transition: var(--transition);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
+            color: var(--text);
         }
 
-        body.light-mode .action-btn {
-            background: var(--neutral);
-            color: var(--text);
+        body.dark-mode .action-btn {
+            background: var(--dark-neutral);
+            border-color: #444;
+            color: var(--dark-text);
         }
 
         .action-btn:hover {
@@ -544,70 +549,70 @@
             box-shadow: var(--shadow);
         }
 
-        .like-btn:hover {
-            background: rgba(231, 76, 60, 0.2);
+        .action-btn.liked {
             color: #e74c3c;
         }
 
-        .share-btn:hover {
-            background: rgba(52, 152, 219, 0.2);
-            color: #3498db;
+        .action-btn.liked i {
+            color: #e74c3c;
         }
 
-        .comment-btn:hover {
-            background: rgba(46, 204, 113, 0.2);
-            color: #2ecc71;
+        .action-btn i {
+            transition: var(--transition);
         }
 
-        .action-btn span {
-            font-weight: 600;
+        .action-btn:hover i {
+            transform: scale(1.2);
         }
 
         .comments-section {
-            background: var(--dark-neutral);
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 50px;
-            box-shadow: var(--shadow);
+            margin-top: 60px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 40px;
         }
 
-        body.light-mode .comments-section {
-            background: var(--neutral);
+        body.dark-mode .comments-section {
+            border-top: 1px solid #444;
         }
 
         .comments-title {
             font-size: 1.8rem;
             margin-bottom: 30px;
-            color: var(--dark-text);
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 15px;
+            color: var(--text);
         }
 
-        body.light-mode .comments-title {
-            color: var(--text);
+        body.dark-mode .comments-title {
+            color: var(--dark-text);
         }
 
         .comment {
             display: flex;
             gap: 20px;
-            padding: 25px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
         }
 
-        body.light-mode .comment {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        body.dark-mode .comment {
+            border-bottom: 1px solid #444;
+        }
+
+        .comment:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
 
         .comment-avatar {
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            overflow: hidden;
-            background: linear-gradient(45deg, var(--dark-accent), var(--accent));
+            background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--neutral);
+            font-weight: bold;
             font-size: 1.5rem;
             flex-shrink: 0;
         }
@@ -624,119 +629,242 @@
 
         .comment-user {
             font-weight: 600;
-            color: var(--dark-text);
+            color: var(--text);
         }
 
-        body.light-mode .comment-user {
-            color: var(--text);
+        body.dark-mode .comment-user {
+            color: var(--dark-text);
         }
 
         .comment-time {
-            color: var(--gold);
+            color: #777;
             font-size: 0.9rem;
         }
 
+        body.dark-mode .comment-time {
+            color: #aaa;
+        }
+
         .comment-text {
-            color: var(--dark-text);
+            color: var(--text);
             line-height: 1.6;
         }
 
-        body.light-mode .comment-text {
-            color: var(--text);
-        }
-
-        .comment-form {
-            margin-top: 40px;
-        }
-
-        .form-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+        body.dark-mode .comment-text {
             color: var(--dark-text);
         }
 
-        body.light-mode .form-title {
-            color: var(--text);
+        .comment-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 15px;
-            border-radius: 8px;
-            background: var(--dark-base);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--dark-text);
-            font-family: 'Montserrat', sans-serif;
+        .comment-action {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #777;
+            cursor: pointer;
             transition: var(--transition);
+            font-size: 0.9rem;
         }
 
-        body.light-mode .form-input, 
-        body.light-mode .form-textarea {
-            background: var(--base);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+        body.dark-mode .comment-action {
+            color: #aaa;
+        }
+
+        .comment-action:hover {
+            color: var(--accent);
+        }
+
+        body.dark-mode .comment-action:hover {
+            color: var(--dark-accent);
+        }
+
+        .add-comment {
+            margin-top: 40px;
+            background: var(--neutral);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        body.dark-mode .add-comment {
+            background: var(--dark-neutral);
+        }
+
+        .add-comment h3 {
+            margin-bottom: 20px;
             color: var(--text);
         }
 
-        .form-input:focus, .form-textarea:focus {
-            border-color: var(--accent);
-            outline: none;
+        body.dark-mode .add-comment h3 {
+            color: var(--dark-text);
         }
 
-        .form-textarea {
-            min-height: 150px;
+        .comment-form textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 20px;
             resize: vertical;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            background: var(--neutral);
+            color: var(--text);
         }
 
-        .submit-btn {
+        body.dark-mode .comment-form textarea {
+            border-color: #444;
+            background: var(--dark-neutral);
+            color: var(--dark-text);
+        }
+
+        .submit-comment {
             background: var(--accent);
             color: var(--neutral);
             border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
             cursor: pointer;
+            font-weight: 600;
             transition: var(--transition);
-            font-family: 'Montserrat', sans-serif;
         }
 
-        .submit-btn:hover {
+        body.dark-mode .submit-comment {
             background: var(--dark-accent);
-            transform: translateY(-3px);
         }
 
+        .submit-comment:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(176, 48, 96, 0.25);
+        }
+
+        /* ===== FLOATING CTA ===== */
         .floating-cta {
             position: fixed;
             bottom: 30px;
-            right: 30px;
-            background: linear-gradient(45deg, var(--dark-accent), var(--accent));
-            color: var(--neutral);
-            padding: 15px 25px;
+            left: 30px;
+            background: var(--neutral);
             border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 15px 25px;
+            box-shadow: var(--shadow);
             display: flex;
             align-items: center;
-            gap: 10px;
-            z-index: 99;
+            gap: 15px;
+            z-index: 100;
             transition: var(--transition);
-            text-decoration: none;
-            font-weight: 600;
+            border: 1px solid #e0e0e0;
         }
 
-        .floating-cta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        body.dark-mode .floating-cta {
+            background: var(--dark-neutral);
+            border-color: #444;
         }
-        
+
+        .cta-text {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        body.dark-mode .cta-text {
+            color: var(--dark-text);
+        }
+
+        .cta-btn {
+            background: var(--accent);
+            color: var(--neutral);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        body.dark-mode .cta-btn {
+            background: var(--dark-accent);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(176, 48, 96, 0.3);
+        }
+
+        /* ===== PAGINATION ===== */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 0;
+            border: 1px solid #e0e0e0;
+            background: var(--neutral);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        body.dark-mode .page-btn {
+            border: 1px solid #444;
+            background: var(--dark-neutral);
+            color: var(--dark-text);
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: var(--accent);
+            color: var(--neutral);
+            transform: translateY(-3px);
+        }
+
+        body.dark-mode .page-btn:hover, 
+        body.dark-mode .page-btn.active {
+            background: var(--dark-accent);
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--neutral);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .theme-toggle {
+            background: var(--dark-accent);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-5px);
+        }
+
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1200px) {
-            .blog-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
             .nav-links {
                 display: none;
             }
@@ -747,11 +875,11 @@
         }
 
         @media (max-width: 992px) {
-            .blog-hero-title {
-                font-size: 3rem;
+            .blog-hero-content h1 {
+                font-size: 2.8rem;
             }
             
-            .post-image {
+            .blog-post-image {
                 height: 400px;
             }
         }
@@ -763,59 +891,53 @@
             
             .blog-hero {
                 height: 60vh;
+                margin-top: 70px;
             }
             
-            .blog-hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .blog-hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .post-title {
+            .blog-hero-content h1 {
                 font-size: 2.3rem;
             }
             
-            .post-image {
+            .blog-hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .blog-post-image {
                 height: 300px;
             }
-        }
-
-        @media (max-width: 576px) {
-            .blog-hero-title {
-                font-size: 2rem;
+            
+            .blog-post-title {
+                font-size: 2.3rem;
             }
             
-            .post-title {
-                font-size: 2rem;
-            }
-            
-            .post-meta {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .post-actions {
+            .blog-post-actions {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .action-btn {
-                width: 100%;
-                justify-content: center;
+            .floating-cta {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-hero {
+                height: 50vh;
+            }
+            
+            .blog-hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .blog-post-title {
+                font-size: 2rem;
             }
             
             .comment {
                 flex-direction: column;
-            }
-            
-            .comment-avatar {
-                align-self: flex-start;
             }
         }
     </style>
@@ -843,250 +965,38 @@
         </div>
     </header>
 
-    <!-- Blog Homepage -->
-    <section class="blog-homepage" id="blogHomepage">
-        <div class="blog-hero">
-            <div class="blog-hero-content">
-                <h1 class="blog-hero-title">The CrownExclusiv Blog</h1>
-                <p class="blog-hero-subtitle">Glow Stories, Tips & Beauty Secrets</p>
-            </div>
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="blog-hero-content">
+            <h1>The CrownExclusiv Blog – Glow Stories, Tips & Beauty Secrets</h1>
+            <p>Your ultimate source for beauty insights, skincare routines, and product discoveries</p>
         </div>
-        
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="blog-section">
         <div class="container">
-            <div class="categories-filter">
-                <button class="category-btn active">All</button>
-                <button class="category-btn">Skincare Tips</button>
-                <button class="category-btn">Perfume Picks</button>
-                <button class="category-btn">Product Guides</button>
-                <button class="category-btn">Customer Stories</button>
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog cards will be loaded here dynamically -->
             </div>
-            
-            <div class="blog-grid">
-                <!-- Blog Post 1 -->
-                <div class="blog-card" data-aos="fade-up">
-                    <div class="blog-image">
-                        <img src="assets/images/hero1.jpg" alt="Skincare Routine">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>Skincare Tips</span>
-                            <span>May 15, 2025</span>
-                        </div>
-                        <h3 class="blog-title">The Ultimate Nighttime Skincare Routine for Radiant Skin</h3>
-                        <p class="blog-excerpt">Discover our step-by-step guide to transforming your skin while you sleep. Learn which products work best together for maximum rejuvenation.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                
-                <!-- Blog Post 2 -->
-                <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="blog-image">
-                        <img src="assets/images/hero2.jpg" alt="Perfume Selection">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>Perfume Picks</span>
-                            <span>May 10, 2025</span>
-                        </div>
-                        <h3 class="blog-title">Finding Your Signature Scent: A Guide to Mary Kay Fragrances</h3>
-                        <p class="blog-excerpt">Explore our curated collection of fragrances and learn how to choose the perfect scent that complements your personality and style.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                
-                <!-- Blog Post 3 -->
-                <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="blog-image">
-                        <img src="assets/images/hero3.jpg" alt="Skincare Ingredients">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>Product Guides</span>
-                            <span>May 5, 2025</span>
-                        </div>
-                        <h3 class="blog-title">The Power of Ingredients: What Makes Our Skincare Special</h3>
-                        <p class="blog-excerpt">Dive into the science behind our formulations and discover the potent ingredients that deliver visible results for your skin.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                
-                <!-- Blog Post 4 -->
-                <div class="blog-card" data-aos="fade-up">
-                    <div class="blog-image">
-                        <img src="assets/images/hero4.jpg" alt="Summer Skincare">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>Skincare Tips</span>
-                            <span>April 28, 2025</span>
-                        </div>
-                        <h3 class="blog-title">Summer Skincare Essentials: Protect and Nourish Your Skin</h3>
-                        <p class="blog-excerpt">Prepare your skin for the sunny season with our must-have products that offer protection while keeping your complexion glowing.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                
-                <!-- Blog Post 5 -->
-                <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="blog-image">
-                        <img src="assets/images/hero5.jpg" alt="Customer Transformation">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>Customer Stories</span>
-                            <span>April 22, 2025</span>
-                        </div>
-                        <h3 class="blog-title">Amanda's Transformation: A Journey to Confidence</h3>
-                        <p class="blog-excerpt">Read how Amanda regained her confidence through a personalized skincare regimen and the support of our beauty consultants.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                
-                <!-- Blog Post 6 -->
-                <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="blog-image">
-                        <img src="assets/images/hero6.jpg" alt="Makeup Tips">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>Product Guides</span>
-                            <span>April 15, 2025</span>
-                        </div>
-                        <h3 class="blog-title">5 Minute Makeup: Look Polished in Record Time</h3>
-                        <p class="blog-excerpt">Master the art of quick, effective makeup with our expert tips and product recommendations for busy mornings.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                
-                <!-- Blog Post 7 -->
-                <div class="blog-card" data-aos="fade-up">
-                    <div class="blog-image">
-                        <img src="assets/images/hero7.jpg" alt="Anti-Aging">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>Skincare Tips</span>
-                            <span>April 8, 2025</span>
-                        </div>
-                        <h3 class="blog-title">Age-Defying Secrets: How to Maintain Youthful Skin at Any Age</h3>
-                        <p class="blog-excerpt">Unlock the secrets to ageless beauty with our comprehensive guide to anti-aging skincare routines and products.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="pagination">
-                <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+            <div class="pagination" id="pagination">
                 <button class="page-btn active">1</button>
                 <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
-    
-    <!-- Individual Blog Post (Example) -->
-    <section class="blog-post" id="blogPost" style="display: none;">
-        <div class="post-container">
-            <div class="post-header">
-                <h1 class="post-title">The Ultimate Nighttime Skincare Routine for Radiant Skin</h1>
-                <div class="post-meta">
-                    <span>By Sarah Johnson, Beauty Consultant</span>
-                    <span>May 15, 2025</span>
-                    <span>8 min read</span>
-                </div>
-                <div class="post-image">
-                    <img src="assets/images/hero1.jpg" alt="Nighttime Skincare">
-                </div>
-            </div>
-            
-            <div class="post-content">
-                <p>Your skin works hard while you sleep, making nighttime the perfect opportunity to deliver potent ingredients that repair, rejuvenate, and restore. In this comprehensive guide, I'll walk you through the ultimate nighttime skincare routine that will transform your complexion while you rest.</p>
-                
-                <p>As a beauty consultant with over a decade of experience, I've seen firsthand how a consistent nighttime routine can dramatically improve skin texture, tone, and overall radiance. The key is using the right products in the correct order to maximize their effectiveness.</p>
-                
-                <h3>Step 1: The Double Cleanse</h3>
-                <p>Begin by removing makeup and impurities with our Oil-Free Makeup Remover. This gentle yet effective formula dissolves even waterproof makeup without stripping your skin's natural moisture. Follow with our TimeWise 3-In-1 Cleansing Bar to deeply cleanse pores and remove any residual impurities.</p>
-                
-                <h3>Step 2: Tone and Treat</h3>
-                <p>After cleansing, apply our Clear Proof Blemish Control Toner. This alcohol-free formula helps balance your skin's pH while delivering targeted treatment ingredients. For extra treatment, follow with our Lash and Brow Building Serum to nourish and strengthen your delicate eye area.</p>
-                
-                <h3>Step 3: Targeted Treatments</h3>
-                <p>This is where you can address specific concerns. For anti-aging, apply our Timewise Targeted Toning Body Lotion to areas showing early signs of aging. For acne-prone skin, our Clear Proof Oil-Free Moisturizer delivers salicylic acid to combat breakouts overnight.</p>
-                
-                <h3>Step 4: Hydrate and Nourish</h3>
-                <p>Lock in moisture with our Nourishing Shea Cream. This luxurious formula contains shea butter and antioxidants to deeply hydrate while you sleep. For an extra glow boost, layer our Illuminea Body Souffle for a subtle radiance that lasts.</p>
-                
-                <p>Remember, consistency is key. Commit to this routine for just two weeks, and you'll notice a visible improvement in your skin's texture, clarity, and overall glow.</p>
-            </div>
-            
-            <div class="post-actions">
-                <button class="action-btn like-btn">
-                    <i class="fas fa-heart"></i> <span>Like</span> <span class="count">42</span>
-                </button>
-                <button class="action-btn share-btn">
-                    <i class="fas fa-share-alt"></i> <span>Share</span>
-                </button>
-                <button class="action-btn comment-btn">
-                    <i class="fas fa-comment"></i> <span>Comment</span> <span class="count">12</span>
-                </button>
-            </div>
-            
-            <div class="comments-section">
-                <h2 class="comments-title">Comments (12)</h2>
-                
-                <div class="comment">
-                    <div class="comment-avatar">A</div>
-                    <div class="comment-content">
-                        <div class="comment-header">
-                            <div class="comment-user">Amanda Thompson</div>
-                            <div class="comment-time">2 hours ago</div>
-                        </div>
-                        <p class="comment-text">This routine has completely transformed my skin! I've been following it for three weeks and the difference is incredible. My complexion has never looked better!</p>
-                    </div>
-                </div>
-                
-                <div class="comment">
-                    <div class="comment-avatar">D</div>
-                    <div class="comment-content">
-                        <div class="comment-header">
-                            <div class="comment-user">David Chen</div>
-                            <div class="comment-time">5 hours ago</div>
-                        </div>
-                        <p class="comment-text">I was skeptical about the double cleanse step, but it's made such a difference in reducing my breakouts. Great advice!</p>
-                    </div>
-                </div>
-                
-                <div class="comment">
-                    <div class="comment-avatar">S</div>
-                    <div class="comment-content">
-                        <div class="comment-header">
-                            <div class="comment-user">Sophie Williams</div>
-                            <div class="comment-time">1 day ago</div>
-                        </div>
-                        <p class="comment-text">Which product would you recommend for someone with sensitive skin? I love the routine but need gentle formulas.</p>
-                    </div>
-                </div>
-                
-                <div class="comment-form">
-                    <h3 class="form-title">Leave a Comment</h3>
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-textarea" placeholder="Your Comment"></textarea>
-                    </div>
-                    <button class="submit-btn">Post Comment</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Floating CTA -->
-        <a href="#" class="floating-cta">
-            <i class="fas fa-shopping-bag"></i> Shop the Nighttime Glow Kit
-        </a>
-    </section>
-    
+
+    <!-- Floating CTA -->
+    <div class="floating-cta">
+        <div class="cta-text">Get the Glow Kit Now!</div>
+        <button class="cta-btn" onclick="window.location.href='products.html'">Shop Now</button>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1115,109 +1025,516 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/2348139151223" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true
+        // Blog data with Nigerian-themed content
+        const blogPosts = [
+            {
+                id: 1,
+                title: "How to Remove Acne with Mary Kay Products!",
+                excerpt: "Struggling with acne? Discover our Nigerian-approved skincare routine that'll have your skin clear as a Lagos morning.",
+                image: "Clear-Proof®-Blemish-Control-Toner-22000.jpg",
+                tag: "Skincare Tips",
+                date: "May 15, 2025",
+                content: `
+                    <p>Acne na serious wahala for many of us in this hot and humid Nigerian weather. But no worries, with Mary Kay Clear Proof system, your face go shine like new Naira note!</p>
+                    
+                    <h3>The Nigerian Acne-Fighting Routine</h3>
+                    <p>First, start with the Clear Proof Cleanser. This one go remove all that dust and pollution wey dey block your pores. For Lagos traffic, this cleanser na must-have!</p>
+                    
+                    <p>After cleansing, apply the Blemish Control Toner. This toner na like 'oga' for your skin - it go control excess oil and prevent pimples from forming.</p>
+                    
+                    <p>Finish with the Oil-Free Moisturizer. Many people think say if you get oily skin, you no need moisturizer. That one na lie! Your skin need hydration to balance itself.</p>
+                    
+                    <h3>Nigerian Beauty Pro Tip</h3>
+                    <p>For stubborn pimples, apply the Acne Treatment Gel directly on them before bed. By morning, that pimple go don pack its load and leave your face!</p>
+                    
+                    <p>Remember, consistency is key. No be magic, but with daily use, you go see results in 2-3 weeks. Your friends go start asking "Which cream you dey use?"</p>
+                `,
+                comments: [
+                    {
+                        user: "Chidinma Okoro",
+                        avatar: "CO",
+                        time: "2 hours ago",
+                        text: "This routine don change my skin game! Since I start using Clear Proof, my face don clear like Harmattan sky. Even my mama don notice!",
+                        likes: 24
+                    },
+                    {
+                        user: "Tunde Adebayo",
+                        avatar: "TA",
+                        time: "1 day ago",
+                        text: "I thought acne products were only for women until my sister forced me to try. Now I'm hooked! My barber even commented on my clearer skin.",
+                        likes: 18
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "The Perfect Perfume for Every Nigerian Occasion",
+                excerpt: "From owambe to board meetings, find out which Mary Kay fragrance matches your Nigerian lifestyle.",
+                image: "CityScape-Eau-de-Parfum-110000.jpg",
+                tag: "Perfume Picks",
+                date: "May 10, 2025",
+                content: `
+                    <p>In Nigeria, perfume no be just scent - na statement! Whether you dey go wedding or business meeting, the right fragrance fit make you stand out.</p>
+                    
+                    <h3>For Owambe Parties</h3>
+                    <p>Mary Kay CityScape Eau de Parfum na the perfect choice. The bold, vibrant scent go match your aso ebi and last from church service till after party!</p>
+                    
+                    <p>This fragrance get that unique blend wey go make people turn head when you waka pass. The longevity na die - even after dancing Shaku Shaku under hot sun, you go still smell fresh.</p>
+                    
+                    <h3>For Office and Business</h3>
+                    <p>Try our Forever Diamonds for professional settings. The subtle but sophisticated scent go give you that CEO vibe without overpowering the boardroom.</p>
+                    
+                    <p>Na the kind perfume wey make your colleagues wonder "Who get this classy scent?" but they no go ask because dem dey fear say you go charge consultancy fee!</p>
+                    
+                    <h3>For Date Night</h3>
+                    <p>Our Illuminea Dreams go set the mood. The romantic floral notes go make your bae want to hold you tight all night. Warning: May lead to marriage proposals!</p>
+                `,
+                comments: [
+                    {
+                        user: "Bimpe Adeola",
+                        avatar: "BA",
+                        time: "3 days ago",
+                        text: "I wore CityScape to my cousin's wedding last week! Before I even enter the hall, people were already asking about the perfume. Mary Kay for life!",
+                        likes: 32
+                    },
+                    {
+                        user: "Emeka Nwankwo",
+                        avatar: "EN",
+                        time: "5 days ago",
+                        text: "Forever Diamonds is my secret weapon for client meetings. My closing rate has improved since I started wearing it. Coincidence? I think not!",
+                        likes: 15
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: "Nigerian Skincare: Adapting to Our Climate",
+                excerpt: "How to adjust your skincare routine for harmattan, rainy season, and everything in between.",
+                image: "Mary-Kay-Timewise-Deep-Cleansing Charcoal-mask-28000.jpg",
+                tag: "Skincare Tips",
+                date: "May 5, 2025",
+                content: `
+                    <p>Naija weather dey do yoyo - one minute sun hot like fire, next minute rain de fall. Your skin need special care to survive this climate!</p>
+                    
+                    <h3>Harmattan Season Survival</h3>
+                    <p>When harmattan come with its dry wind, your skin go cry for help. Our TimeWise Moisturizer na savior for this period. Apply am morning and night to prevent ashy skin.</p>
+                    
+                    <p>Also, try our Deep Cleansing Charcoal Mask once a week. The charcoal go draw out all the dust and impurities wey harmattan bring.</p>
+                    
+                    <h3>Rainy Season Routine</h3>
+                    <p>When rain de fall, humidity go high and pores go open. Switch to lighter products like our Clear Proof Oil-Free Moisturizer to prevent breakouts.</p>
+                    
+                    <p>And no forget sunscreen! Even when sky dey cloudy, UV rays dey penetrate. Our CC Cream with SPF na perfect for rainy days.</p>
+                    
+                    <h3>Hot Weather Hack</h3>
+                    <p>For that Lagos heat, keep our White Tea & Citrus Body Spray in your bag. The refreshing spray go cool your skin and give you instant freshness during traffic or market runs.</p>
+                `,
+                comments: [
+                    {
+                        user: "Funke Alabi",
+                        avatar: "FA",
+                        time: "1 week ago",
+                        text: "This harmattan tip saved my skin! Before, my face used to peel like plantain. Now I'm glowing even in Kano dry season.",
+                        likes: 29
+                    },
+                    {
+                        user: "Chika Obi",
+                        avatar: "CO",
+                        time: "6 days ago",
+                        text: "The charcoal mask is everything! After using it, my skin feels so clean - like I just came back from Ikogosi warm springs.",
+                        likes: 21
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title: "5 Mary Kay Products Every Nigerian Bride Needs",
+                excerpt: "Get wedding-ready skin with our specially curated bridal beauty collection.",
+                image: "Mary-Kay-illuminea-Body-Souffle-54000.jpg",
+                tag: "Product Guides",
+                date: "April 28, 2025",
+                content: `
+                    <p>Your wedding day na when you suppose shine pass star! With these Mary Kay products, you go look like Nollywood celebrity on your big day.</p>
+                    
+                    <h3>1. Illuminea Body Souffle</h3>
+                    <p>This luxurious body cream go give your skin that bridal glow. The subtle shimmer go make your skin look like gold under camera flash. Perfect for traditional and white wedding!</p>
+                    
+                    <h3>2. Gel Cream Blush</h3>
+                    <p>For that natural 'I wake up like this' flush on your cheeks. This blush go last from church to reception without fading. Even after dancing with all your aunties, your cheeks go still pop!</p>
+                    
+                    <h3>3. Lash Love Mascara</h3>
+                    <p>For lashes wey go make your husband-to-be weak for knees. Waterproof formula mean say even if tears fall when saying vows, your mascara no go run.</p>
+                    
+                    <h3>4. Silkening Dry Oil</h3>
+                    <p>Apply this on your arms, legs, and décolletage for camera-ready shine. The non-greasy formula no go stain your expensive lace!</p>
+                    
+                    <h3>5. Thinking of Love Eau de Parfum</h3>
+                    <p>The perfect romantic scent for your special day. Every time you smell it afterward, you go remember your wedding day with joy.</p>
+                `,
+                comments: [
+                    {
+                        user: "Aisha Mohammed",
+                        avatar: "AM",
+                        time: "2 weeks ago",
+                        text: "I used all these for my wedding last month! My makeup stayed perfect from 8am church service till 2am after-party. Best investment ever!",
+                        likes: 42
+                    },
+                    {
+                        user: "Grace Williams",
+                        avatar: "GW",
+                        time: "10 days ago",
+                        text: "The Illuminea Body Souffle made my skin glow in all my wedding photos. My photographer even asked for the product name!",
+                        likes: 31
+                    }
+                ]
+            },
+            {
+                id: 5,
+                title: "Customer Story: How Mary Kay Transformed My Skin",
+                excerpt: "Read Ngozi's journey from acne struggles to glowing confidence.",
+                image: "Mary-kay-Clearproof-Clarifying-cleanser-22000.jpg",
+                tag: "Customer Stories",
+                date: "April 22, 2025",
+                content: `
+                    <p>Meet Ngozi, 28-year-old banker from Abuja. For years, she battled with severe acne that affected her confidence and social life. Here's her transformation story:</p>
+                    
+                    <h3>The Struggle</h3>
+                    <p>"My acne started in university and followed me into my career. I tried everything - from roadside concoctions to expensive imported products. Nothing worked permanently. I'd hide behind makeup and avoid photos."</p>
+                    
+                    <h3>The Discovery</h3>
+                    <p>"My colleague introduced me to Mary Kay Clear Proof system. At first, I was skeptical - 'Another product to waste money on?' But after seeing her skin transformation, I decided to try."</p>
+                    
+                    <h3>The Routine</h3>
+                    <p>"I started with the Clear Proof 3-step system: Cleanser, Toner, and Moisturizer. For the first two weeks, my skin purged - but I persisted. After one month, the breakouts reduced dramatically."</p>
+                    
+                    <h3>The Results</h3>
+                    <p>"After three months, my skin completely transformed! The dark spots faded, and my complexion became even. Now I go makeup-free to work and actually enjoy taking photos. My confidence has skyrocketed!"</p>
+                    
+                    <h3>Ngozi's Advice</h3>
+                    <p>"Be patient and consistent. Good skin no be beans - it takes time. But with the right products like Mary Kay, it's achievable. Now my mates call me 'Glowing Ngozi'!"</p>
+                `,
+                comments: [
+                    {
+                        user: "Ngozi Eze",
+                        avatar: "NE",
+                        time: "3 weeks ago",
+                        text: "Yes na, that's me! Still using Mary Kay products daily. Now I'm the one introducing others to the magic. Thanks CrownExclusiv!",
+                        likes: 56
+                    },
+                    {
+                        user: "Chioma Okeke",
+                        avatar: "CO",
+                        time: "2 weeks ago",
+                        text: "This story inspired me to try the Clear Proof system. One month in and I'm already seeing results. Can't wait for my own transformation!",
+                        likes: 29
+                    }
+                ]
+            },
+            {
+                id: 6,
+                title: "The Ultimate Guide to Mary Kay Makeup Brushes",
+                excerpt: "Learn which brushes to use for that flawless Nollywood star look.",
+                image: "Mary-Kay-essential-Brush-Collection-75000.jpg",
+                tag: "Product Guides",
+                date: "April 15, 2025",
+                content: `
+                    <p>Confused about all those brushes in your kit? No worry, we break am down for you like jollof rice ingredients!</p>
+                    
+                    <h3>Foundation Brush</h3>
+                    <p>This flat brush na your best friend for liquid foundation. It go help you achieve that airbrushed finish wey make people think say you wake up with perfect skin.</p>
+                    
+                    <h3>Blending Brush</h3>
+                    <p>For eyeshadow application, this soft brush na must-have. It go blend colors smoothly so your eye makeup no go look like primary school art project.</p>
+                    
+                    <h3>Angled Contour Brush</h3>
+                    <p>Want cheekbones sharp enough to cut plantain? This brush go help you contour like a pro. Swipe am under your cheekbones for that defined look.</p>
+                    
+                    <h3>Lip Brush</h3>
+                    <p>For precise lip color application. No more lipstick outside your lips like you chop banga soup! This brush go give you clean, professional finish.</p>
+                    
+                    <h3>Pro Tip</h3>
+                    <p>Clean your brushes regularly with our Brush Cleanser. Dirty brushes na breeding ground for bacteria that cause breakouts. Wash am at least once a week!</p>
+                `,
+                comments: [
+                    {
+                        user: "Lola Martins",
+                        avatar: "LM",
+                        time: "3 weeks ago",
+                        text: "I never knew how to use half my brushes until this guide. That contour brush has changed my life - my face has structure now!",
+                        likes: 38
+                    },
+                    {
+                        user: "Temi Adekunle",
+                        avatar: "TA",
+                        time: "2 weeks ago",
+                        text: "The blending brush is magic! My eyeshadow finally looks like those YouTube tutorials. Even my husband noticed (and he notices nothing!).",
+                        likes: 27
+                    }
+                ]
+            },
+            {
+                id: 7,
+                title: "Why Nigerian Women Love Mary Kay Lipsticks",
+                excerpt: "From boardroom to owambe, discover our most popular lip shades in Nigeria.",
+                image: "Lipstick-16000.jpg",
+                tag: "Product Guides",
+                date: "April 8, 2025",
+                content: `
+                    <p>In Nigeria, lipstick na more than makeup - na confidence in a tube! Here's why our Mary Kay lipsticks dey reign supreme:</p>
+                    
+                    <h3>Long-Lasting Formula</h3>
+                    <p>Our lipsticks survive Nigerian realities - from hot suya to traffic jam gisting. No need for constant touch-ups during your busy day.</p>
+                    
+                    <h3>Perfect Shades for Our Skin Tones</h3>
+                    <p>We have colors that complement our beautiful melanin-rich skin. From deep berries to vibrant corals, find your perfect match.</p>
+                    
+                    <h3>Nourishing Ingredients</h3>
+                    <p>While other lipsticks dey dry your lips, ours contain shea butter and vitamins to keep your lips moisturized. No more cracked lips during harmattan!</p>
+                    
+                    <h3>Top 5 Shades in Nigeria</h3>
+                    <ol>
+                        <li><strong>Lagos Red</strong> - The bold red for when you want to make a statement</li>
+                        <li><strong>Abuja Nude</strong> - Perfect for office and meetings</li>
+                        <li><strong>Calabar Coral</strong> - Vibrant shade for parties and celebrations</li>
+                        <li><strong>Kano Berry</strong> - Deep, rich color for evening events</li>
+                        <li><strong>Enugu Mauve</strong> - Everyday wearable shade that suits everyone</li>
+                    </ol>
+                    
+                    <h3>Pro Application Tip</h3>
+                    <p>Use our Lip & Eye Liner to define your lips before applying lipstick. This go prevent bleeding and make your color last longer.</p>
+                `,
+                comments: [
+                    {
+                        user: "Bisi Adeyemi",
+                        avatar: "BA",
+                        time: "4 weeks ago",
+                        text: "Lagos Red is my signature color! I wear it to every meeting - it makes me feel powerful and in charge. Got my last promotion wearing it!",
+                        likes: 45
+                    },
+                    {
+                        user: "Zainab Ibrahim",
+                        avatar: "ZI",
+                        time: "3 weeks ago",
+                        text: "Abuja Nude is my everyday go-to. Perfect for my teaching job - professional but still feminine. And it lasts through all my lectures!",
+                        likes: 31
+                    }
+                ]
+            },
+            {
+                id: 8,
+                title: "Hand Care Routine for Nigerian Women",
+                excerpt: "From market to keyboard, protect your hardworking hands with our simple routine.",
+                image: "Citrus-Sorbet-Hand-Cream-and-Lip-Balm-10000.jpg",
+                tag: "Skincare Tips",
+                date: "April 1, 2025",
+                content: `
+                    <p>Naija women hands dey work! Whether you dey type for office, cook for house, or carry market, your hands need special care. Follow this simple routine:</p>
+                    
+                    <h3>Daily Protection</h3>
+                    <p>Start with our Shea Hand Soap for gentle cleansing. The moisturizing formula no go strip your hands of natural oils.</p>
+                    
+                    <h3>After-Wash Care</h3>
+                    <p>Always apply hand cream after washing. Our Citrus Sorbet Hand Cream no go leave greasy residue on your phone or keyboard.</p>
+                    
+                    <h3>Weekly Treatment</h3>
+                    <p>Once a week, pamper your hands with our Nourishing Shea Cream. Apply thick layer and wear cotton gloves overnight. Wake up with hands soft like baby!</p>
+                    
+                    <h3>Special Occasion Prep</h3>
+                    <p>Before events, use our Revitalizing Shea Scrub to remove dead skin. Follow with Silkening Shea Lotion for that photo-ready glow.</p>
+                    
+                    <h3>Market Day Tip</h3>
+                    <p>When going to market, apply extra hand cream before leaving house. This go create barrier against market dirt and water.</p>
+                `,
+                comments: [
+                    {
+                        user: "Mama Nkechi",
+                        avatar: "MN",
+                        time: "1 month ago",
+                        text: "At 65, my hands have seen many markets! This routine has made them look 10 years younger. Even my grandchildren comment on how soft my hands are.",
+                        likes: 62
+                    },
+                    {
+                        user: "Adaobi Chukwu",
+                        avatar: "AC",
+                        time: "3 weeks ago",
+                        text: "The Citrus Sorbet cream is heavenly! I keep one on my desk and one in my bag. My colleagues are always asking to borrow it.",
+                        likes: 28
+                    }
+                ]
+            },
+            {
+                id: 9,
+                title: "5 Mary Kay Products for Busy Nigerian Moms",
+                excerpt: "Quick beauty solutions for the superwomen juggling family, work, and everything in between.",
+                image: "Mary-Kay-CC-Cream-Sunscreen-Broad-Spectrum-25000.jpg",
+                tag: "Product Guides",
+                date: "March 25, 2025",
+                content: `
+                    <p>Mama Nigeria no get time! Between school runs, office work, and house chores, self-care often takes backseat. But with these quick products, you can glow on the go!</p>
+                    
+                    <h3>1. CC Cream Sunscreen</h3>
+                    <p>5-in-1 product that moisturizes, protects with SPF, color corrects, evens skin tone, and gives light coverage. Apply in 30 seconds while waiting for school bus!</p>
+                    
+                    <h3>2. Gel Cream Blush</h3>
+                    <p>Just dab on cheeks with fingers for instant freshness. No brush needed - perfect for touch-ups at traffic light.</p>
+                    
+                    <h3>3. Ultimate Mascara</h3>
+                    <p>One swipe gives lashes dramatic look. Open-eye effect even when you only slept 4 hours because baby was crying!</p>
+                    
+                    <h3>4. Lip and Cheek Stain</h3>
+                    <p>Double-duty product for lips and cheeks. The perfect flush that lasts through cooking, cleaning, and chasing toddlers.</p>
+                    
+                    <h3>5. TimeWise Targeted Toning Body Lotion</h3>
+                    <p>Firms while moisturizing. Apply while dressing for that extra confidence boost. Works while you work!</p>
+                    
+                    <h3>Mama's Pro Tip</h3>
+                    <p>Keep a small beauty bag in your car. Use school pickup time for quick touch-ups before heading to office or market.</p>
+                `,
+                comments: [
+                    {
+                        user: "Funmi Adebayo",
+                        avatar: "FA",
+                        time: "1 month ago",
+                        text: "As a doctor and mom of three, this list is a lifesaver! The CC Cream is my holy grail - protects my skin during hospital rounds and makes me look put together.",
+                        likes: 49
+                    },
+                    {
+                        user: "Efe Osaigbovo",
+                        avatar: "EO",
+                        time: "3 weeks ago",
+                        text: "That lip and cheek stain has saved me so many times! I keep it in my diaper bag for instant glam during playground dates.",
+                        likes: 33
+                    }
+                ]
+            },
+            {
+                id: 10,
+                title: "Fragrance Layering: Create Your Signature Scent",
+                excerpt: "Mix and match Mary Kay perfumes to create a unique fragrance that's truly you.",
+                image: "Illuminea-Extrait-De-Parfum-120000.jpg",
+                tag: "Perfume Picks",
+                date: "March 18, 2025",
+                content: `
+                    <p>Why settle for one scent when you can create your own signature blend? Learn the art of fragrance layering with Mary Kay:</p>
+                    
+                    <h3>The Basics of Layering</h3>
+                    <p>Start with lightest scent first, then layer heavier ones. Apply to pulse points - wrists, neck, behind ears.</p>
+                    
+                    <h3>Popular Nigerian Combinations</h3>
+                    <p><strong>Corporate Power:</strong> Forever Diamonds + Thinking of Love<br>
+                    The sophistication of diamonds with romantic floral notes - perfect for boardroom to dinner date.</p>
+                    
+                    <p><strong>Owambe Ready:</strong> CityScape + Illuminea Dreams<br>
+                    Vibrant and bold with dreamy floral undertones - sure to make you stand out at any party.</p>
+                    
+                    <p><strong>Everyday Elegance:</strong> Live Fearlessly + MK High Intensity<br>
+                    Fresh and energizing with a touch of intensity - for when you want to feel confident all day.</p>
+                    
+                    <h3>Pro Tip</h3>
+                    <p>Use matching body products first! Apply Illuminea Body Souffle before spraying perfume. The moisturizer base go make your fragrance last longer.</p>
+                    
+                    <h3>Create Your Own</h3>
+                    <p>Experiment with different combinations. Start with 2 scents before adding third. Remember - less is more! You want to attract people, not chase them away!</p>
+                `,
+                comments: [
+                    {
+                        user: "Amara Nwosu",
+                        avatar: "AN",
+                        time: "1 month ago",
+                        text: "The Corporate Power combo is my go-to for client meetings! I've gotten so many compliments and even landed a big account while wearing it.",
+                        likes: 37
+                    },
+                    {
+                        user: "Yemisi Olatunji",
+                        avatar: "YO",
+                        time: "2 weeks ago",
+                        text: "I tried the Owambe Ready blend for my sister's wedding - people followed me around asking about my perfume all night!",
+                        likes: 41
+                    }
+                ]
+            }
+        ];
+
+        // DOM Elements
+        const blogGrid = document.getElementById('blogGrid');
+        const themeToggle = document.getElementById('themeToggle');
+        const header = document.getElementById('header');
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render blog posts
+            renderBlogPosts();
+            
+            // Initialize header scroll effect
+            initializeHeader();
+            
+            // Setup theme toggle
+            setupThemeToggle();
         });
 
-        // Toggle between blog homepage and individual post
-        document.addEventListener('DOMContentLoaded', function() {
-            // For demo purposes, clicking any "Read More" shows the blog post
-            document.querySelectorAll('.read-more').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.getElementById('blogHomepage').style.display = 'none';
-                    document.getElementById('blogPost').style.display = 'block';
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            });
+        // Render blog posts to the grid
+        function renderBlogPosts() {
+            blogGrid.innerHTML = '';
             
-            // Category filter functionality
-            document.querySelectorAll('.category-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    document.querySelectorAll('.category-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                });
-            });
-            
-            // Like button functionality
-            document.querySelector('.like-btn').addEventListener('click', function() {
-                const countElement = this.querySelector('.count');
-                let count = parseInt(countElement.textContent);
-                count++;
-                countElement.textContent = count;
-                this.classList.toggle('liked');
-                
-                if (this.classList.contains('liked')) {
-                    this.innerHTML = '<i class="fas fa-heart" style="color:#e74c3c"></i> <span>Liked</span> <span class="count">' + count + '</span>';
-                }
-            });
-            
-            // Share button functionality
-            document.querySelector('.share-btn').addEventListener('click', function() {
-                alert('Share this post via: \n\nCopy link: ' + window.location.href);
-            });
-            
-            // Comment submission
-            document.querySelector('.submit-btn').addEventListener('click', function() {
-                const nameInput = document.querySelector('.form-input');
-                const commentInput = document.querySelector('.form-textarea');
-                
-                if (nameInput.value && commentInput.value) {
-                    // Create new comment
-                    const newComment = document.createElement('div');
-                    newComment.className = 'comment';
-                    newComment.innerHTML = `
-                        <div class="comment-avatar">${nameInput.value.charAt(0)}</div>
-                        <div class="comment-content">
-                            <div class="comment-header">
-                                <div class="comment-user">${nameInput.value}</div>
-                                <div class="comment-time">Just now</div>
+            blogPosts.forEach(post => {
+                const blogCard = document.createElement('div');
+                blogCard.className = 'blog-card';
+                blogCard.innerHTML = `
+                    <div class="blog-image">
+                        <img src="assets/images/${post.image}" alt="${post.title}">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">${post.tag}</span>
+                        <h3 class="blog-title">${post.title}</h3>
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                        <div class="blog-meta">
+                            <div class="blog-date">
+                                <i class="far fa-calendar"></i> ${post.date}
                             </div>
-                            <p class="comment-text">${commentInput.value}</p>
+                            <a href="blog-post-${post.id}.html" class="blog-read-more">Read More</a>
                         </div>
-                    `;
-                    
-                    // Insert new comment at the top
-                    const commentsSection = document.querySelector('.comments-section');
-                    commentsSection.insertBefore(newComment, commentsSection.querySelector('.comment-form'));
-                    
-                    // Update comment count
-                    const commentBtn = document.querySelector('.comment-btn .count');
-                    let count = parseInt(commentBtn.textContent);
-                    count++;
-                    commentBtn.textContent = count;
-                    
-                    // Clear form
-                    nameInput.value = '';
-                    commentInput.value = '';
-                    
-                    alert('Thank you for your comment!');
-                } else {
-                    alert('Please fill in both your name and comment.');
-                }
+                    </div>
+                `;
+                blogGrid.appendChild(blogCard);
             });
-            
-            // Header scroll effect
-            window.addEventListener('scroll', function() {
-                const header = document.getElementById('header');
+        }
+
+        // Initialize header scroll effect
+        function initializeHeader() {
+            window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
             });
-        });
+        }
+
+        // Setup theme toggle functionality
+        function setupThemeToggle() {
+            // Check for saved theme preference or prefer light theme
+            const isDarkMode = localStorage.getItem('theme') === 'dark';
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+            });
+        }
     </script>
 </body>
 </html>
