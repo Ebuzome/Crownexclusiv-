@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrownExclusiv | Beauty Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* === GLOBAL STYLES === */
+        :root {
+            --base: #fff8f5;
+            --primary: #e0a4c8;
+            --accent: #b03060;
+            --gold: #c9a94d;
+            --neutral: #ffffff;
+            --text: #2c2c2c;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.4s ease;
+            
+            /* Dark mode variables */
+            --dark-base: #1a1a1a;
+            --dark-text: #f0f0f0;
+            --dark-accent: #d97aa8;
+            --dark-primary: #c98bb3;
+            --dark-neutral: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-text);
+            background-color: var(--dark-base);
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body.light-mode {
+            background-color: var(--base);
+            color: var(--text);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--neutral);
+            box-shadow: 0 10px 20px rgba(176, 48, 96, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(176, 48, 96, 0.35);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            padding: 1rem 0;
+        }
+
+        body.light-mode header.scrolled {
+            background-color: rgba(255, 248, 245, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--dark-accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        body.light-mode .logo {
+            color: var(--accent);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        body.light-mode .nav-links a {
+            color: var(--text);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--dark-accent);
+            transition: var(--transition);
+        }
+
+        body.light-mode .nav-links a::after {
+            background-color: var(--accent);
+        }
+
+        .nav-links a:hover {
+            color: var(--dark-accent);
+        }
+
+        body.light-mode .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--dark-text);
+            cursor: pointer;
+        }
+
+        body.light-mode .mobile-toggle {
+            color: var(--text);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .header-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .header-icon {
+            color: var(--text);
+        }
+
+        .icon-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: var(--neutral);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        /* ===== BLOG HOMEPAGE ===== */
+        .blog-hero {
+            height: 70vh;
+            position: relative;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('assets/images/hero3.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .blog-hero-content {
+            max-width: 800px;
+            color: var(--neutral);
+            z-index: 2;
+        }
+
+        .blog-hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .categories-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .category-btn {
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: transparent;
+            border: 1px solid var(--dark-text);
+            color: var(--dark-text);
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        body.light-mode .category-btn {
+            border: 1px solid var(--text);
+            color: var(--text);
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: var(--accent);
+            color: var(--neutral);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+
+        .blog-card {
+            background: var(--dark-neutral);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        body.light-mode .blog-card {
+            background: var(--neutral);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--gold);
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+            min-height: 70px;
+        }
+
+        body.light-mode .blog-title {
+            color: var(--text);
+        }
+
+        .blog-excerpt {
+            margin-bottom: 20px;
+            color: var(--dark-text);
+            flex-grow: 1;
+        }
+
+        body.light-mode .blog-excerpt {
+            color: var(--text);
+        }
+
+        .read-more {
+            display: inline-block;
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid var(--dark-text);
+            color: var(--dark-text);
+            border-radius: 30px;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+            align-self: flex-start;
+        }
+
+        body.light-mode .read-more {
+            border: 1px solid var(--text);
+            color: var(--text);
+        }
+
+        .read-more:hover {
+            background: var(--accent);
+            color: var(--neutral);
+            border-color: var(--accent);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .page-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 0;
+            border: 1px solid var(--dark-text);
+            background: var(--dark-neutral);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .page-btn {
+            border: 1px solid var(--text);
+            background: var(--neutral);
+            color: var(--text);
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: var(--accent);
+            color: var(--neutral);
+            transform: translateY(-3px);
+        }
+        
+        /* ===== INDIVIDUAL BLOG POST ===== */
+        .post-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 20px 80px;
+        }
+
+        .post-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .post-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .post-title {
+            color: var(--text);
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            color: var(--gold);
+        }
+
+        .post-image {
+            height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-content {
+            color: var(--dark-text);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+
+        body.light-mode .post-content {
+            color: var(--text);
+        }
+
+        .post-content p {
+            margin-bottom: 25px;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            background: var(--dark-neutral);
+            color: var(--dark-text);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        body.light-mode .action-btn {
+            background: var(--neutral);
+            color: var(--text);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .like-btn:hover {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+        }
+
+        .share-btn:hover {
+            background: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+        }
+
+        .comment-btn:hover {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+        }
+
+        .action-btn span {
+            font-weight: 600;
+        }
+
+        .comments-section {
+            background: var(--dark-neutral);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: var(--shadow);
+        }
+
+        body.light-mode .comments-section {
+            background: var(--neutral);
+        }
+
+        .comments-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 15px;
+        }
+
+        body.light-mode .comments-title {
+            color: var(--text);
+        }
+
+        .comment {
+            display: flex;
+            gap: 20px;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-mode .comment {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .comment-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(45deg, var(--dark-accent), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .comment-content {
+            flex-grow: 1;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .comment-user {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .comment-user {
+            color: var(--text);
+        }
+
+        .comment-time {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        .comment-text {
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        body.light-mode .comment-text {
+            color: var(--text);
+        }
+
+        .comment-form {
+            margin-top: 40px;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+
+        body.light-mode .form-title {
+            color: var(--text);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            background: var(--dark-base);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--dark-text);
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+
+        body.light-mode .form-input, 
+        body.light-mode .form-textarea {
+            background: var(--base);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--text);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: var(--neutral);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-accent);
+            transform: translateY(-3px);
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, var(--dark-accent), var(--accent));
+            color: var(--neutral);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 99;
+            transition: var(--transition);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .floating-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .blog-hero-title {
+                font-size: 3rem;
+            }
+            
+            .post-image {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .blog-hero {
+                height: 60vh;
+            }
+            
+            .blog-hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .blog-hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .post-title {
+                font-size: 2.3rem;
+            }
+            
+            .post-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-hero-title {
+                font-size: 2rem;
+            }
+            
+            .post-title {
+                font-size: 2rem;
+            }
+            
+            .post-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .post-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .comment {
+                flex-direction: column;
+            }
+            
+            .comment-avatar {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">Crown<span>Exclusiv</span></a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="header-icons">
+                <div class="header-icon" id="wishlistIcon">
+                    <i class="fas fa-heart"></i>
+                    <span class="icon-badge" id="wishlistCount">0</span>
+                </div>
+                <div class="header-icon" id="cartIcon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="icon-badge" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Homepage -->
+    <section class="blog-homepage" id="blogHomepage">
+        <div class="blog-hero">
+            <div class="blog-hero-content">
+                <h1 class="blog-hero-title">The CrownExclusiv Blog</h1>
+                <p class="blog-hero-subtitle">Glow Stories, Tips & Beauty Secrets</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="categories-filter">
+                <button class="category-btn active">All</button>
+                <button class="category-btn">Skincare Tips</button>
+                <button class="category-btn">Perfume Picks</button>
+                <button class="category-btn">Product Guides</button>
+                <button class="category-btn">Customer Stories</button>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <div class="blog-card" data-aos="fade-up">
+                    <div class="blog-image">
+                        <img src="assets/images/hero1.jpg" alt="Skincare Routine">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>Skincare Tips</span>
+                            <span>May 15, 2025</span>
+                        </div>
+                        <h3 class="blog-title">The Ultimate Nighttime Skincare Routine for Radiant Skin</h3>
+                        <p class="blog-excerpt">Discover our step-by-step guide to transforming your skin while you sleep. Learn which products work best together for maximum rejuvenation.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-image">
+                        <img src="assets/images/hero2.jpg" alt="Perfume Selection">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>Perfume Picks</span>
+                            <span>May 10, 2025</span>
+                        </div>
+                        <h3 class="blog-title">Finding Your Signature Scent: A Guide to Mary Kay Fragrances</h3>
+                        <p class="blog-excerpt">Explore our curated collection of fragrances and learn how to choose the perfect scent that complements your personality and style.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-image">
+                        <img src="assets/images/hero3.jpg" alt="Skincare Ingredients">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>Product Guides</span>
+                            <span>May 5, 2025</span>
+                        </div>
+                        <h3 class="blog-title">The Power of Ingredients: What Makes Our Skincare Special</h3>
+                        <p class="blog-excerpt">Dive into the science behind our formulations and discover the potent ingredients that deliver visible results for your skin.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 4 -->
+                <div class="blog-card" data-aos="fade-up">
+                    <div class="blog-image">
+                        <img src="assets/images/hero4.jpg" alt="Summer Skincare">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>Skincare Tips</span>
+                            <span>April 28, 2025</span>
+                        </div>
+                        <h3 class="blog-title">Summer Skincare Essentials: Protect and Nourish Your Skin</h3>
+                        <p class="blog-excerpt">Prepare your skin for the sunny season with our must-have products that offer protection while keeping your complexion glowing.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 5 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-image">
+                        <img src="assets/images/hero5.jpg" alt="Customer Transformation">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>Customer Stories</span>
+                            <span>April 22, 2025</span>
+                        </div>
+                        <h3 class="blog-title">Amanda's Transformation: A Journey to Confidence</h3>
+                        <p class="blog-excerpt">Read how Amanda regained her confidence through a personalized skincare regimen and the support of our beauty consultants.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 6 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-image">
+                        <img src="assets/images/hero6.jpg" alt="Makeup Tips">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>Product Guides</span>
+                            <span>April 15, 2025</span>
+                        </div>
+                        <h3 class="blog-title">5 Minute Makeup: Look Polished in Record Time</h3>
+                        <p class="blog-excerpt">Master the art of quick, effective makeup with our expert tips and product recommendations for busy mornings.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 7 -->
+                <div class="blog-card" data-aos="fade-up">
+                    <div class="blog-image">
+                        <img src="assets/images/hero7.jpg" alt="Anti-Aging">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>Skincare Tips</span>
+                            <span>April 8, 2025</span>
+                        </div>
+                        <h3 class="blog-title">Age-Defying Secrets: How to Maintain Youthful Skin at Any Age</h3>
+                        <p class="blog-excerpt">Unlock the secrets to ageless beauty with our comprehensive guide to anti-aging skincare routines and products.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Individual Blog Post (Example) -->
+    <section class="blog-post" id="blogPost" style="display: none;">
+        <div class="post-container">
+            <div class="post-header">
+                <h1 class="post-title">The Ultimate Nighttime Skincare Routine for Radiant Skin</h1>
+                <div class="post-meta">
+                    <span>By Sarah Johnson, Beauty Consultant</span>
+                    <span>May 15, 2025</span>
+                    <span>8 min read</span>
+                </div>
+                <div class="post-image">
+                    <img src="assets/images/hero1.jpg" alt="Nighttime Skincare">
+                </div>
+            </div>
+            
+            <div class="post-content">
+                <p>Your skin works hard while you sleep, making nighttime the perfect opportunity to deliver potent ingredients that repair, rejuvenate, and restore. In this comprehensive guide, I'll walk you through the ultimate nighttime skincare routine that will transform your complexion while you rest.</p>
+                
+                <p>As a beauty consultant with over a decade of experience, I've seen firsthand how a consistent nighttime routine can dramatically improve skin texture, tone, and overall radiance. The key is using the right products in the correct order to maximize their effectiveness.</p>
+                
+                <h3>Step 1: The Double Cleanse</h3>
+                <p>Begin by removing makeup and impurities with our Oil-Free Makeup Remover. This gentle yet effective formula dissolves even waterproof makeup without stripping your skin's natural moisture. Follow with our TimeWise 3-In-1 Cleansing Bar to deeply cleanse pores and remove any residual impurities.</p>
+                
+                <h3>Step 2: Tone and Treat</h3>
+                <p>After cleansing, apply our Clear Proof Blemish Control Toner. This alcohol-free formula helps balance your skin's pH while delivering targeted treatment ingredients. For extra treatment, follow with our Lash and Brow Building Serum to nourish and strengthen your delicate eye area.</p>
+                
+                <h3>Step 3: Targeted Treatments</h3>
+                <p>This is where you can address specific concerns. For anti-aging, apply our Timewise Targeted Toning Body Lotion to areas showing early signs of aging. For acne-prone skin, our Clear Proof Oil-Free Moisturizer delivers salicylic acid to combat breakouts overnight.</p>
+                
+                <h3>Step 4: Hydrate and Nourish</h3>
+                <p>Lock in moisture with our Nourishing Shea Cream. This luxurious formula contains shea butter and antioxidants to deeply hydrate while you sleep. For an extra glow boost, layer our Illuminea Body Souffle for a subtle radiance that lasts.</p>
+                
+                <p>Remember, consistency is key. Commit to this routine for just two weeks, and you'll notice a visible improvement in your skin's texture, clarity, and overall glow.</p>
+            </div>
+            
+            <div class="post-actions">
+                <button class="action-btn like-btn">
+                    <i class="fas fa-heart"></i> <span>Like</span> <span class="count">42</span>
+                </button>
+                <button class="action-btn share-btn">
+                    <i class="fas fa-share-alt"></i> <span>Share</span>
+                </button>
+                <button class="action-btn comment-btn">
+                    <i class="fas fa-comment"></i> <span>Comment</span> <span class="count">12</span>
+                </button>
+            </div>
+            
+            <div class="comments-section">
+                <h2 class="comments-title">Comments (12)</h2>
+                
+                <div class="comment">
+                    <div class="comment-avatar">A</div>
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <div class="comment-user">Amanda Thompson</div>
+                            <div class="comment-time">2 hours ago</div>
+                        </div>
+                        <p class="comment-text">This routine has completely transformed my skin! I've been following it for three weeks and the difference is incredible. My complexion has never looked better!</p>
+                    </div>
+                </div>
+                
+                <div class="comment">
+                    <div class="comment-avatar">D</div>
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <div class="comment-user">David Chen</div>
+                            <div class="comment-time">5 hours ago</div>
+                        </div>
+                        <p class="comment-text">I was skeptical about the double cleanse step, but it's made such a difference in reducing my breakouts. Great advice!</p>
+                    </div>
+                </div>
+                
+                <div class="comment">
+                    <div class="comment-avatar">S</div>
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <div class="comment-user">Sophie Williams</div>
+                            <div class="comment-time">1 day ago</div>
+                        </div>
+                        <p class="comment-text">Which product would you recommend for someone with sensitive skin? I love the routine but need gentle formulas.</p>
+                    </div>
+                </div>
+                
+                <div class="comment-form">
+                    <h3 class="form-title">Leave a Comment</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-textarea" placeholder="Your Comment"></textarea>
+                    </div>
+                    <button class="submit-btn">Post Comment</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating CTA -->
+        <a href="#" class="floating-cta">
+            <i class="fas fa-shopping-bag"></i> Shop the Nighttime Glow Kit
+        </a>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <h3>CrownExclusiv</h3>
+                    <p>Premium Mary Kay skincare products curated for the sophisticated woman who believes in the power of glowing skin.</p>
+                    <div class="social-links">
+                        <h4>Connect With Us</h4>
+                        <div class="social-icons">
+                            <a href="https://facebook.com/Crownexclusiv" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://instagram.com/Crownexclusiv/marykayinnigeria" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://tiktok.com/@marykaynigeria" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://wa.me/2348139151223" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                        <div class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+234 813 915 1223</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 CrownExclusiv | Mary Kay Cosmetic Enterprise. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/2348139151223" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Toggle between blog homepage and individual post
+        document.addEventListener('DOMContentLoaded', function() {
+            // For demo purposes, clicking any "Read More" shows the blog post
+            document.querySelectorAll('.read-more').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.getElementById('blogHomepage').style.display = 'none';
+                    document.getElementById('blogPost').style.display = 'block';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+            
+            // Category filter functionality
+            document.querySelectorAll('.category-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.category-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+            
+            // Like button functionality
+            document.querySelector('.like-btn').addEventListener('click', function() {
+                const countElement = this.querySelector('.count');
+                let count = parseInt(countElement.textContent);
+                count++;
+                countElement.textContent = count;
+                this.classList.toggle('liked');
+                
+                if (this.classList.contains('liked')) {
+                    this.innerHTML = '<i class="fas fa-heart" style="color:#e74c3c"></i> <span>Liked</span> <span class="count">' + count + '</span>';
+                }
+            });
+            
+            // Share button functionality
+            document.querySelector('.share-btn').addEventListener('click', function() {
+                alert('Share this post via: \n\nCopy link: ' + window.location.href);
+            });
+            
+            // Comment submission
+            document.querySelector('.submit-btn').addEventListener('click', function() {
+                const nameInput = document.querySelector('.form-input');
+                const commentInput = document.querySelector('.form-textarea');
+                
+                if (nameInput.value && commentInput.value) {
+                    // Create new comment
+                    const newComment = document.createElement('div');
+                    newComment.className = 'comment';
+                    newComment.innerHTML = `
+                        <div class="comment-avatar">${nameInput.value.charAt(0)}</div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <div class="comment-user">${nameInput.value}</div>
+                                <div class="comment-time">Just now</div>
+                            </div>
+                            <p class="comment-text">${commentInput.value}</p>
+                        </div>
+                    `;
+                    
+                    // Insert new comment at the top
+                    const commentsSection = document.querySelector('.comments-section');
+                    commentsSection.insertBefore(newComment, commentsSection.querySelector('.comment-form'));
+                    
+                    // Update comment count
+                    const commentBtn = document.querySelector('.comment-btn .count');
+                    let count = parseInt(commentBtn.textContent);
+                    count++;
+                    commentBtn.textContent = count;
+                    
+                    // Clear form
+                    nameInput.value = '';
+                    commentInput.value = '';
+                    
+                    alert('Thank you for your comment!');
+                } else {
+                    alert('Please fill in both your name and comment.');
+                }
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
