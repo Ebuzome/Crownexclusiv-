@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrownExclusiv | Beauty Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         /* === GLOBAL STYLES === */
         :root {
@@ -413,6 +413,7 @@
             text-decoration: none;
             transition: var(--transition);
             font-weight: 500;
+            cursor: pointer;
         }
 
         body.dark-mode .blog-read-more {
@@ -435,6 +436,7 @@
             max-width: 900px;
             margin: 100px auto 50px;
             padding: 0 20px;
+            display: none;
         }
 
         .back-to-blog {
@@ -446,6 +448,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
+            cursor: pointer;
         }
 
         body.dark-mode .back-to-blog {
@@ -500,6 +503,7 @@
             color: var(--text);
             line-height: 1.8;
             font-size: 1.1rem;
+            font-family: 'Playfair Display', serif;
         }
 
         body.dark-mode .blog-post-content {
@@ -516,6 +520,7 @@
             padding-bottom: 10px;
             border-bottom: 2px solid var(--gold);
             display: inline-block;
+            font-family: 'Cormorant Garamond', serif;
         }
 
         .blog-post-actions {
@@ -863,6 +868,70 @@
             transform: translateY(-5px);
         }
 
+        /* Mobile menu styles */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 248, 245, 0.98);
+            z-index: 2000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body.dark-mode .mobile-nav {
+            background: rgba(26, 26, 26, 0.98);
+        }
+
+        .mobile-nav.show {
+            display: flex;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-links li {
+            margin: 20px 0;
+        }
+
+        .mobile-nav-links a {
+            font-size: 1.5rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .mobile-nav-links a {
+            color: var(--dark-text);
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--accent);
+        }
+
+        body.dark-mode .mobile-nav-links a:hover {
+            color: var(--dark-accent);
+        }
+
+        .close-nav {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        body.dark-mode .close-nav {
+            color: var(--dark-text);
+        }
+
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1200px) {
             .nav-links {
@@ -943,6 +1012,18 @@
     </style>
 </head>
 <body>
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <span class="close-nav" id="closeNav"><i class="fas fa-times"></i></span>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
@@ -951,6 +1032,14 @@
             <button class="mobile-toggle" id="mobileToggle">
                 <i class="fas fa-bars"></i>
             </button>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
             
             <div class="header-icons">
                 <div class="header-icon" id="wishlistIcon">
@@ -974,17 +1063,27 @@
     </section>
 
     <!-- Blog Grid -->
-    <section class="blog-section">
+    <section class="blog-section" id="blogGridSection">
         <div class="container">
             <div class="blog-grid" id="blogGrid">
                 <!-- Blog cards will be loaded here dynamically -->
             </div>
             <div class="pagination" id="pagination">
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
+                <button class="page-btn active" data-page="1">1</button>
+                <button class="page-btn" data-page="2">2</button>
             </div>
         </div>
     </section>
+
+    <!-- Blog Post Container (hidden by default) -->
+    <div class="blog-post-container" id="blogPostContainer">
+        <div class="container">
+            <span class="back-to-blog" id="backToBlog"><i class="fas fa-arrow-left"></i> Back to Blog</span>
+            <div id="postContent">
+                <!-- Blog post content will be loaded here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Floating CTA -->
     <div class="floating-cta">
@@ -1036,19 +1135,73 @@
                 tag: "Skincare Tips",
                 date: "May 15, 2025",
                 content: `
-                    <p>Acne na serious wahala for many of us in this hot and humid Nigerian weather. But no worries, with Mary Kay Clear Proof system, your face go shine like new Naira note!</p>
-                    
-                    <h3>The Nigerian Acne-Fighting Routine</h3>
-                    <p>First, start with the Clear Proof Cleanser. This one go remove all that dust and pollution wey dey block your pores. For Lagos traffic, this cleanser na must-have!</p>
-                    
-                    <p>After cleansing, apply the Blemish Control Toner. This toner na like 'oga' for your skin - it go control excess oil and prevent pimples from forming.</p>
-                    
-                    <p>Finish with the Oil-Free Moisturizer. Many people think say if you get oily skin, you no need moisturizer. That one na lie! Your skin need hydration to balance itself.</p>
-                    
-                    <h3>Nigerian Beauty Pro Tip</h3>
-                    <p>For stubborn pimples, apply the Acne Treatment Gel directly on them before bed. By morning, that pimple go don pack its load and leave your face!</p>
-                    
-                    <p>Remember, consistency is key. No be magic, but with daily use, you go see results in 2-3 weeks. Your friends go start asking "Which cream you dey use?"</p>
+                    <div class="blog-post-header">
+                        <h1 class="blog-post-title">How to Remove Acne with Mary Kay Products!</h1>
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar"></i> May 15, 2025</span>
+                            <span><i class="fas fa-tag"></i> Skincare Tips</span>
+                        </div>
+                    </div>
+                    <div class="blog-post-image">
+                        <img src="assets/images/Clear-Proof®-Blemish-Control-Toner-22000.jpg" alt="Acne Treatment">
+                    </div>
+                    <div class="blog-post-content">
+                        <p>Acne na serious wahala for many of us in this hot and humid Nigerian weather. But no worries, with Mary Kay Clear Proof system, your face go shine like new Naira note!</p>
+                        
+                        <h3>The Nigerian Acne-Fighting Routine</h3>
+                        <p>First, start with the Clear Proof Cleanser. This one go remove all that dust and pollution wey dey block your pores. For Lagos traffic, this cleanser na must-have!</p>
+                        
+                        <p>After cleansing, apply the Blemish Control Toner. This toner na like 'oga' for your skin - it go control excess oil and prevent pimples from forming.</p>
+                        
+                        <p>Finish with the Oil-Free Moisturizer. Many people think say if you get oily skin, you no need moisturizer. That one na lie! Your skin need hydration to balance itself.</p>
+                        
+                        <h3>Nigerian Beauty Pro Tip</h3>
+                        <p>For stubborn pimples, apply the Acne Treatment Gel directly on them before bed. By morning, that pimple go don pack its load and leave your face!</p>
+                        
+                        <p>Remember, consistency is key. No be magic, but with daily use, you go see results in 2-3 weeks. Your friends go start asking "Which cream you dey use?"</p>
+                    </div>
+                    <div class="blog-post-actions">
+                        <button class="action-btn" id="likeBtn"><i class="far fa-heart"></i> Like</button>
+                        <button class="action-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                    <div class="comments-section">
+                        <h3 class="comments-title">Comments</h3>
+                        <div class="comment">
+                            <div class="comment-avatar">CO</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Chidinma Okoro</span>
+                                    <span class="comment-time">2 hours ago</span>
+                                </div>
+                                <p class="comment-text">This routine don change my skin game! Since I start using Clear Proof, my face don clear like Harmattan sky. Even my mama don notice!</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">24</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="comment-avatar">TA</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Tunde Adebayo</span>
+                                    <span class="comment-time">1 day ago</span>
+                                </div>
+                                <p class="comment-text">I thought acne products were only for women until my sister forced me to try. Now I'm hooked! My barber even commented on my clearer skin.</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">18</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-comment">
+                            <h3>Add a Comment</h3>
+                            <form class="comment-form">
+                                <textarea placeholder="Write your comment here..."></textarea>
+                                <button type="button" class="submit-comment">Post Comment</button>
+                            </form>
+                        </div>
+                    </div>
                 `,
                 comments: [
                     {
@@ -1075,20 +1228,74 @@
                 tag: "Perfume Picks",
                 date: "May 10, 2025",
                 content: `
-                    <p>In Nigeria, perfume no be just scent - na statement! Whether you dey go wedding or business meeting, the right fragrance fit make you stand out.</p>
-                    
-                    <h3>For Owambe Parties</h3>
-                    <p>Mary Kay CityScape Eau de Parfum na the perfect choice. The bold, vibrant scent go match your aso ebi and last from church service till after party!</p>
-                    
-                    <p>This fragrance get that unique blend wey go make people turn head when you waka pass. The longevity na die - even after dancing Shaku Shaku under hot sun, you go still smell fresh.</p>
-                    
-                    <h3>For Office and Business</h3>
-                    <p>Try our Forever Diamonds for professional settings. The subtle but sophisticated scent go give you that CEO vibe without overpowering the boardroom.</p>
-                    
-                    <p>Na the kind perfume wey make your colleagues wonder "Who get this classy scent?" but they no go ask because dem dey fear say you go charge consultancy fee!</p>
-                    
-                    <h3>For Date Night</h3>
-                    <p>Our Illuminea Dreams go set the mood. The romantic floral notes go make your bae want to hold you tight all night. Warning: May lead to marriage proposals!</p>
+                    <div class="blog-post-header">
+                        <h1 class="blog-post-title">The Perfect Perfume for Every Nigerian Occasion</h1>
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar"></i> May 10, 2025</span>
+                            <span><i class="fas fa-tag"></i> Perfume Picks</span>
+                        </div>
+                    </div>
+                    <div class="blog-post-image">
+                        <img src="assets/images/CityScape-Eau-de-Parfum-110000.jpg" alt="Perfume Selection">
+                    </div>
+                    <div class="blog-post-content">
+                        <p>In Nigeria, perfume no be just scent - na statement! Whether you dey go wedding or business meeting, the right fragrance fit make you stand out.</p>
+                        
+                        <h3>For Owambe Parties</h3>
+                        <p>Mary Kay CityScape Eau de Parfum na the perfect choice. The bold, vibrant scent go match your aso ebi and last from church service till after party!</p>
+                        
+                        <p>This fragrance get that unique blend wey go make people turn head when you waka pass. The longevity na die - even after dancing Shaku Shaku under hot sun, you go still smell fresh.</p>
+                        
+                        <h3>For Office and Business</h3>
+                        <p>Try our Forever Diamonds for professional settings. The subtle but sophisticated scent go give you that CEO vibe without overpowering the boardroom.</p>
+                        
+                        <p>Na the kind perfume wey make your colleagues wonder "Who get this classy scent?" but they no go ask because dem dey fear say you go charge consultancy fee!</p>
+                        
+                        <h3>For Date Night</h3>
+                        <p>Our Illuminea Dreams go set the mood. The romantic floral notes go make your bae want to hold you tight all night. Warning: May lead to marriage proposals!</p>
+                    </div>
+                    <div class="blog-post-actions">
+                        <button class="action-btn" id="likeBtn"><i class="far fa-heart"></i> Like</button>
+                        <button class="action-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                    <div class="comments-section">
+                        <h3 class="comments-title">Comments</h3>
+                        <div class="comment">
+                            <div class="comment-avatar">BA</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Bimpe Adeola</span>
+                                    <span class="comment-time">3 days ago</span>
+                                </div>
+                                <p class="comment-text">I wore CityScape to my cousin's wedding last week! Before I even enter the hall, people were already asking about the perfume. Mary Kay for life!</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">32</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="comment-avatar">EN</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Emeka Nwankwo</span>
+                                    <span class="comment-time">5 days ago</span>
+                                </div>
+                                <p class="comment-text">Forever Diamonds is my secret weapon for client meetings. My closing rate has improved since I started wearing it. Coincidence? I think not!</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">15</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-comment">
+                            <h3>Add a Comment</h3>
+                            <form class="comment-form">
+                                <textarea placeholder="Write your comment here..."></textarea>
+                                <button type="button" class="submit-comment">Post Comment</button>
+                            </form>
+                        </div>
+                    </div>
                 `,
                 comments: [
                     {
@@ -1115,20 +1322,74 @@
                 tag: "Skincare Tips",
                 date: "May 5, 2025",
                 content: `
-                    <p>Naija weather dey do yoyo - one minute sun hot like fire, next minute rain de fall. Your skin need special care to survive this climate!</p>
-                    
-                    <h3>Harmattan Season Survival</h3>
-                    <p>When harmattan come with its dry wind, your skin go cry for help. Our TimeWise Moisturizer na savior for this period. Apply am morning and night to prevent ashy skin.</p>
-                    
-                    <p>Also, try our Deep Cleansing Charcoal Mask once a week. The charcoal go draw out all the dust and impurities wey harmattan bring.</p>
-                    
-                    <h3>Rainy Season Routine</h3>
-                    <p>When rain de fall, humidity go high and pores go open. Switch to lighter products like our Clear Proof Oil-Free Moisturizer to prevent breakouts.</p>
-                    
-                    <p>And no forget sunscreen! Even when sky dey cloudy, UV rays dey penetrate. Our CC Cream with SPF na perfect for rainy days.</p>
-                    
-                    <h3>Hot Weather Hack</h3>
-                    <p>For that Lagos heat, keep our White Tea & Citrus Body Spray in your bag. The refreshing spray go cool your skin and give you instant freshness during traffic or market runs.</p>
+                    <div class="blog-post-header">
+                        <h1 class="blog-post-title">Nigerian Skincare: Adapting to Our Climate</h1>
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar"></i> May 5, 2025</span>
+                            <span><i class="fas fa-tag"></i> Skincare Tips</span>
+                        </div>
+                    </div>
+                    <div class="blog-post-image">
+                        <img src="assets/images/Mary-Kay-Timewise-Deep-Cleansing Charcoal-mask-28000.jpg" alt="Skincare for Climate">
+                    </div>
+                    <div class="blog-post-content">
+                        <p>Naija weather dey do yoyo - one minute sun hot like fire, next minute rain de fall. Your skin need special care to survive this climate!</p>
+                        
+                        <h3>Harmattan Season Survival</h3>
+                        <p>When harmattan come with its dry wind, your skin go cry for help. Our TimeWise Moisturizer na savior for this period. Apply am morning and night to prevent ashy skin.</p>
+                        
+                        <p>Also, try our Deep Cleansing Charcoal Mask once a week. The charcoal go draw out all the dust and impurities wey harmattan bring.</p>
+                        
+                        <h3>Rainy Season Routine</h3>
+                        <p>When rain de fall, humidity go high and pores go open. Switch to lighter products like our Clear Proof Oil-Free Moisturizer to prevent breakouts.</p>
+                        
+                        <p>And no forget sunscreen! Even when sky dey cloudy, UV rays dey penetrate. Our CC Cream with SPF na perfect for rainy days.</p>
+                        
+                        <h3>Hot Weather Hack</h3>
+                        <p>For that Lagos heat, keep our White Tea & Citrus Body Spray in your bag. The refreshing spray go cool your skin and give you instant freshness during traffic or market runs.</p>
+                    </div>
+                    <div class="blog-post-actions">
+                        <button class="action-btn" id="likeBtn"><i class="far fa-heart"></i> Like</button>
+                        <button class="action-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                    <div class="comments-section">
+                        <h3 class="comments-title">Comments</h3>
+                        <div class="comment">
+                            <div class="comment-avatar">FA</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Funke Alabi</span>
+                                    <span class="comment-time">1 week ago</span>
+                                </div>
+                                <p class="comment-text">This harmattan tip saved my skin! Before, my face used to peel like plantain. Now I'm glowing even in Kano dry season.</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">29</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="comment-avatar">CO</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Chika Obi</span>
+                                    <span class="comment-time">6 days ago</span>
+                                </div>
+                                <p class="comment-text">The charcoal mask is everything! After using it, my skin feels so clean - like I just came back from Ikogosi warm springs.</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">21</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-comment">
+                            <h3>Add a Comment</h3>
+                            <form class="comment-form">
+                                <textarea placeholder="Write your comment here..."></textarea>
+                                <button type="button" class="submit-comment">Post Comment</button>
+                            </form>
+                        </div>
+                    </div>
                 `,
                 comments: [
                     {
@@ -1155,22 +1416,76 @@
                 tag: "Product Guides",
                 date: "April 28, 2025",
                 content: `
-                    <p>Your wedding day na when you suppose shine pass star! With these Mary Kay products, you go look like Nollywood celebrity on your big day.</p>
-                    
-                    <h3>1. Illuminea Body Souffle</h3>
-                    <p>This luxurious body cream go give your skin that bridal glow. The subtle shimmer go make your skin look like gold under camera flash. Perfect for traditional and white wedding!</p>
-                    
-                    <h3>2. Gel Cream Blush</h3>
-                    <p>For that natural 'I wake up like this' flush on your cheeks. This blush go last from church to reception without fading. Even after dancing with all your aunties, your cheeks go still pop!</p>
-                    
-                    <h3>3. Lash Love Mascara</h3>
-                    <p>For lashes wey go make your husband-to-be weak for knees. Waterproof formula mean say even if tears fall when saying vows, your mascara no go run.</p>
-                    
-                    <h3>4. Silkening Dry Oil</h3>
-                    <p>Apply this on your arms, legs, and décolletage for camera-ready shine. The non-greasy formula no go stain your expensive lace!</p>
-                    
-                    <h3>5. Thinking of Love Eau de Parfum</h3>
-                    <p>The perfect romantic scent for your special day. Every time you smell it afterward, you go remember your wedding day with joy.</p>
+                    <div class="blog-post-header">
+                        <h1 class="blog-post-title">5 Mary Kay Products Every Nigerian Bride Needs</h1>
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar"></i> April 28, 2025</span>
+                            <span><i class="fas fa-tag"></i> Product Guides</span>
+                        </div>
+                    </div>
+                    <div class="blog-post-image">
+                        <img src="assets/images/Mary-Kay-illuminea-Body-Souffle-54000.jpg" alt="Bridal Beauty">
+                    </div>
+                    <div class="blog-post-content">
+                        <p>Your wedding day na when you suppose shine pass star! With these Mary Kay products, you go look like Nollywood celebrity on your big day.</p>
+                        
+                        <h3>1. Illuminea Body Souffle</h3>
+                        <p>This luxurious body cream go give your skin that bridal glow. The subtle shimmer go make your skin look like gold under camera flash. Perfect for traditional and white wedding!</p>
+                        
+                        <h3>2. Gel Cream Blush</h3>
+                        <p>For that natural 'I wake up like this' flush on your cheeks. This blush go last from church to reception without fading. Even after dancing with all your aunties, your cheeks go still pop!</p>
+                        
+                        <h3>3. Lash Love Mascara</h3>
+                        <p>For lashes wey go make your husband-to-be weak for knees. Waterproof formula mean say even if tears fall when saying vows, your mascara no go run.</p>
+                        
+                        <h3>4. Silkening Dry Oil</h3>
+                        <p>Apply this on your arms, legs, and décolletage for camera-ready shine. The non-greasy formula no go stain your expensive lace!</p>
+                        
+                        <h3>5. Thinking of Love Eau de Parfum</h3>
+                        <p>The perfect romantic scent for your special day. Every time you smell it afterward, you go remember your wedding day with joy.</p>
+                    </div>
+                    <div class="blog-post-actions">
+                        <button class="action-btn" id="likeBtn"><i class="far fa-heart"></i> Like</button>
+                        <button class="action-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                    <div class="comments-section">
+                        <h3 class="comments-title">Comments</h3>
+                        <div class="comment">
+                            <div class="comment-avatar">AM</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Aisha Mohammed</span>
+                                    <span class="comment-time">2 weeks ago</span>
+                                </div>
+                                <p class="comment-text">I used all these for my wedding last month! My makeup stayed perfect from 8am church service till 2am after-party. Best investment ever!</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">42</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="comment-avatar">GW</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Grace Williams</span>
+                                    <span class="comment-time">10 days ago</span>
+                                </div>
+                                <p class="comment-text">The Illuminea Body Souffle made my skin glow in all my wedding photos. My photographer even asked for the product name!</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">31</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-comment">
+                            <h3>Add a Comment</h3>
+                            <form class="comment-form">
+                                <textarea placeholder="Write your comment here..."></textarea>
+                                <button type="button" class="submit-comment">Post Comment</button>
+                            </form>
+                        </div>
+                    </div>
                 `,
                 comments: [
                     {
@@ -1197,22 +1512,76 @@
                 tag: "Customer Stories",
                 date: "April 22, 2025",
                 content: `
-                    <p>Meet Ngozi, 28-year-old banker from Abuja. For years, she battled with severe acne that affected her confidence and social life. Here's her transformation story:</p>
-                    
-                    <h3>The Struggle</h3>
-                    <p>"My acne started in university and followed me into my career. I tried everything - from roadside concoctions to expensive imported products. Nothing worked permanently. I'd hide behind makeup and avoid photos."</p>
-                    
-                    <h3>The Discovery</h3>
-                    <p>"My colleague introduced me to Mary Kay Clear Proof system. At first, I was skeptical - 'Another product to waste money on?' But after seeing her skin transformation, I decided to try."</p>
-                    
-                    <h3>The Routine</h3>
-                    <p>"I started with the Clear Proof 3-step system: Cleanser, Toner, and Moisturizer. For the first two weeks, my skin purged - but I persisted. After one month, the breakouts reduced dramatically."</p>
-                    
-                    <h3>The Results</h3>
-                    <p>"After three months, my skin completely transformed! The dark spots faded, and my complexion became even. Now I go makeup-free to work and actually enjoy taking photos. My confidence has skyrocketed!"</p>
-                    
-                    <h3>Ngozi's Advice</h3>
-                    <p>"Be patient and consistent. Good skin no be beans - it takes time. But with the right products like Mary Kay, it's achievable. Now my mates call me 'Glowing Ngozi'!"</p>
+                    <div class="blog-post-header">
+                        <h1 class="blog-post-title">Customer Story: How Mary Kay Transformed My Skin</h1>
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar"></i> April 22, 2025</span>
+                            <span><i class="fas fa-tag"></i> Customer Stories</span>
+                        </div>
+                    </div>
+                    <div class="blog-post-image">
+                        <img src="assets/images/Mary-kay-Clearproof-Clarifying-cleanser-22000.jpg" alt="Skin Transformation">
+                    </div>
+                    <div class="blog-post-content">
+                        <p>Meet Ngozi, 28-year-old banker from Abuja. For years, she battled with severe acne that affected her confidence and social life. Here's her transformation story:</p>
+                        
+                        <h3>The Struggle</h3>
+                        <p>"My acne started in university and followed me into my career. I tried everything - from roadside concoctions to expensive imported products. Nothing worked permanently. I'd hide behind makeup and avoid photos."</p>
+                        
+                        <h3>The Discovery</h3>
+                        <p>"My colleague introduced me to Mary Kay Clear Proof system. At first, I was skeptical - 'Another product to waste money on?' But after seeing her skin transformation, I decided to try."</p>
+                        
+                        <h3>The Routine</h3>
+                        <p>"I started with the Clear Proof 3-step system: Cleanser, Toner, and Moisturizer. For the first two weeks, my skin purged - but I persisted. After one month, the breakouts reduced dramatically."</p>
+                        
+                        <h3>The Results</h3>
+                        <p>"After three months, my skin completely transformed! The dark spots faded, and my complexion became even. Now I go makeup-free to work and actually enjoy taking photos. My confidence has skyrocketed!"</p>
+                        
+                        <h3>Ngozi's Advice</h3>
+                        <p>"Be patient and consistent. Good skin no be beans - it takes time. But with the right products like Mary Kay, it's achievable. Now my mates call me 'Glowing Ngozi'!"</p>
+                    </div>
+                    <div class="blog-post-actions">
+                        <button class="action-btn" id="likeBtn"><i class="far fa-heart"></i> Like</button>
+                        <button class="action-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                    <div class="comments-section">
+                        <h3 class="comments-title">Comments</h3>
+                        <div class="comment">
+                            <div class="comment-avatar">NE</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Ngozi Eze</span>
+                                    <span class="comment-time">3 weeks ago</span>
+                                </div>
+                                <p class="comment-text">Yes na, that's me! Still using Mary Kay products daily. Now I'm the one introducing others to the magic. Thanks CrownExclusiv!</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">56</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="comment-avatar">CO</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Chioma Okeke</span>
+                                    <span class="comment-time">2 weeks ago</span>
+                                </div>
+                                <p class="comment-text">This story inspired me to try the Clear Proof system. One month in and I'm already seeing results. Can't wait for my own transformation!</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">29</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-comment">
+                            <h3>Add a Comment</h3>
+                            <form class="comment-form">
+                                <textarea placeholder="Write your comment here..."></textarea>
+                                <button type="button" class="submit-comment">Post Comment</button>
+                            </form>
+                        </div>
+                    </div>
                 `,
                 comments: [
                     {
@@ -1239,22 +1608,76 @@
                 tag: "Product Guides",
                 date: "April 15, 2025",
                 content: `
-                    <p>Confused about all those brushes in your kit? No worry, we break am down for you like jollof rice ingredients!</p>
-                    
-                    <h3>Foundation Brush</h3>
-                    <p>This flat brush na your best friend for liquid foundation. It go help you achieve that airbrushed finish wey make people think say you wake up with perfect skin.</p>
-                    
-                    <h3>Blending Brush</h3>
-                    <p>For eyeshadow application, this soft brush na must-have. It go blend colors smoothly so your eye makeup no go look like primary school art project.</p>
-                    
-                    <h3>Angled Contour Brush</h3>
-                    <p>Want cheekbones sharp enough to cut plantain? This brush go help you contour like a pro. Swipe am under your cheekbones for that defined look.</p>
-                    
-                    <h3>Lip Brush</h3>
-                    <p>For precise lip color application. No more lipstick outside your lips like you chop banga soup! This brush go give you clean, professional finish.</p>
-                    
-                    <h3>Pro Tip</h3>
-                    <p>Clean your brushes regularly with our Brush Cleanser. Dirty brushes na breeding ground for bacteria that cause breakouts. Wash am at least once a week!</p>
+                    <div class="blog-post-header">
+                        <h1 class="blog-post-title">The Ultimate Guide to Mary Kay Makeup Brushes</h1>
+                        <div class="blog-post-meta">
+                            <span><i class="far fa-calendar"></i> April 15, 2025</span>
+                            <span><i class="fas fa-tag"></i> Product Guides</span>
+                        </div>
+                    </div>
+                    <div class="blog-post-image">
+                        <img src="assets/images/Mary-Kay-essential-Brush-Collection-75000.jpg" alt="Makeup Brushes">
+                    </div>
+                    <div class="blog-post-content">
+                        <p>Confused about all those brushes in your kit? No worry, we break am down for you like jollof rice ingredients!</p>
+                        
+                        <h3>Foundation Brush</h3>
+                        <p>This flat brush na your best friend for liquid foundation. It go help you achieve that airbrushed finish wey make people think say you wake up with perfect skin.</p>
+                        
+                        <h3>Blending Brush</h3>
+                        <p>For eyeshadow application, this soft brush na must-have. It go blend colors smoothly so your eye makeup no go look like primary school art project.</p>
+                        
+                        <h3>Angled Contour Brush</h3>
+                        <p>Want cheekbones sharp enough to cut plantain? This brush go help you contour like a pro. Swipe am under your cheekbones for that defined look.</p>
+                        
+                        <h3>Lip Brush</h3>
+                        <p>For precise lip color application. No more lipstick outside your lips like you chop banga soup! This brush go give you clean, professional finish.</p>
+                        
+                        <h3>Pro Tip</h3>
+                        <p>Clean your brushes regularly with our Brush Cleanser. Dirty brushes na breeding ground for bacteria that cause breakouts. Wash am at least once a week!</p>
+                    </div>
+                    <div class="blog-post-actions">
+                        <button class="action-btn" id="likeBtn"><i class="far fa-heart"></i> Like</button>
+                        <button class="action-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                    <div class="comments-section">
+                        <h3 class="comments-title">Comments</h3>
+                        <div class="comment">
+                            <div class="comment-avatar">LM</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Lola Martins</span>
+                                    <span class="comment-time">3 weeks ago</span>
+                                </div>
+                                <p class="comment-text">I never knew how to use half my brushes until this guide. That contour brush has changed my life - my face has structure now!</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">38</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="comment-avatar">TA</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Temi Adekunle</span>
+                                    <span class="comment-time">2 weeks ago</span>
+                                </div>
+                                <p class="comment-text">The blending brush is magic! My eyeshadow finally looks like those YouTube tutorials. Even my husband noticed (and he notices nothing!).</p>
+                                <div class="comment-actions">
+                                    <span class="comment-action"><i class="far fa-heart"></i> <span class="like-count">27</span></span>
+                                    <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-comment">
+                            <h3>Add a Comment</h3>
+                            <form class="comment-form">
+                                <textarea placeholder="Write your comment here..."></textarea>
+                                <button type="button" class="submit-comment">Post Comment</button>
+                            </form>
+                        </div>
+                    </div>
                 `,
                 comments: [
                     {
@@ -1272,187 +1695,6 @@
                         likes: 27
                     }
                 ]
-            },
-            {
-                id: 7,
-                title: "Why Nigerian Women Love Mary Kay Lipsticks",
-                excerpt: "From boardroom to owambe, discover our most popular lip shades in Nigeria.",
-                image: "Lipstick-16000.jpg",
-                tag: "Product Guides",
-                date: "April 8, 2025",
-                content: `
-                    <p>In Nigeria, lipstick na more than makeup - na confidence in a tube! Here's why our Mary Kay lipsticks dey reign supreme:</p>
-                    
-                    <h3>Long-Lasting Formula</h3>
-                    <p>Our lipsticks survive Nigerian realities - from hot suya to traffic jam gisting. No need for constant touch-ups during your busy day.</p>
-                    
-                    <h3>Perfect Shades for Our Skin Tones</h3>
-                    <p>We have colors that complement our beautiful melanin-rich skin. From deep berries to vibrant corals, find your perfect match.</p>
-                    
-                    <h3>Nourishing Ingredients</h3>
-                    <p>While other lipsticks dey dry your lips, ours contain shea butter and vitamins to keep your lips moisturized. No more cracked lips during harmattan!</p>
-                    
-                    <h3>Top 5 Shades in Nigeria</h3>
-                    <ol>
-                        <li><strong>Lagos Red</strong> - The bold red for when you want to make a statement</li>
-                        <li><strong>Abuja Nude</strong> - Perfect for office and meetings</li>
-                        <li><strong>Calabar Coral</strong> - Vibrant shade for parties and celebrations</li>
-                        <li><strong>Kano Berry</strong> - Deep, rich color for evening events</li>
-                        <li><strong>Enugu Mauve</strong> - Everyday wearable shade that suits everyone</li>
-                    </ol>
-                    
-                    <h3>Pro Application Tip</h3>
-                    <p>Use our Lip & Eye Liner to define your lips before applying lipstick. This go prevent bleeding and make your color last longer.</p>
-                `,
-                comments: [
-                    {
-                        user: "Bisi Adeyemi",
-                        avatar: "BA",
-                        time: "4 weeks ago",
-                        text: "Lagos Red is my signature color! I wear it to every meeting - it makes me feel powerful and in charge. Got my last promotion wearing it!",
-                        likes: 45
-                    },
-                    {
-                        user: "Zainab Ibrahim",
-                        avatar: "ZI",
-                        time: "3 weeks ago",
-                        text: "Abuja Nude is my everyday go-to. Perfect for my teaching job - professional but still feminine. And it lasts through all my lectures!",
-                        likes: 31
-                    }
-                ]
-            },
-            {
-                id: 8,
-                title: "Hand Care Routine for Nigerian Women",
-                excerpt: "From market to keyboard, protect your hardworking hands with our simple routine.",
-                image: "Citrus-Sorbet-Hand-Cream-and-Lip-Balm-10000.jpg",
-                tag: "Skincare Tips",
-                date: "April 1, 2025",
-                content: `
-                    <p>Naija women hands dey work! Whether you dey type for office, cook for house, or carry market, your hands need special care. Follow this simple routine:</p>
-                    
-                    <h3>Daily Protection</h3>
-                    <p>Start with our Shea Hand Soap for gentle cleansing. The moisturizing formula no go strip your hands of natural oils.</p>
-                    
-                    <h3>After-Wash Care</h3>
-                    <p>Always apply hand cream after washing. Our Citrus Sorbet Hand Cream no go leave greasy residue on your phone or keyboard.</p>
-                    
-                    <h3>Weekly Treatment</h3>
-                    <p>Once a week, pamper your hands with our Nourishing Shea Cream. Apply thick layer and wear cotton gloves overnight. Wake up with hands soft like baby!</p>
-                    
-                    <h3>Special Occasion Prep</h3>
-                    <p>Before events, use our Revitalizing Shea Scrub to remove dead skin. Follow with Silkening Shea Lotion for that photo-ready glow.</p>
-                    
-                    <h3>Market Day Tip</h3>
-                    <p>When going to market, apply extra hand cream before leaving house. This go create barrier against market dirt and water.</p>
-                `,
-                comments: [
-                    {
-                        user: "Mama Nkechi",
-                        avatar: "MN",
-                        time: "1 month ago",
-                        text: "At 65, my hands have seen many markets! This routine has made them look 10 years younger. Even my grandchildren comment on how soft my hands are.",
-                        likes: 62
-                    },
-                    {
-                        user: "Adaobi Chukwu",
-                        avatar: "AC",
-                        time: "3 weeks ago",
-                        text: "The Citrus Sorbet cream is heavenly! I keep one on my desk and one in my bag. My colleagues are always asking to borrow it.",
-                        likes: 28
-                    }
-                ]
-            },
-            {
-                id: 9,
-                title: "5 Mary Kay Products for Busy Nigerian Moms",
-                excerpt: "Quick beauty solutions for the superwomen juggling family, work, and everything in between.",
-                image: "Mary-Kay-CC-Cream-Sunscreen-Broad-Spectrum-25000.jpg",
-                tag: "Product Guides",
-                date: "March 25, 2025",
-                content: `
-                    <p>Mama Nigeria no get time! Between school runs, office work, and house chores, self-care often takes backseat. But with these quick products, you can glow on the go!</p>
-                    
-                    <h3>1. CC Cream Sunscreen</h3>
-                    <p>5-in-1 product that moisturizes, protects with SPF, color corrects, evens skin tone, and gives light coverage. Apply in 30 seconds while waiting for school bus!</p>
-                    
-                    <h3>2. Gel Cream Blush</h3>
-                    <p>Just dab on cheeks with fingers for instant freshness. No brush needed - perfect for touch-ups at traffic light.</p>
-                    
-                    <h3>3. Ultimate Mascara</h3>
-                    <p>One swipe gives lashes dramatic look. Open-eye effect even when you only slept 4 hours because baby was crying!</p>
-                    
-                    <h3>4. Lip and Cheek Stain</h3>
-                    <p>Double-duty product for lips and cheeks. The perfect flush that lasts through cooking, cleaning, and chasing toddlers.</p>
-                    
-                    <h3>5. TimeWise Targeted Toning Body Lotion</h3>
-                    <p>Firms while moisturizing. Apply while dressing for that extra confidence boost. Works while you work!</p>
-                    
-                    <h3>Mama's Pro Tip</h3>
-                    <p>Keep a small beauty bag in your car. Use school pickup time for quick touch-ups before heading to office or market.</p>
-                `,
-                comments: [
-                    {
-                        user: "Funmi Adebayo",
-                        avatar: "FA",
-                        time: "1 month ago",
-                        text: "As a doctor and mom of three, this list is a lifesaver! The CC Cream is my holy grail - protects my skin during hospital rounds and makes me look put together.",
-                        likes: 49
-                    },
-                    {
-                        user: "Efe Osaigbovo",
-                        avatar: "EO",
-                        time: "3 weeks ago",
-                        text: "That lip and cheek stain has saved me so many times! I keep it in my diaper bag for instant glam during playground dates.",
-                        likes: 33
-                    }
-                ]
-            },
-            {
-                id: 10,
-                title: "Fragrance Layering: Create Your Signature Scent",
-                excerpt: "Mix and match Mary Kay perfumes to create a unique fragrance that's truly you.",
-                image: "Illuminea-Extrait-De-Parfum-120000.jpg",
-                tag: "Perfume Picks",
-                date: "March 18, 2025",
-                content: `
-                    <p>Why settle for one scent when you can create your own signature blend? Learn the art of fragrance layering with Mary Kay:</p>
-                    
-                    <h3>The Basics of Layering</h3>
-                    <p>Start with lightest scent first, then layer heavier ones. Apply to pulse points - wrists, neck, behind ears.</p>
-                    
-                    <h3>Popular Nigerian Combinations</h3>
-                    <p><strong>Corporate Power:</strong> Forever Diamonds + Thinking of Love<br>
-                    The sophistication of diamonds with romantic floral notes - perfect for boardroom to dinner date.</p>
-                    
-                    <p><strong>Owambe Ready:</strong> CityScape + Illuminea Dreams<br>
-                    Vibrant and bold with dreamy floral undertones - sure to make you stand out at any party.</p>
-                    
-                    <p><strong>Everyday Elegance:</strong> Live Fearlessly + MK High Intensity<br>
-                    Fresh and energizing with a touch of intensity - for when you want to feel confident all day.</p>
-                    
-                    <h3>Pro Tip</h3>
-                    <p>Use matching body products first! Apply Illuminea Body Souffle before spraying perfume. The moisturizer base go make your fragrance last longer.</p>
-                    
-                    <h3>Create Your Own</h3>
-                    <p>Experiment with different combinations. Start with 2 scents before adding third. Remember - less is more! You want to attract people, not chase them away!</p>
-                `,
-                comments: [
-                    {
-                        user: "Amara Nwosu",
-                        avatar: "AN",
-                        time: "1 month ago",
-                        text: "The Corporate Power combo is my go-to for client meetings! I've gotten so many compliments and even landed a big account while wearing it.",
-                        likes: 37
-                    },
-                    {
-                        user: "Yemisi Olatunji",
-                        avatar: "YO",
-                        time: "2 weeks ago",
-                        text: "I tried the Owambe Ready blend for my sister's wedding - people followed me around asking about my perfume all night!",
-                        likes: 41
-                    }
-                ]
             }
         ];
 
@@ -1460,6 +1702,25 @@
         const blogGrid = document.getElementById('blogGrid');
         const themeToggle = document.getElementById('themeToggle');
         const header = document.getElementById('header');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeNav = document.getElementById('closeNav');
+        const cartIcon = document.getElementById('cartIcon');
+        const wishlistIcon = document.getElementById('wishlistIcon');
+        const cartCount = document.getElementById('cartCount');
+        const wishlistCount = document.getElementById('wishlistCount');
+        const backToBlog = document.getElementById('backToBlog');
+        const blogPostContainer = document.getElementById('blogPostContainer');
+        const blogGridSection = document.getElementById('blogGridSection');
+        const postContent = document.getElementById('postContent');
+        const pagination = document.getElementById('pagination');
+        const pageBtns = document.querySelectorAll('.page-btn');
+
+        // State variables
+        let cartItems = 0;
+        let wishlistItems = 0;
+        let currentPage = 1;
+        const postsPerPage = 6;
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', () => {
@@ -1471,13 +1732,29 @@
             
             // Setup theme toggle
             setupThemeToggle();
+            
+            // Setup mobile navigation
+            setupMobileNavigation();
+            
+            // Setup cart and wishlist functionality
+            setupCartWishlist();
+            
+            // Setup pagination
+            setupPagination();
+            
+            // Setup back to blog button
+            backToBlog.addEventListener('click', showBlogGrid);
         });
 
         // Render blog posts to the grid
         function renderBlogPosts() {
             blogGrid.innerHTML = '';
             
-            blogPosts.forEach(post => {
+            const startIndex = (currentPage - 1) * postsPerPage;
+            const endIndex = startIndex + postsPerPage;
+            const postsToShow = blogPosts.slice(startIndex, endIndex);
+            
+            postsToShow.forEach(post => {
                 const blogCard = document.createElement('div');
                 blogCard.className = 'blog-card';
                 blogCard.innerHTML = `
@@ -1492,12 +1769,49 @@
                             <div class="blog-date">
                                 <i class="far fa-calendar"></i> ${post.date}
                             </div>
-                            <a href="blog-post-${post.id}.html" class="blog-read-more">Read More</a>
+                            <button class="blog-read-more" data-id="${post.id}">Read More</button>
                         </div>
                     </div>
                 `;
+                
+                // Add event listener to the "Read More" button
+                const readMoreBtn = blogCard.querySelector('.blog-read-more');
+                readMoreBtn.addEventListener('click', () => {
+                    showBlogPost(post.id);
+                });
+                
                 blogGrid.appendChild(blogCard);
             });
+        }
+
+        // Show a specific blog post
+        function showBlogPost(postId) {
+            const post = blogPosts.find(p => p.id === postId);
+            if (!post) return;
+            
+            postContent.innerHTML = post.content;
+            
+            // Add event listeners for the like buttons
+            const likeBtn = document.getElementById('likeBtn');
+            if (likeBtn) {
+                likeBtn.addEventListener('click', function() {
+                    this.classList.toggle('liked');
+                });
+            }
+            
+            // Show the post container, hide the grid
+            blogGridSection.style.display = 'none';
+            blogPostContainer.style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Show the blog grid
+        function showBlogGrid() {
+            blogGridSection.style.display = 'block';
+            blogPostContainer.style.display = 'none';
+            window.scrollTo(0, 0);
         }
 
         // Initialize header scroll effect
@@ -1533,6 +1847,52 @@
                     localStorage.setItem('theme', 'light');
                     themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
                 }
+            });
+        }
+
+        // Setup mobile navigation
+        function setupMobileNavigation() {
+            mobileToggle.addEventListener('click', () => {
+                mobileNav.classList.add('show');
+            });
+            
+            closeNav.addEventListener('click', () => {
+                mobileNav.classList.remove('show');
+            });
+        }
+
+        // Setup cart and wishlist functionality
+        function setupCartWishlist() {
+            cartIcon.addEventListener('click', () => {
+                cartItems++;
+                cartCount.textContent = cartItems;
+            });
+            
+            wishlistIcon.addEventListener('click', () => {
+                wishlistItems++;
+                wishlistCount.textContent = wishlistItems;
+            });
+        }
+
+        // Setup pagination
+        function setupPagination() {
+            pageBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    pageBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Update current page
+                    currentPage = parseInt(btn.getAttribute('data-page'));
+                    
+                    // Re-render blog posts
+                    renderBlogPosts();
+                    
+                    // Scroll to top of blog section
+                    document.querySelector('.blog-section').scrollIntoView({ behavior: 'smooth' });
+                });
             });
         }
     </script>
