@@ -18,9 +18,10 @@
             --neutral: #ffffff;
             --text: #2c2c2c;
             --dark-text: #1a1a1a;
-            --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --border-radius: 16px;
+            --border-radius: 0;
         }
 
         * {
@@ -62,7 +63,7 @@
             align-items: center;
             justify-content: center;
             padding: 16px 40px;
-            border-radius: 50px;
+            border-radius: 0;
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
@@ -79,12 +80,17 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--accent) 0%, #c98bb3 100%);
             color: var(--neutral);
-            box-shadow: 0 15px 30px rgba(224, 164, 200, 0.3);
+            box-shadow: var(--shadow);
+            position: relative;
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(224, 164, 200, 0.4);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-2px) scale(0.98);
         }
 
         .section-title {
@@ -111,9 +117,9 @@
             left: 50%;
             transform: translateX(-50%);
             width: 100px;
-            height: 4px;
+            height: 3px;
             background: var(--gold);
-            border-radius: 2px;
+            border-radius: 0;
         }
 
         /* ===== HEADER ===== */
@@ -128,6 +134,7 @@
             background-color: rgba(255, 248, 245, 0.95);
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         header.scrolled {
@@ -186,6 +193,7 @@
             transition: var(--transition);
             position: relative;
             padding: 8px 0;
+            letter-spacing: 0.5px;
         }
 
         .nav-links a::after {
@@ -232,7 +240,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
+            border-radius: 0;
         }
 
         .header-icon:hover {
@@ -246,7 +254,7 @@
             right: -6px;
             background: var(--accent);
             color: var(--neutral);
-            border-radius: 50%;
+            border-radius: 0;
             width: 22px;
             height: 22px;
             display: flex;
@@ -264,6 +272,7 @@
             overflow: hidden;
             display: flex;
             align-items: center;
+            margin-top: 80px;
         }
 
         .hero::before {
@@ -319,6 +328,7 @@
             line-height: 1.1;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             animation: fadeInUp 1s ease-out;
+            letter-spacing: -1.5px;
         }
 
         .hero-content p {
@@ -329,6 +339,7 @@
             font-weight: 400;
             animation: fadeInUp 1s ease-out 0.2s forwards;
             opacity: 0;
+            letter-spacing: 0.2px;
         }
 
         .hero-content .btn {
@@ -382,7 +393,7 @@
         .trust-icon {
             width: 70px;
             height: 70px;
-            border-radius: 50%;
+            border-radius: 0;
             background: var(--neutral);
             display: flex;
             align-items: center;
@@ -404,6 +415,7 @@
             font-weight: 600;
             text-align: center;
             max-width: 180px;
+            letter-spacing: 0.3px;
         }
 
         /* ===== FILTER TAGS ===== */
@@ -417,7 +429,7 @@
 
         .filter-tag {
             padding: 10px 28px;
-            border-radius: 50px;
+            border-radius: 0;
             background: var(--neutral);
             color: var(--dark-text);
             font-size: 1rem;
@@ -425,13 +437,14 @@
             cursor: default;
             transition: var(--transition);
             border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            box-shadow: var(--shadow);
+            letter-spacing: 0.5px;
         }
 
         .filter-tag:hover {
             border-color: var(--gold);
             transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow-hover);
         }
 
         /* ===== PRODUCT GALLERY ===== */
@@ -456,7 +469,7 @@
 
         .product-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+            box-shadow: var(--shadow-hover);
         }
 
         .product-image {
@@ -472,8 +485,8 @@
         .product-image img {
             max-width: 80%;
             max-height: 80%;
-            object-fit: contain;
-            transition: var(--transition);
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .product-card:hover .product-image img {
@@ -492,15 +505,16 @@
             font-size: 1.3rem;
             margin-bottom: 12px;
             color: var(--dark-text);
-            font-weight: 600;
+            font-weight: 700;
             min-height: 64px;
+            letter-spacing: -0.2px;
         }
 
         .product-price {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--dark-text);
-            margin: 10px 0 15px;
+            margin: 10px 0 5px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -509,6 +523,14 @@
         .product-price::before {
             content: '₦';
             font-size: 1.3rem;
+        }
+
+        .product-microcopy {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 15px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
         }
 
         .availability {
@@ -538,7 +560,7 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 0;
             font-size: 0.95rem;
             display: flex;
             align-items: center;
@@ -574,13 +596,17 @@
             border-color: var(--dark-text);
         }
 
+        .btn-add-cart:active, .btn-view-details:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
         .wishlist-btn {
             position: absolute;
             top: 20px;
             right: 20px;
             width: 46px;
             height: 46px;
-            border-radius: 50%;
+            border-radius: 0;
             background: rgba(255, 255, 255, 0.9);
             display: flex;
             align-items: center;
@@ -605,13 +631,14 @@
             top: 20px;
             left: 20px;
             padding: 8px 18px;
-            border-radius: 30px;
+            border-radius: 0;
             background: var(--gold);
             color: var(--neutral);
             font-size: 0.85rem;
             font-weight: 600;
             z-index: 2;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            letter-spacing: 0.5px;
         }
 
         .product-rating {
@@ -649,7 +676,7 @@
         }
 
         .modal {
-            background: var(--neutral);
+            background: rgba(255, 255, 255, 0.9);
             width: 90%;
             max-width: 1000px;
             max-height: 90vh;
@@ -660,6 +687,8 @@
             transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border-radius: var(--border-radius);
             box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .modal-overlay.active .modal {
@@ -673,7 +702,7 @@
             right: 25px;
             width: 46px;
             height: 46px;
-            border-radius: 50%;
+            border-radius: 0;
             background: var(--dark-text);
             color: var(--neutral);
             display: flex;
@@ -777,7 +806,7 @@
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
-            border-radius: 8px;
+            border-radius: 0;
             color: var(--dark-text);
             font-weight: 500;
             background: var(--neutral);
@@ -889,7 +918,7 @@
         .page-btn {
             width: 50px;
             height: 50px;
-            border-radius: 50%;
+            border-radius: 0;
             border: 1px solid rgba(0,0,0,0.1);
             background: var(--neutral);
             display: flex;
@@ -913,7 +942,7 @@
         /* ===== TOAST MESSAGES ===== */
         .toast-container {
             position: fixed;
-            bottom: 40px;
+            top: 40px;
             right: 40px;
             z-index: 1100;
         }
@@ -922,7 +951,7 @@
             padding: 18px 24px;
             background: var(--accent);
             color: var(--neutral);
-            border-radius: var(--border-radius);
+            border-radius: 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             margin-bottom: 20px;
             transform: translateX(100px);
@@ -932,6 +961,8 @@
             align-items: center;
             max-width: 380px;
             border-left: 4px solid var(--gold);
+            position: relative;
+            overflow: hidden;
         }
 
         .toast.show {
@@ -995,7 +1026,7 @@
             cursor: pointer;
             width: 46px;
             height: 46px;
-            border-radius: 50%;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1028,7 +1059,7 @@
         .cart-item-image {
             width: 90px;
             height: 90px;
-            border-radius: 12px;
+            border-radius: 0;
             overflow: hidden;
             margin-right: 20px;
             background: #f8f8f8;
@@ -1077,7 +1108,7 @@
         .cart-item-quantity button {
             width: 32px;
             height: 32px;
-            border-radius: 50%;
+            border-radius: 0;
             border: 1px solid rgba(0,0,0,0.1);
             background: var(--neutral);
             display: flex;
@@ -1112,7 +1143,7 @@
             transition: var(--transition);
             width: 40px;
             height: 40px;
-            border-radius: 50%;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1145,7 +1176,7 @@
             color: var(--neutral);
             border: none;
             padding: 16px;
-            border-radius: 50px;
+            border-radius: 0;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
@@ -1172,7 +1203,7 @@
             right: 35px;
             width: 70px;
             height: 70px;
-            border-radius: 50%;
+            border-radius: 0;
             background: #25d366;
             color: var(--neutral);
             display: flex;
@@ -1201,7 +1232,7 @@
             right: 35px;
             width: 70px;
             height: 70px;
-            border-radius: 50%;
+            border-radius: 0;
             background: linear-gradient(135deg, var(--accent) 0%, #c98bb3 100%);
             color: var(--neutral);
             display: flex;
@@ -1239,7 +1270,7 @@
             position: fixed;
             width: 50px;
             height: 50px;
-            border-radius: 50%;
+            border-radius: 0;
             overflow: hidden;
             z-index: 1000;
             pointer-events: none;
@@ -1298,7 +1329,7 @@
             cursor: pointer;
             width: 46px;
             height: 46px;
-            border-radius: 50%;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1387,7 +1418,7 @@
             cursor: pointer;
             width: 46px;
             height: 46px;
-            border-radius: 50%;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1420,7 +1451,7 @@
         .wishlist-item-image {
             width: 90px;
             height: 90px;
-            border-radius: 12px;
+            border-radius: 0;
             overflow: hidden;
             margin-right: 20px;
             background: #f8f8f8;
@@ -1469,7 +1500,7 @@
             transition: var(--transition);
             width: 40px;
             height: 40px;
-            border-radius: 50%;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1543,7 +1574,7 @@
             justify-content: center;
             width: 50px;
             height: 50px;
-            border-radius: 50%;
+            border-radius: 0;
             background: var(--neutral);
             color: var(--accent);
             transition: var(--transition);
@@ -1624,6 +1655,27 @@
             font-weight: 600;
             margin-bottom: 10px;
             font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== WISHLIST EMOJI ANIMATION ===== */
+        .wishlist-emoji {
+            position: fixed;
+            font-size: 1.5rem;
+            z-index: 1001;
+            pointer-events: none;
+            animation: floatUp 1.5s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px) scale(1.5);
+            }
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
@@ -1728,7 +1780,7 @@
             }
             
             .toast-container {
-                bottom: 20px;
+                top: 20px;
                 right: 20px;
                 left: 20px;
                 width: auto;
@@ -2032,6 +2084,9 @@
         // Badges for products
         const badges = ["💖 Glow Booster", "🔥 Hot Pick", "🏆 Bestseller", "✨ New Arrival", "💎 Premium"];
 
+        // Microcopy options
+        const microcopy = ["Wholesale Friendly ✨", "Bulk Discounts Available", "Best Seller", "Limited Stock", "Premium Edition"];
+
         // Initialize variables
         let currentPage = 1;
         const itemsPerPage = 12;
@@ -2179,19 +2234,22 @@
             productsGrid.innerHTML = '';
             
             // Add products to the grid
-            paginatedProducts.forEach(product => {
+            paginatedProducts.forEach((product, index) => {
                 // Select a random badge
                 const randomBadge = badges[Math.floor(Math.random() * badges.length)];
+                // Select random microcopy
+                const randomMicrocopy = microcopy[Math.floor(Math.random() * microcopy.length)];
                 // Generate random rating (4-5 stars)
                 const rating = Math.floor(Math.random() * 2) + 4; // 4 or 5
                 
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 productCard.setAttribute('data-aos', 'fade-up');
+                productCard.setAttribute('data-aos-delay', index * 50);
                 productCard.innerHTML = `
                     <div class="product-image">
                         <img src="assets/images/${product.image}" alt="${product.name}" loading="lazy">
-                        <div class="product-badge">${randomBadge}</div>
+                        <div class="product-badge" data-aos="fade-down">${randomBadge}</div>
                         <button class="wishlist-btn ${wishlist.some(item => item.id === product.id) ? 'active' : ''}" data-id="${product.id}">
                             <i class="fas fa-heart"></i>
                         </button>
@@ -2199,6 +2257,7 @@
                     <div class="product-info">
                         <h3 class="product-title">${product.name}</h3>
                         <div class="product-price">${product.price.toLocaleString()}</div>
+                        <div class="product-microcopy">${randomMicrocopy}</div>
                         <div class="product-rating">
                             ${'<i class="fas fa-star"></i>'.repeat(rating)}
                         </div>
@@ -2324,6 +2383,7 @@
                         addToWishlist(product);
                         this.classList.add('active');
                         showNotification(`💖 ${product.name} added to wishlist!`);
+                        createWishlistEmoji(this);
                     }
                 });
             });
@@ -2358,6 +2418,26 @@
                 flyElement.remove();
             }, 800);
         }
+        
+        // Create wishlist emoji animation
+        function createWishlistEmoji(button) {
+            const buttonRect = button.getBoundingClientRect();
+            
+            const emoji = document.createElement('div');
+            emoji.className = 'wishlist-emoji';
+            emoji.textContent = '❤️';
+            
+            // Position at button
+            emoji.style.left = `${buttonRect.left + buttonRect.width/2}px`;
+            emoji.style.top = `${buttonRect.top + buttonRect.height/2}px`;
+            
+            document.body.appendChild(emoji);
+            
+            // Remove after animation
+            setTimeout(() => {
+                emoji.remove();
+            }, 1500);
+        }
 
         function openProductModal(product) {
             // Get 3-5 random reviews
@@ -2369,6 +2449,8 @@
             
             // Select a random badge
             const randomBadge = badges[Math.floor(Math.random() * badges.length)];
+            // Select random microcopy
+            const randomMicrocopy = microcopy[Math.floor(Math.random() * microcopy.length)];
             // Generate random rating (4-5 stars)
             const rating = Math.floor(Math.random() * 2) + 4; // 4 or 5
             
@@ -2380,6 +2462,7 @@
                     <h3 class="modal-title">${product.name}</h3>
                     <div class="modal-price">${product.price.toLocaleString()}</div>
                     <div class="product-badge">${randomBadge}</div>
+                    <div class="product-microcopy">${randomMicrocopy}</div>
                     <div class="product-rating">
                         ${'<i class="fas fa-star"></i>'.repeat(rating)}
                     </div>
@@ -2415,7 +2498,7 @@
                             <div class="review">
                                 <div class="review-header">
                                     <div class="review-user">${review.user}</div>
-                                    <div class="review-stars">${'⭐'.repeat(review.rating)}</div>
+                                    <div class="review-stars">${'<i class="fas fa-star"></i>'.repeat(review.rating)}${'<i class="far fa-star"></i>'.repeat(5 - review.rating)}</div>
                                 </div>
                                 <p class="review-text">"${review.text}"</p>
                             </div>
@@ -2429,7 +2512,7 @@
                                     <div class="review">
                                         <div class="review-header">
                                             <div class="review-user">${review.user}</div>
-                                            <div class="review-stars">${'⭐'.repeat(review.rating)}</div>
+                                            <div class="review-stars">${'<i class="fas fa-star"></i>'.repeat(review.rating)}${'<i class="far fa-star"></i>'.repeat(5 - review.rating)}</div>
                                         </div>
                                         <p class="review-text">"${review.text}"</p>
                                     </div>
@@ -2484,6 +2567,7 @@
                         addToWishlist(product);
                         this.classList.add('active');
                         showNotification(`💖 ${product.name} added to wishlist!`);
+                        createWishlistEmoji(this);
                     }
                 });
             });
