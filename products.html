@@ -20,7 +20,7 @@
             --dark-text: #1a1a1a;
             --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --border-radius: 12px;
+            --border-radius: 16px;
         }
 
         * {
@@ -85,23 +85,6 @@
         .btn-primary:hover {
             transform: translateY(-5px) scale(1.03);
             box-shadow: 0 20px 40px rgba(224, 164, 200, 0.4);
-        }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #c98bb3 0%, var(--accent) 100%);
-            opacity: 0;
-            z-index: -1;
-            transition: var(--transition);
-        }
-
-        .btn-primary:hover::after {
-            opacity: 1;
         }
 
         .section-title {
@@ -477,7 +460,7 @@
         }
 
         .product-image {
-            height: 340px;
+            height: 280px;
             overflow: hidden;
             position: relative;
             background: #f8f8f8;
@@ -487,11 +470,10 @@
         }
 
         .product-image img {
-            width: 100%;
-            height: 100%;
+            max-width: 80%;
+            max-height: 80%;
             object-fit: contain;
             transition: var(--transition);
-            padding: 30px;
         }
 
         .product-card:hover .product-image img {
@@ -728,8 +710,8 @@
         }
 
         .modal-image img {
-            width: 80%;
-            height: 80%;
+            max-width: 80%;
+            max-height: 80%;
             object-fit: contain;
             transition: transform 0.8s ease;
         }
@@ -1056,8 +1038,8 @@
         }
 
         .cart-item-image img {
-            width: 80%;
-            height: 80%;
+            max-width: 80%;
+            max-height: 80%;
             object-fit: contain;
         }
 
@@ -1448,8 +1430,8 @@
         }
 
         .wishlist-item-image img {
-            width: 80%;
-            height: 80%;
+            max-width: 80%;
+            max-height: 80%;
             object-fit: contain;
         }
 
@@ -1721,6 +1703,10 @@
                 justify-content: flex-start;
                 gap: 12px;
             }
+            
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1759,11 +1745,6 @@
             
             .logo {
                 font-size: 2.2rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
             }
             
             .cart-float, .whatsapp-float {
@@ -1851,11 +1832,11 @@
     <!-- Hero Section with Slideshow -->
     <section class="hero">
         <div class="hero-slideshow">
-            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1599640842225-85d111c60e6b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1620916566398-301fccf4667d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1595425977377-4a6c6f0a3a3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1571781418606-70265b9cce90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');"></div>
+            <div class="slide active" style="background-image: url('assets/images/hero1.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/images/hero2.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/images/hero3.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/images/hero4.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/images/hero5.jpg');"></div>
         </div>
         <div class="container hero-content">
             <h1>Glow Up, Wholesale Style</h1>
@@ -2005,47 +1986,47 @@
 
         // Product data
         const products = [
-            { id: 1, name: "Brush Cleaner", price: 8000, image: "brush-cleaner.jpg" },
-            { id: 2, name: "Citrus Sorbet Hand Cream and Lip Balm", price: 10000, image: "citrus-sorbet.jpg" },
-            { id: 3, name: "CityScape Eau de Parfum", price: 110000, image: "cityscape-perfume.jpg" },
-            { id: 4, name: "Clear Proof Oil-Free Moisturizer", price: 22000, image: "clear-proof-moisturizer.jpg" },
-            { id: 5, name: "Clear Proof Blemish Control Toner", price: 22000, image: "clear-proof-toner.jpg" },
-            { id: 6, name: "Elige Eau de Parfum", price: 80000, image: "elige-perfume.jpg" },
-            { id: 7, name: "Forever Diamonds Eau de Parfum", price: 70000, image: "forever-diamonds.jpg" },
-            { id: 8, name: "Gel Cream Blush", price: 12000, image: "gel-cream-blush.jpg" },
-            { id: 9, name: "Hands Protecting Softener Satin", price: 45000, image: "hands-softener.jpg" },
-            { id: 10, name: "Highlight and Contour Sponge", price: 8000, image: "contour-sponge.jpg" },
-            { id: 11, name: "If You Believe Eau de toilette", price: 60000, image: "if-you-believe.jpg" },
-            { id: 12, name: "Illuminea Dreams Eau de Parfum", price: 120000, image: "illuminea-dreams.jpg" },
-            { id: 13, name: "Lash and Brow Building Serum", price: 10000, image: "lash-brow-serum.jpg" },
-            { id: 14, name: "Lip and Eye Liner", price: 5000, image: "lip-eye-liner.jpg" },
-            { id: 15, name: "Lipgloss", price: 14000, image: "lipgloss.jpg" },
-            { id: 16, name: "Lipstick", price: 16000, image: "lipstick.jpg" },
-            { id: 17, name: "Live Fearlessly Eau de Parfum", price: 72000, image: "live-fearlessly.jpg" },
-            { id: 18, name: "MK High Intensity Cologne Spray", price: 70000, image: "mk-cologne.jpg" },
-            { id: 19, name: "Mary Kay CC Cream Sunscreen", price: 25000, image: "cc-cream.jpg" },
-            { id: 20, name: "Mary Kay Foundation Primer", price: 25000, image: "foundation-primer.jpg" },
-            { id: 21, name: "Mary Kay Lash Love Mascara", price: 12000, image: "mascara.jpg" },
-            { id: 22, name: "Mary Kay Perfecting Concealer", price: 25000, image: "concealer.jpg" },
-            { id: 23, name: "Mary Kay Timewise 3D Foundation", price: 35000, image: "foundation.jpg" },
-            { id: 24, name: "Mary Kay Timewise Deep Cleansing Charcoal Mask", price: 28000, image: "charcoal-mask.jpg" },
-            { id: 25, name: "Mary Kay Timewise Targeted Toning Body Lotion", price: 54000, image: "toning-lotion.jpg" },
-            { id: 26, name: "Mary Kay Ultimate Mascara", price: 15000, image: "ultimate-mascara.jpg" },
-            { id: 27, name: "Mary Kay White Tea and Citrus Satin Body", price: 35000, image: "white-tea-body.jpg" },
-            { id: 28, name: "Mary Kay Essential Brush Collection", price: 75000, image: "brush-collection.jpg" },
-            { id: 29, name: "Mary Kay Illuminea Body Souffle", price: 54000, image: "body-souffle.jpg" },
-            { id: 30, name: "Mary Kay Silky Setting Powder", price: 12000, image: "setting-powder.jpg" },
-            { id: 31, name: "Mary Kay Clearproof Clarifying Cleanser", price: 22000, image: "clarifying-cleanser.jpg" },
-            { id: 32, name: "Mary Kay Silkening Dry Oil", price: 28000, image: "dry-oil.jpg" },
-            { id: 33, name: "Nourishing Shea Cream", price: 10000, image: "shea-cream.jpg" },
-            { id: 34, name: "Oil Free Makeup Remover", price: 12000, image: "makeup-remover.jpg" },
-            { id: 35, name: "Shea Hand Soap", price: 8000, image: "hand-soap.jpg" },
-            { id: 36, name: "Thinking of Love Eau de Parfum", price: 50000, image: "thinking-of-love.jpg" },
-            { id: 37, name: "TimeWise 3-In-1 Cleansing Bar", price: 39000, image: "cleansing-bar.jpg" },
-            { id: 38, name: "White Tea & Citrus Satin Body Indulgent Shea Wash", price: 25000, image: "shea-wash.jpg" },
-            { id: 39, name: "White Tea & Citrus Satin Body Revitalizing Shea Scrub", price: 25000, image: "shea-scrub.jpg" },
-            { id: 40, name: "White Tea & Citrus Satin Body Silkening Shea Lotion", price: 22000, image: "shea-lotion.jpg" },
-            { id: 41, name: "Illuminea Extrait De Parfum", price: 120000, image: "illuminea-extrait.jpg" }
+            { id: 1, name: "Brush Cleaner", price: 8000, image: "Brush-Cleaner-8000.jpg" },
+            { id: 2, name: "Citrus Sorbet Hand Cream and Lip Balm", price: 10000, image: "Citrus-Sorbet-Hand-Cream-and-Lip-Balm-10000.jpg" },
+            { id: 3, name: "CityScape Eau de Parfum", price: 110000, image: "CityScape-Eau-de-Parfum-110000.jpg" },
+            { id: 4, name: "Clear Proof Oil-Free Moisturizer", price: 22000, image: "Clear-Proof®-Oil-Free-Moisturizer-for Acne-Prone-Skin-22000.jpg" },
+            { id: 5, name: "Clear Proof Blemish Control Toner", price: 22000, image: "Clear-Proof®-Blemish-Control-Toner-22000.jpg" },
+            { id: 6, name: "Elige Eau de Parfum", price: 80000, image: "Elige-Eau-de-Parfum-80000.jpg" },
+            { id: 7, name: "Forever Diamonds Eau de Parfum", price: 70000, image: "Forever-Diamonds®-Eau-de-Parfum-70000.jpg" },
+            { id: 8, name: "Gel Cream Blush", price: 12000, image: "Gel-Cream-Blush-12000.jpg" },
+            { id: 9, name: "Hands Protecting Softener Satin", price: 45000, image: "Hands®-Protecting-Softener-Satin-45000.jpg" },
+            { id: 10, name: "Highlight and Contour Sponge", price: 8000, image: "Highlight-and-Contour-Sponge-8000.jpg" },
+            { id: 11, name: "If You Believe Eau de toilette", price: 60000, image: "If-You-Believe-Eau-de-toilette-60000.jpg" },
+            { id: 12, name: "Illuminea Dreams Eau de Parfum", price: 120000, image: "Illuminea-Dreams-Eau-de-Parfum-120000.jpg" },
+            { id: 13, name: "Lash and Brow Building Serum", price: 10000, image: "Lash-and-Brow-Building-Serum-10000.jpg" },
+            { id: 14, name: "Lip and Eye Liner", price: 5000, image: "Lip-and-eye-liner-5000.jpg" },
+            { id: 15, name: "Lipgloss", price: 14000, image: "Lipgloss-14000.jpg" },
+            { id: 16, name: "Lipstick", price: 16000, image: "Lipstick-16000.jpg" },
+            { id: 17, name: "Live Fearlessly Eau de Parfum", price: 72000, image: "Live-Fearlessly®-Eau-de-Parfum-72000.jpg" },
+            { id: 18, name: "MK High Intensity Cologne Spray", price: 70000, image: "MK-High-Intensity®-Cologne-Spray-70000.jpg" },
+            { id: 19, name: "Mary Kay CC Cream Sunscreen", price: 25000, image: "Mary-Kay®-CC-Cream-Sunscreen-Broad-Spectrum-25000.jpg" },
+            { id: 20, name: "Mary Kay Foundation Primer", price: 25000, image: "Mary-Kay-Foundation-Primer-Sunscreen-25000.jpg" },
+            { id: 21, name: "Mary Kay Lash Love Mascara", price: 12000, image: "Mary-Kay-Lash-Love-Mascara-12000.jpg" },
+            { id: 22, name: "Mary Kay Perfecting Concealer", price: 25000, image: "Mary-Kay-Perfecting-Concealer-25000.jpg" },
+            { id: 23, name: "Mary Kay Timewise 3D Foundation", price: 35000, image: "Mary-Kay-Timewise-3d-foundation-35000.jpg" },
+            { id: 24, name: "Mary Kay Timewise Deep Cleansing Charcoal Mask", price: 28000, image: "Mary-Kay-Timewise-Deep-Cleansing Charcoal-mask-28000.jpg" },
+            { id: 25, name: "Mary Kay Timewise Targeted Toning Body Lotion", price: 54000, image: "Mary-Kay-Timewise-Targeted-Toning-Body-Lotion-54000.jpg" },
+            { id: 26, name: "Mary Kay Ultimate Mascara", price: 15000, image: "Mary-Kay-Ultimate-Mascara-15000.jpg" },
+            { id: 27, name: "Mary Kay White Tea and Citrus Satin Body", price: 35000, image: "Mary-Kay-White-Tea-and-Citrus-Satin-Body-35000.jpg" },
+            { id: 28, name: "Mary Kay Essential Brush Collection", price: 75000, image: "Mary-Kay-essential-Brush-Collection-75000.jpg" },
+            { id: 29, name: "Mary Kay Illuminea Body Souffle", price: 54000, image: "Mary-Kay-illuminea-Body-Souffle-54000.jpg" },
+            { id: 30, name: "Mary Kay Silky Setting Powder", price: 12000, image: "Mary-Kay®-Silky-Setting-Powder-12000.jpg" },
+            { id: 31, name: "Mary Kay Clearproof Clarifying Cleanser", price: 22000, image: "Mary-kay-Clearproof-Clarifying-cleanser-22000.jpg" },
+            { id: 32, name: "Mary Kay Silkening Dry Oil", price: 28000, image: "Mary-kay-Silkening-Dry-Oil-28000.jpg" },
+            { id: 33, name: "Nourishing Shea Cream", price: 10000, image: "Nourishing-Shea-cream-10000.jpg" },
+            { id: 34, name: "Oil Free Makeup Remover", price: 12000, image: "Oil-free-Makeup-Remover-12000.jpg" },
+            { id: 35, name: "Shea Hand Soap", price: 8000, image: "Shea-hand-soap-8000.jpg" },
+            { id: 36, name: "Thinking of Love Eau de Parfum", price: 50000, image: "Thinking-of-Love-Eau-de-Parfum-50000.jpg" },
+            { id: 37, name: "TimeWise 3-In-1 Cleansing Bar", price: 39000, image: "TimeWise®-3-In-1-Cleansing-Bar-(with-soap-dish)-39000.jpg" },
+            { id: 38, name: "White Tea & Citrus Satin Body Indulgent Shea Wash", price: 25000, image: "White-Tea-&-Citrus-Satin-Body®-Indulgent-Shea-Wash-25000.jpg" },
+            { id: 39, name: "White Tea & Citrus Satin Body Revitalizing Shea Scrub", price: 25000, image: "White-Tea-&-Citrus-Satin-Body®-Revitalizing-Shea-Scrub-25000.jpg" },
+            { id: 40, name: "White Tea & Citrus Satin Body Silkening Shea Lotion", price: 22000, image: "White-Tea-&-Citrus-Satin-Body®-Silkening-Shea-Lotion-22000.jpg" },
+            { id: 41, name: "Illuminea Extrait De Parfum", price: 120000, image: "illuminea-Extrait®-De-Parfum-120000.jpg" }
         ];
 
         // Badges for products
@@ -2209,7 +2190,7 @@
                 productCard.setAttribute('data-aos', 'fade-up');
                 productCard.innerHTML = `
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80" alt="${product.name}" loading="lazy">
+                        <img src="assets/images/${product.image}" alt="${product.name}" loading="lazy">
                         <div class="product-badge">${randomBadge}</div>
                         <button class="wishlist-btn ${wishlist.some(item => item.id === product.id) ? 'active' : ''}" data-id="${product.id}">
                             <i class="fas fa-heart"></i>
@@ -2356,7 +2337,7 @@
             // Create flying element
             const flyElement = document.createElement('div');
             flyElement.className = 'fly-to-cart';
-            flyElement.innerHTML = `<img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80" alt="Flying product">`;
+            flyElement.innerHTML = `<img src="assets/images/${imageSrc}" alt="Flying product">`;
             
             // Calculate positions
             const startX = buttonRect.left + buttonRect.width/2;
@@ -2393,7 +2374,7 @@
             
             modalContent.innerHTML = `
                 <div class="modal-image">
-                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80" alt="${product.name}">
+                    <img src="assets/images/${product.image}" alt="${product.name}">
                 </div>
                 <div class="modal-details">
                     <h3 class="modal-title">${product.name}</h3>
@@ -2588,7 +2569,7 @@
                 wishlistItem.className = 'wishlist-item';
                 wishlistItem.innerHTML = `
                     <div class="wishlist-item-image">
-                        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80" alt="${item.name}">
+                        <img src="assets/images/${item.image}" alt="${item.name}">
                     </div>
                     <div class="wishlist-item-details">
                         <div class="wishlist-item-name">${item.name}</div>
@@ -2668,7 +2649,7 @@
                 cartItem.className = 'cart-item';
                 cartItem.innerHTML = `
                     <div class="cart-item-image">
-                        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80" alt="${item.name}">
+                        <img src="assets/images/${item.image}" alt="${item.name}">
                     </div>
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
