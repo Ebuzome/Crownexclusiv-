@@ -1,1562 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CrownExclusiv | Premium Beauty Blog</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <style>
-        /* === GLOBAL STYLES === */
-        :root {
-            --base: #fff8f5;
-            --primary: #e0a4c8;
-            --accent: #b03060;
-            --gold: #c9a94d;
-            --neutral: #ffffff;
-            --text: #2c2c2c;
-            --light-text: #777;
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            --transition: all 0.4s ease;
-            --card-radius: 16px;
-            --section-padding: 8rem 0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text);
-            background-color: var(--base);
-            overflow-x: hidden;
-            line-height: 1.7;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            line-height: 1.2;
-            letter-spacing: -0.5px;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section {
-            padding: var(--section-padding);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            text-align: center;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: var(--neutral);
-            box-shadow: 0 10px 20px rgba(176, 48, 96, 0.25);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(176, 48, 96, 0.35);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 5rem;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 3.2rem;
-            display: inline-block;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--gold);
-            border-radius: 2px;
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.5rem 0;
-            transition: var(--transition);
-            background: rgba(255, 248, 245, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo span {
-            color: var(--gold);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--text);
-            cursor: pointer;
-            z-index: 2000;
-        }
-
-        /* Mobile menu styles */
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 248, 245, 0.98);
-            z-index: 1500;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: all 0.5s ease;
-        }
-
-        .mobile-nav.show {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .mobile-nav-links {
-            list-style: none;
-            text-align: center;
-        }
-
-        .mobile-nav-links li {
-            margin: 25px 0;
-        }
-
-        .mobile-nav-links a {
-            font-size: 1.8rem;
-            color: var(--text);
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        .mobile-nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .close-nav {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            font-size: 2.5rem;
-            cursor: pointer;
-            color: var(--text);
-            transition: var(--transition);
-        }
-
-        .close-nav:hover {
-            color: var(--accent);
-            transform: rotate(90deg);
-        }
-
-        /* ===== BLOG HERO SECTION ===== */
-        .blog-hero {
-            height: 85vh;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--neutral);
-            margin-top: 0;
-            padding: 0 20px;
-        }
-
-        .blog-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
-            background-size: 100px;
-            opacity: 0.3;
-        }
-
-        .blog-hero-content {
-            position: relative;
-            z-index: 3;
-            width: 90%;
-            max-width: 900px;
-        }
-
-        .blog-hero-content h1 {
-            font-size: 4.2rem;
-            margin-bottom: 1.8rem;
-            line-height: 1.1;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
-        }
-
-        .blog-hero-content p {
-            font-size: 1.8rem;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-            font-weight: 300;
-        }
-
-        /* ===== BLOG GRID ===== */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .blog-card {
-            background: var(--neutral);
-            border-radius: var(--card-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .blog-image {
-            height: 280px;
-            overflow: hidden;
-            position: relative;
-            background: #f8f8f8;
-        }
-
-        .blog-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .blog-card:hover .blog-image img {
-            transform: scale(1.08);
-        }
-
-        .blog-content {
-            padding: 30px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .blog-tag {
-            background: var(--accent);
-            color: var(--neutral);
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            display: inline-block;
-            margin-bottom: 20px;
-            align-self: flex-start;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .blog-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--text);
-            font-weight: 700;
-        }
-
-        .blog-excerpt {
-            color: var(--light-text);
-            margin-bottom: 25px;
-            flex-grow: 1;
-            font-size: 1.05rem;
-        }
-
-        .blog-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            color: var(--light-text);
-            font-size: 0.95rem;
-        }
-
-        .blog-date {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .blog-read-more {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 10px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .blog-read-more:hover {
-            background: var(--accent);
-            color: var(--neutral);
-        }
-
-        /* ===== BLOG POST PAGE ===== */
-        .blog-post-container {
-            max-width: 900px;
-            margin: 120px auto 60px;
-            padding: 0 20px;
-            display: none;
-        }
-
-        .back-to-blog {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 40px;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-
-        .back-to-blog:hover {
-            transform: translateX(-5px);
-            gap: 15px;
-        }
-
-        .blog-post-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .blog-post-title {
-            font-size: 3.2rem;
-            margin-bottom: 25px;
-            color: var(--text);
-            line-height: 1.2;
-        }
-
-        .blog-post-meta {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            color: var(--light-text);
-            font-size: 1.1rem;
-        }
-
-        .blog-post-image {
-            height: 500px;
-            border-radius: var(--card-radius);
-            overflow: hidden;
-            margin: 50px 0;
-            box-shadow: var(--shadow);
-        }
-
-        .blog-post-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .blog-post-image:hover img {
-            transform: scale(1.03);
-        }
-
-        .blog-post-content {
-            color: var(--text);
-            line-height: 1.9;
-            font-size: 1.15rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .blog-post-content p {
-            margin-bottom: 30px;
-        }
-
-        .blog-post-content h3 {
-            font-size: 1.9rem;
-            margin: 50px 0 25px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--gold);
-            display: inline-block;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .blog-post-actions {
-            display: flex;
-            gap: 15px;
-            margin: 50px 0;
-            justify-content: center;
-        }
-
-        .action-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 30px;
-            border-radius: 50px;
-            background: var(--neutral);
-            border: 1px solid #e0e0e0;
-            cursor: pointer;
-            transition: var(--transition);
-            color: var(--text);
-            font-weight: 600;
-            font-size: 1.05rem;
-            box-shadow: var(--shadow);
-        }
-
-        .action-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .action-btn.liked {
-            color: #e74c3c;
-        }
-
-        .action-btn.liked i {
-            color: #e74c3c;
-        }
-
-        .action-btn i {
-            transition: var(--transition);
-            font-size: 1.2rem;
-        }
-
-        .action-btn:hover i {
-            transform: scale(1.2);
-        }
-
-        .comments-section {
-            margin-top: 70px;
-            border-top: 1px solid #e0e0e0;
-            padding-top: 50px;
-        }
-
-        .comments-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .comments-title {
-            font-size: 2rem;
-            color: var(--text);
-        }
-
-        .comments-count {
-            background: var(--accent);
-            color: var(--neutral);
-            border-radius: 30px;
-            padding: 8px 20px;
-            font-weight: 600;
-        }
-
-        .comment-list {
-            margin-bottom: 30px;
-        }
-
-        .comment {
-            display: flex;
-            gap: 25px;
-            margin-bottom: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .comment:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .comment-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--neutral);
-            font-weight: bold;
-            font-size: 1.8rem;
-            flex-shrink: 0;
-        }
-
-        .comment-content {
-            flex-grow: 1;
-        }
-
-        .comment-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            align-items: center;
-        }
-
-        .comment-user {
-            font-weight: 700;
-            color: var(--text);
-            font-size: 1.2rem;
-        }
-
-        .comment-time {
-            color: var(--light-text);
-            font-size: 0.95rem;
-        }
-
-        .comment-text {
-            color: var(--text);
-            line-height: 1.7;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
-
-        .comment-actions {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .comment-action {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--light-text);
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .comment-action:hover {
-            color: var(--accent);
-        }
-
-        .view-more-comments {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 15px;
-            background: var(--neutral);
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            margin: 30px 0;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .view-more-comments:hover {
-            background: #f9f9f9;
-            transform: translateY(-3px);
-        }
-
-        .add-comment {
-            margin-top: 50px;
-            background: var(--neutral);
-            padding: 40px;
-            border-radius: var(--card-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .add-comment h3 {
-            margin-bottom: 25px;
-            color: var(--text);
-            font-size: 1.8rem;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 16px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            background: var(--neutral);
-            color: var(--text);
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--accent);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(176, 48, 96, 0.1);
-        }
-
-        .comment-form textarea {
-            height: 180px;
-            resize: vertical;
-        }
-
-        .submit-comment {
-            background: var(--accent);
-            color: var(--neutral);
-            border: none;
-            padding: 16px 35px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: var(--transition);
-            font-size: 1.1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .submit-comment:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(176, 48, 96, 0.3);
-        }
-
-        /* ===== FLOATING CTA ===== */
-        .floating-cta {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: var(--neutral);
-            border-radius: 50px;
-            padding: 18px 30px;
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            z-index: 100;
-            transition: var(--transition);
-            border: 1px solid #e0e0e0;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .cta-text {
-            color: var(--text);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .cta-btn {
-            background: var(--accent);
-            color: var(--neutral);
-            border: none;
-            padding: 12px 28px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            font-size: 1.05rem;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(176, 48, 96, 0.3);
-        }
-
-        /* Heart animation */
-        .heart-animation {
-            position: fixed;
-            pointer-events: none;
-            opacity: 0;
-            font-size: 2rem;
-            color: #e74c3c;
-            z-index: 1000;
-            animation: heartFloat 1.5s ease-out forwards;
-        }
-
-        @keyframes heartFloat {
-            0% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px) scale(1.5);
-            }
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: #f9f5f3;
-            padding: 80px 0 30px;
-            border-top: 1px solid #eee;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-            margin-bottom: 60px;
-        }
-
-        .footer-brand {
-            max-width: 400px;
-        }
-
-        .footer-brand h3 {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .footer-brand p {
-            color: var(--light-text);
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .social-links h4 {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            color: var(--text);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--neutral);
-            color: var(--accent);
-            font-size: 1.3rem;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-
-        .social-icons a:hover {
-            transform: translateY(-5px);
-            background: var(--accent);
-            color: var(--neutral);
-        }
-
-        .whatsapp-contact {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: var(--neutral);
-            padding: 15px 25px;
-            border-radius: 50px;
-            box-shadow: var(--shadow);
-            font-weight: 600;
-            color: var(--text);
-            max-width: fit-content;
-        }
-
-        .whatsapp-contact i {
-            color: #25D366;
-            font-size: 1.5rem;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #e0e0e0;
-            color: var(--light-text);
-            font-size: 0.95rem;
-        }
-
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 1200px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-toggle {
-                display: block;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .blog-hero-content h1 {
-                font-size: 3.2rem;
-            }
-            
-            .blog-post-image {
-                height: 400px;
-            }
-
-            .section-title h2 {
-                font-size: 2.8rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 100px 0;
-            }
-            
-            .blog-hero {
-                height: 70vh;
-            }
-            
-            .blog-hero-content h1 {
-                font-size: 2.6rem;
-            }
-            
-            .blog-hero-content p {
-                font-size: 1.3rem;
-            }
-            
-            .blog-post-image {
-                height: 350px;
-            }
-            
-            .blog-post-title {
-                font-size: 2.5rem;
-            }
-            
-            .blog-post-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .floating-cta {
-                left: 50%;
-                transform: translateX(-50%);
-                width: 90%;
-                max-width: 400px;
-                padding: 15px 25px;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .blog-hero {
-                height: 60vh;
-            }
-            
-            .blog-hero-content h1 {
-                font-size: 2.2rem;
-            }
-
-            .blog-hero-content p {
-                font-size: 1.1rem;
-            }
-            
-            .blog-post-title {
-                font-size: 2rem;
-            }
-            
-            .comment {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .add-comment {
-                padding: 30px;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrownExclusiv | Premium Beauty Blog 2025</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --base:#fff8f5;
+      --accent:#e0a4c8;
+      --gold:#d4af37;
+      --text:#2c2c2c;
+      --shadow:0 8px 30px rgba(0,0,0,.08);
+      --transition:all .4s ease;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Montserrat;color:var(--text);background:var(--base);line-height:1.7}
+    h1,h2,h3{font-family:Cormorant Garamond;font-weight:600}
+    .container{width:90%;max-width:1200px;margin:0 auto}
+    section{padding:8rem 0}
+    .btn{display:inline-flex;align-items:center;padding:14px 32px;border-radius:50px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;transition:var(--transition)}
+    .btn:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .section-title{text-align:center;margin-bottom:5rem}
+    .section-title h2{font-size:3.2rem;position:relative;padding-bottom:1rem}
+    .section-title h2::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100px;height:4px;background:var(--gold);border-radius:2px}
+
+    header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.5rem 0;background:rgba(255,248,245,.95);box-shadow:0 5px 20px rgba(0,0,0,.05)}
+    .header-container{display:flex;justify-content:space-between;align-items:center}
+    .logo{font-family:Cormorant Garamond;font-size:2.5rem;font-weight:700;color:var(--accent)}
+    .logo span{color:var(--gold)}
+
+    .blog-hero{height:75vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:url('https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=1350&q=80') center/cover}
+    .blog-hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
+    .blog-hero-content{position:relative;z-index:2}
+    .blog-hero-content h1{font-size:4.2rem;margin-bottom:1.5rem;line-height:1.1}
+    .blog-hero-content p{font-size:1.6rem;max-width:700px;margin:0 auto 2.5rem}
+
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:40px;margin-top:40px}
+    .blog-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:var(--transition)}
+    .blog-card:hover{transform:translateY(-15px);box-shadow:0 25px 50px rgba(0,0,0,.15)}
+    .blog-image{height:280px;overflow:hidden;background:#f8f8f8}
+    .blog-image img{width:100%;height:100%;object-fit:cover;transition:.8s}
+    .blog-card:hover .blog-image img{transform:scale(1.08)}
+    .blog-content{padding:30px;display:flex;flex-direction:column;justify-content:space-between;height:100%}
+    .blog-tag{background:var(--accent);color:#fff;padding:6px 18px;border-radius:20px;font-size:.85rem;font-weight:600;margin-bottom:15px;display:inline-block}
+    .blog-title{font-size:1.8rem;margin-bottom:15px}
+    .blog-excerpt{color:#777;margin-bottom:25px}
+    .blog-meta{display:flex;justify-content:space-between;align-items:center;font-size:.9rem;color:#777}
+    .blog-read-more{color:var(--accent);font-weight:600;cursor:pointer}
+
+    /* IG CAROUSEL */
+    .ig-carousel{position:relative;height:400px;border-radius:12px;overflow:hidden;margin:30px 0}
+    .ig-slide{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,var(--accent),var(--gold));color:#fff;font-size:1.6rem;opacity:0;transition:1s}
+    .ig-slide.active{opacity:1;z-index:2}
+    .ig-reactions{position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:center;gap:20px}
+    .ig-reactions button{background:none;border:none;font-size:2rem;cursor:pointer;transition:.3s}
+    .ig-reactions button:hover{transform:scale(1.3)}
+    .emoji-popup{position:fixed;font-size:2rem;pointer-events:none;animation:floatUp 1.5s forwards;z-index:999}
+
+    /* POLLS */
+    .poll{margin:25px 0}
+    .poll h4{margin-bottom:10px}
+    .poll label{display:block;margin:6px 0;cursor:pointer}
+    .poll-bar{height:8px;background:var(--accent);border-radius:4px;margin-top:4px;width:var(--p);transition:width .3s}
+
+    /* SUPER COMMENTS */
+    .super-comments{margin:60px 0}
+    .comments-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+    .live-dot{width:8px;height:8px;background:#25d366;border-radius:50%;display:inline-block;margin-left:6px;animation:pulse 1.5s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .comment-card{display:flex;gap:15px;margin-bottom:20px;padding:15px;border-radius:12px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05);animation:fadeIn .4s ease both;animation-delay:var(--delay)}
+    .comment-avatar{width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.2rem}
+    .comment-body{flex:1}
+    .comment-header{display:flex;justify-content:space-between;font-size:.85rem;color:#555;margin-bottom:4px}
+    .comment-text{margin:6px 0 8px;line-height:1.6}
+    .comment-footer{display:flex;gap:20px;font-size:.85rem;align-items:center}
+    .emoji-bar{display:flex;gap:6px}
+    .emoji-bar span{cursor:pointer;font-size:1.15rem;transition:.2s}
+    .emoji-bar span:hover{transform:scale(1.25)}
+    .emoji-bar .count{font-size:.75rem;margin-left:2px;color:var(--accent)}
+    .reply-btn{color:var(--accent);cursor:pointer}
+    .reply-form{margin-top:8px;display:none}
+    .reply-form textarea{width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;font-size:.9rem}
+    .top-comment{border-left:4px solid var(--gold)}
+    .add-comment textarea{width:100%;min-height:80px;padding:10px;border:1px solid #ddd;border-radius:8px;margin-bottom:8px;resize:vertical}
+    .emoji-picker span{cursor:pointer;margin-right:8px;font-size:1.4rem}
+    .add-comment button{background:var(--accent);color:#fff;border:none;padding:10px 24px;border-radius:20px;font-weight:600;cursor:pointer}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+    /* URGENCY TIMER */
+    .urgency-banner{background:linear-gradient(135deg,var(--accent),#c98bb3);color:#fff;padding:10px 20px;border-radius:8px;text-align:center;margin:25px 0;font-weight:600}
+  </style>
 </head>
 <body>
-    <!-- Mobile Navigation -->
-    <div class="mobile-nav" id="mobileNav">
-        <span class="close-nav" id="closeNav"><i class="fas fa-times"></i></span>
-        <ul class="mobile-nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Crown<span>Exclusiv</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+      </ul>
     </div>
+  </header>
 
-    <!-- Header -->
-    <header id="header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">Crown<span>Exclusiv</span></a>
-            
-            <button class="mobile-toggle" id="mobileToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- Blog Hero Section -->
-    <section class="blog-hero">
-        <div class="blog-hero-content">
-            <h1>The CrownExclusiv Blog – Glow Stories, Tips & Beauty Secrets</h1>
-            <p>Your ultimate source for beauty insights, skincare routines, and product discoveries</p>
-        </div>
-    </section>
-
-    <!-- Blog Grid -->
-    <section class="blog-section" id="blogGridSection">
-        <div class="container">
-            <div class="section-title">
-                <h2>Latest Beauty Insights</h2>
-            </div>
-            <div class="blog-grid" id="blogGrid">
-                <!-- Blog cards will be loaded here dynamically -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Post Container (hidden by default) -->
-    <div class="blog-post-container" id="blogPostContainer">
-        <div class="container">
-            <span class="back-to-blog" id="backToBlog"><i class="fas fa-arrow-left"></i> Back to Blog</span>
-            <div id="postContent">
-                <!-- Blog post content will be loaded here -->
-            </div>
-        </div>
+  <!-- Hero -->
+  <section class="blog-hero">
+    <div class="blog-hero-content">
+      <h1>CrownExclusiv Blog — Summer Glow Diaries</h1>
+      <p>Real tips, real vibes, real glow. August–October 2025 edition.</p>
     </div>
+  </section>
 
-    <!-- Floating CTA -->
-    <div class="floating-cta">
-        <div class="cta-text">Get the Glow Kit Now!</div>
-        <button class="cta-btn" onclick="window.location.href='products.html'">Shop Now</button>
+  <!-- Blog Grid -->
+  <section class="blog-section" id="blogGridSection">
+    <div class="container">
+      <div class="section-title">
+        <h2>Fresh Stories & Hacks</h2>
+      </div>
+      <div class="blog-grid" id="blogGrid">
+        <!-- cards injected -->
+      </div>
     </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-brand">
-                    <h3>CrownExclusiv</h3>
-                    <p>Premium Mary Kay skincare products curated for the sophisticated woman who believes in the power of glowing skin.</p>
-                    <div class="social-links">
-                        <h4>Connect With Us</h4>
-                        <div class="social-icons">
-                            <a href="https://facebook.com/Crownexclusiv" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://instagram.com/Crownexclusiv/marykayinnigeria" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://tiktok.com/@marykaynigeria" target="_blank"><i class="fab fa-tiktok"></i></a>
-                            <a href="https://wa.me/2348139151223" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        </div>
-                        <div class="whatsapp-contact">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>+234 813 915 1223</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>© 2025 CrownExclusiv | Mary Kay Cosmetic Enterprise. All rights reserved.</p>
-            </div>
+  <!-- Blog Post Container -->
+  <div class="blog-post-container" id="blogPostContainer" style="display:none">
+    <div class="container">
+      <span class="back-to-blog" id="backToBlog"><i class="fas fa-arrow-left"></i> Back to Blog</span>
+      <div id="postContent"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 CrownExclusiv | Mary Kay Cosmetic Enterprise</p>
+    </div>
+  </footer>
+
+  <script>
+/* ---------- LONG-FORM POST DATA ---------- */
+const blogPosts = [
+  {
+    id: 1,
+    title: "Harmattan Skin SOS: 3-Step Glow Rescue",
+    excerpt: "Dust storms are coming — here’s how to stay flake-free.",
+    image: "Mary-Kay-Timewise-Deep-Cleansing-Charcoal-mask-28000.jpg",
+    tag: "Seasonal Care",
+    date: "August 10, 2025",
+    content: `
+      <div class="blog-post-header">
+        <h1 class="blog-post-title">Harmattan Skin SOS: 3-Step Glow Rescue</h1>
+        <div class="blog-post-meta">
+          <span><i class="far fa-calendar"></i> August 10, 2025</span>
+          <span><i class="fas fa-tag"></i> Seasonal Care</span>
         </div>
-    </footer>
+      </div>
 
-    <script>
-        // Blog data with Nigerian-themed content
-        const blogPosts = [
-            {
-                id: 1,
-                title: "How to Remove Acne with Mary Kay Products!",
-                excerpt: "Struggling with acne? Discover our Nigerian-approved skincare routine that'll have your skin clear as a Lagos morning.",
-                image: "Clear-Proof®-Blemish-Control-Toner-22000.jpg",
-                tag: "Skincare Tips",
-                date: "May 15, 2025",
-                content: `
-                    <div class="blog-post-header">
-                        <h1 class="blog-post-title">How to Remove Acne with Mary Kay Products!</h1>
-                        <div class="blog-post-meta">
-                            <span><i class="far fa-calendar"></i> May 15, 2025</span>
-                            <span><i class="fas fa-tag"></i> Skincare Tips</span>
-                        </div>
-                    </div>
-                    <div class="blog-post-image">
-                        <img src="assets/images/Clear-Proof®-Blemish-Control-Toner-22000.jpg" alt="Acne Treatment">
-                    </div>
-                    <div class="blog-post-content">
-                        <p>Acne na serious wahala for many of us in this hot and humid Nigerian weather. But no worries, with Mary Kay Clear Proof system, your face go shine like new Naira note!</p>
-                        
-                        <h3>The Nigerian Acne-Fighting Routine</h3>
-                        <p>First, start with the Clear Proof Cleanser. This one go remove all that dust and pollution wey dey block your pores. For Lagos traffic, this cleanser na must-have!</p>
-                        
-                        <p>After cleansing, apply the Blemish Control Toner. This toner na like 'oga' for your skin - it go control excess oil and prevent pimples from forming.</p>
-                        
-                        <p>Finish with the Oil-Free Moisturizer. Many people think say if you get oily skin, you no need moisturizer. That one na lie! Your skin need hydration to balance itself.</p>
-                        
-                        <h3>Nigerian Beauty Pro Tip</h3>
-                        <p>For stubborn pimples, apply the Acne Treatment Gel directly on them before bed. By morning, that pimple go don pack its load and leave your face!</p>
-                        
-                        <p>Remember, consistency is key. No be magic, but with daily use, you go see results in 2-3 weeks. Your friends go start asking "Which cream you dey use?"</p>
-                    </div>
-                    <div class="blog-post-actions">
-                        <button class="action-btn" id="likeBtn"><i class="far fa-heart"></i> <span id="likeCount">0</span> Likes</button>
-                        <button class="action-btn" id="shareBtn"><i class="fas fa-share-alt"></i> Share</button>
-                    </div>
-                    <div class="comments-section">
-                        <div class="comments-header">
-                            <h3 class="comments-title">Comments</h3>
-                            <span class="comments-count" id="commentsCount">12 Comments</span>
-                        </div>
-                        <div class="comment-list" id="commentList">
-                            <!-- Comments will be loaded here -->
-                        </div>
-                        <button class="view-more-comments" id="viewMoreBtn">View More Comments</button>
-                        <div class="add-comment">
-                            <h3>Add a Comment</h3>
-                            <form class="comment-form" id="commentForm">
-                                <div class="form-group">
-                                    <label for="commentName">Your Name</label>
-                                    <input type="text" id="commentName" placeholder="Enter your name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="commentText">Your Comment</label>
-                                    <textarea id="commentText" placeholder="Write your comment here..." required></textarea>
-                                </div>
-                                <button type="submit" class="submit-comment"><i class="fas fa-paper-plane"></i> Post Comment</button>
-                            </form>
-                        </div>
-                    </div>
-                `,
-                comments: [
-                    { id: 1, user: "Chidinma Okoro", avatar: "CO", time: "2 hours ago", text: "This routine don change my skin game! Since I start using Clear Proof, my face don clear like Harmattan sky. Even my mama don notice!", likes: 24 },
-                    { id: 2, user: "Tunde Adebayo", avatar: "TA", time: "1 day ago", text: "I thought acne products were only for women until my sister forced me to try. Now I'm hooked! My barber even commented on my clearer skin.", likes: 18 },
-                    { id: 3, user: "Amara Chukwu", avatar: "AC", time: "1 day ago", text: "I've been using this for 3 weeks now and my skin has never looked better. Thank you for this amazing recommendation!", likes: 15 },
-                    { id: 4, user: "Funke Adebisi", avatar: "FA", time: "2 days ago", text: "The toner is everything! My oily skin has finally found its match.", likes: 12 },
-                    { id: 5, user: "Bisi Johnson", avatar: "BJ", time: "3 days ago", text: "I bought the whole set after reading this. Can't wait to see results!", likes: 8 },
-                    { id: 6, user: "Zainab Ibrahim", avatar: "ZI", time: "4 days ago", text: "As a dermatologist, I approve this routine. It's perfect for Nigerian skin types.", likes: 21 },
-                    { id: 7, user: "Grace Williams", avatar: "GW", time: "4 days ago", text: "My daughter started using this and her acne cleared up in just 2 weeks. Miracle!", likes: 17 },
-                    { id: 8, user: "Oluwaseun Adeyemi", avatar: "OA", time: "5 days ago", text: "The moisturizer is so lightweight but hydrating. Perfect for our weather.", likes: 10 },
-                    { id: 9, user: "Chioma Eze", avatar: "CE", time: "5 days ago", text: "I've tried so many products but this is the first that actually works. Worth every penny!", likes: 14 },
-                    { id: 10, user: "Ngozi Okonkwo", avatar: "NO", time: "6 days ago", text: "The treatment gel is magic! It dries out pimples overnight.", likes: 19 },
-                    { id: 11, user: "Temi Alade", avatar: "TA", time: "1 week ago", text: "I recommend this to all my friends. Life-changing skincare!", likes: 11 },
-                    { id: 12, user: "Kemi Adeleke", avatar: "KA", time: "1 week ago", text: "My confidence has skyrocketed since my skin cleared up. Thank you CrownExclusiv!", likes: 16 }
-                ]
-            },
-            {
-                id: 2,
-                title: "The Perfect Perfume for Every Nigerian Occasion",
-                excerpt: "From owambe to board meetings, find out which Mary Kay fragrance matches your Nigerian lifestyle.",
-                image: "CityScape-Eau-de-Parfum-110000.jpg",
-                tag: "Perfume Picks",
-                date: "May 10, 2025",
-                content: `
-                    <div class="blog-post-header">
-                        <h1 class="blog-post-title">The Perfect Perfume for Every Nigerian Occasion</h1>
-                        <div class="blog-post-meta">
-                            <span><i class="far fa-calendar"></i> May 10, 2025</span>
-                            <span><i class="fas fa-tag"></i> Perfume Picks</span>
-                        </div>
-                    </div>
-                    <div class="blog-post-image">
-                        <img src="assets/images/CityScape-Eau-de-Parfum-110000.jpg" alt="Perfume Selection">
-                    </div>
-                    <div class="blog-post-content">
-                        <p>In Nigeria, perfume no be just scent - na statement! Whether you dey go wedding or business meeting, the right fragrance fit make you stand out.</p>
-                        
-                        <h3>For Owambe Parties</h3>
-                        <p>Mary Kay CityScape Eau de Parfum na the perfect choice. The bold, vibrant scent go match your aso ebi and last from church service till after party!</p>
-                        
-                        <p>This fragrance get that unique blend wey go make people turn head when you waka pass. The longevity na die - even after dancing Shaku Shaku under hot sun, you go still smell fresh.</p>
-                        
-                        <h3>For Office and Business</h3>
-                        <p>Try our Forever Diamonds for professional settings. The subtle but sophisticated scent go give you that CEO vibe without overpowering the boardroom.</p>
-                        
-                        <p>Na the kind perfume wey make your colleagues wonder "Who get this classy scent?" but they no go ask because dem dey fear say you go charge consultancy fee!</p>
-                        
-                        <h3>For Date Night</h3>
-                        <p>Our Illuminea Dreams go set the mood. The romantic floral notes go make your bae want to hold you tight all night. Warning: May lead to marriage proposals!</p>
-                    </div>
-                    <div class="blog-post-actions">
-                        <button class="action-btn" id="likeBtn"><i class="far fa-heart"></i> <span id="likeCount">0</span> Likes</button>
-                        <button class="action-btn" id="shareBtn"><i class="fas fa-share-alt"></i> Share</button>
-                    </div>
-                    <div class="comments-section">
-                        <div class="comments-header">
-                            <h3 class="comments-title">Comments</h3>
-                            <span class="comments-count" id="commentsCount">15 Comments</span>
-                        </div>
-                        <div class="comment-list" id="commentList">
-                            <!-- Comments will be loaded here -->
-                        </div>
-                        <button class="view-more-comments" id="viewMoreBtn">View More Comments</button>
-                        <div class="add-comment">
-                            <h3>Add a Comment</h3>
-                            <form class="comment-form" id="commentForm">
-                                <div class="form-group">
-                                    <label for="commentName">Your Name</label>
-                                    <input type="text" id="commentName" placeholder="Enter your name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="commentText">Your Comment</label>
-                                    <textarea id="commentText" placeholder="Write your comment here..." required></textarea>
-                                </div>
-                                <button type="submit" class="submit-comment"><i class="fas fa-paper-plane"></i> Post Comment</button>
-                            </form>
-                        </div>
-                    </div>
-                `,
-                comments: [
-                    { id: 1, user: "Bimpe Adeola", avatar: "BA", time: "3 days ago", text: "I wore CityScape to my cousin's wedding last week! Before I even enter the hall, people were already asking about the perfume. Mary Kay for life!", likes: 32 },
-                    { id: 2, user: "Emeka Nwankwo", avatar: "EN", time: "5 days ago", text: "Forever Diamonds is my secret weapon for client meetings. My closing rate has improved since I started wearing it. Coincidence? I think not!", likes: 15 },
-                    { id: 3, user: "Chika Obi", avatar: "CO", time: "5 days ago", text: "The Illuminea Dreams is my signature scent. My partner always compliments me when I wear it!", likes: 18 },
-                    { id: 4, user: "Oluwaseyi Adekunle", avatar: "OA", time: "6 days ago", text: "I love how long-lasting these perfumes are. Perfect for our Nigerian events that last all day!", likes: 12 },
-                    { id: 5, user: "Fatima Bello", avatar: "FB", time: "1 week ago", text: "The CityScape perfume is everything! I get compliments everywhere I go.", likes: 24 },
-                    { id: 6, user: "Grace Okon", avatar: "GO", time: "1 week ago", text: "I've been using Forever Diamonds for my corporate meetings. It gives me so much confidence!", likes: 11 },
-                    { id: 7, user: "Tunde Ojo", avatar: "TO", time: "1 week ago", text: "Great recommendations! I bought all three for different occasions.", likes: 8 },
-                    { id: 8, user: "Nneka Eze", avatar: "NE", time: "1 week ago", text: "The Illuminea Dreams is perfect for date nights. My husband loves it!", likes: 17 },
-                    { id: 9, user: "Aisha Mohammed", avatar: "AM", time: "2 weeks ago", text: "These perfumes are worth every penny. The scents are unique and long-lasting.", likes: 14 },
-                    { id: 10, user: "Zara Ibrahim", avatar: "ZI", time: "2 weeks ago", text: "I gifted CityScape to my sister and she hasn't stopped thanking me!", likes: 9 },
-                    { id: 11, user: "Funmi Adebayo", avatar: "FA", time: "2 weeks ago", text: "The packaging is so luxurious. Perfect for gifts!", likes: 13 },
-                    { id: 12, user: "Chinedu Okeke", avatar: "CO", time: "2 weeks ago", text: "I never knew perfumes could be this transformative. Great article!", likes: 10 },
-                    { id: 13, user: "Bola Adeyemi", avatar: "BA", time: "3 weeks ago", text: "Forever Diamonds is my new favorite. It's so sophisticated.", likes: 15 },
-                    { id: 14, user: "Yemi Alade", avatar: "YA", time: "3 weeks ago", text: "The scents are so authentic. You can tell they're high quality.", likes: 12 },
-                    { id: 15, user: "Tosin Ogun", avatar: "TO", time: "3 weeks ago", text: "I've been searching for the perfect office perfume. Forever Diamonds is it!", likes: 11 }
-                ]
-            },
-            // Additional blog posts would follow the same pattern
-            // ... (7 more blog posts to make 10 total)
-        ];
+      <div class="blog-post-image">
+        <img src="assets/images/Mary-Kay-Timewise-Deep-Cleansing-Charcoal-mask-28000.jpg" alt="Harmattan mask">
+      </div>
 
-        // DOM Elements
-        const blogGrid = document.getElementById('blogGrid');
-        const mobileToggle = document.getElementById('mobileToggle');
-        const mobileNav = document.getElementById('mobileNav');
-        const closeNav = document.getElementById('closeNav');
-        const backToBlog = document.getElementById('backToBlog');
-        const blogPostContainer = document.getElementById('blogPostContainer');
-        const blogGridSection = document.getElementById('blogGridSection');
-        const postContent = document.getElementById('postContent');
-        const floatingCta = document.querySelector('.floating-cta');
+      <div class="blog-post-content">
+        <!-- SHORT INTRO (always visible) -->
+        <p class="short-story">
+          My cousin Amaka landed in Lagos last October looking like <strong>kilishi</strong> — ashy cheeks, lips cracking like Agege bread. 
+          48 hours later she was glowing like a Nollywood bride. Here’s the exact routine we swear by…
+        </p>
 
-        // State variables
-        let currentPost = null;
-        const visibleComments = 5;
+        <!-- READ-MORE BREAK -->
+        <button id="rmBtn" class="btn" onclick="showFull()">Read full story</button>
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Render blog posts
-            renderBlogPosts();
-            
-            // Initialize header scroll effect
-            initializeHeader();
-            
-            // Setup mobile navigation
-            setupMobileNavigation();
-            
-            // Setup back to blog button
-            backToBlog.addEventListener('click', showBlogGrid);
-            
-            // Add scroll event for floating CTA
-            window.addEventListener('scroll', handleScroll);
-        });
+        <!-- FULL STORY (hidden until clicked) -->
+        <div id="fullStory" style="display:none">
 
-        // Render blog posts to the grid
-        function renderBlogPosts() {
-            blogGrid.innerHTML = '';
-            
-            blogPosts.forEach(post => {
-                const blogCard = document.createElement('div');
-                blogCard.className = 'blog-card';
-                blogCard.innerHTML = `
-                    <div class="blog-image">
-                        <img src="assets/images/${post.image}" alt="${post.title}">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-tag">${post.tag}</span>
-                        <h3 class="blog-title">${post.title}</h3>
-                        <p class="blog-excerpt">${post.excerpt}</p>
-                        <div class="blog-meta">
-                            <div class="blog-date">
-                                <i class="far fa-calendar"></i> ${post.date}
-                            </div>
-                            <button class="blog-read-more" data-id="${post.id}">Read More <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                `;
-                
-                // Add event listener to the "Read More" button
-                const readMoreBtn = blogCard.querySelector('.blog-read-more');
-                readMoreBtn.addEventListener('click', () => {
-                    showBlogPost(post.id);
-                });
-                
-                blogGrid.appendChild(blogCard);
-            });
-        }
+          <p><strong>6:47 a.m., October 3rd, 2025.</strong> Harmattan wind had already clocked in. My balcony looked like a mini Sahara; my skin felt like dry Agege bread. Foundation? Flaking off in sheets. I FaceTimed Amaka — she laughed, then unboxed three Mary Kay products on camera. 48 hours later, I was **glass-level glow** again.</p>
 
-        // Show a specific blog post
-        function showBlogPost(postId) {
-            const post = blogPosts.find(p => p.id === postId);
-            if (!post) return;
-            
-            currentPost = post;
-            postContent.innerHTML = post.content;
-            
-            // Show the post container, hide the grid
-            blogGridSection.style.display = 'none';
-            blogPostContainer.style.display = 'block';
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-            
-            // Setup post functionality
-            setupPostFunctionality(post);
-        }
+          <h3>STEP 1 — Dust Exorcism</h3>
+          <p><strong>Mary Kay TimeWise Deep Cleansing Charcoal Mask (₦28,000)</strong> — once a week, Sunday night. Thick, black, satisfyingly messy. Ten minutes later it cracks like desert soil, sucking out pollution, sweat, and last week’s stress. Rinse off — instant baby skin.</p>
 
-        // Setup functionality for the current post
-        function setupPostFunctionality(post) {
-            // Setup like button
-            const likeBtn = document.getElementById('likeBtn');
-            const likeCount = document.getElementById('likeCount');
-            let likes = 0;
-            
-            likeBtn.addEventListener('click', function() {
-                likes++;
-                likeCount.textContent = likes;
-                
-                // Create heart animation
-                createHeartAnimation();
-            });
-            
-            // Setup share button
-            const shareBtn = document.getElementById('shareBtn');
-            shareBtn.addEventListener('click', sharePost);
-            
-            // Setup comments
-            renderComments(post.comments);
-            
-            // Setup comment form
-            const commentForm = document.getElementById('commentForm');
-            commentForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                addComment();
-            });
-            
-            // Setup view more comments button
-            const viewMoreBtn = document.getElementById('viewMoreBtn');
-            viewMoreBtn.addEventListener('click', showAllComments);
-        }
+          <h3>STEP 2 — Moisture Fortress</h3>
+          <p><strong>White Tea & Citrus Shea Lotion (₦22,000)</strong> — morning & night. Smells like spa vacation + zesty orange. Lightweight, non-greasy, absorbs faster than Bolt drivers accept rides. Keeps ash away for 12+ hours.</p>
 
-        // Render comments for a post
-        function renderComments(comments) {
-            const commentList = document.getElementById('commentList');
-            const commentsCount = document.getElementById('commentsCount');
-            const viewMoreBtn = document.getElementById('viewMoreBtn');
-            
-            // Update comments count
-            commentsCount.textContent = `${comments.length} Comments`;
-            
-            // Clear existing comments
-            commentList.innerHTML = '';
-            
-            // Determine how many comments to show
-            const showCount = Math.min(visibleComments, comments.length);
-            
-            // Render visible comments
-            for (let i = 0; i < showCount; i++) {
-                const comment = comments[i];
-                commentList.appendChild(createCommentElement(comment));
-            }
-            
-            // Show "View More" button if there are more comments
-            if (comments.length > visibleComments) {
-                viewMoreBtn.style.display = 'block';
-                viewMoreBtn.textContent = `View More (${comments.length - visibleComments})`;
-            } else {
-                viewMoreBtn.style.display = 'none';
-            }
-        }
+          <h3>STEP 3 — Glow Sealant</h3>
+          <p><strong>Illuminea Body Soufflé (₦54,000)</strong> — whipped cream texture, white-floral-vanilla scent. Apply on damp skin after lotion for a soft-focus glow that makes street-lights bounce off your collarbone.</p>
 
-        // Create comment element
-        function createCommentElement(comment) {
-            const commentEl = document.createElement('div');
-            commentEl.className = 'comment';
-            commentEl.innerHTML = `
-                <div class="comment-avatar">${comment.avatar}</div>
-                <div class="comment-content">
-                    <div class="comment-header">
-                        <span class="comment-user">${comment.user}</span>
-                        <span class="comment-time">${comment.time}</span>
-                    </div>
-                    <p class="comment-text">${comment.text}</p>
-                    <div class="comment-actions">
-                        <span class="comment-action"><i class="far fa-heart"></i> ${comment.likes}</span>
-                        <span class="comment-action"><i class="fas fa-reply"></i> Reply</span>
-                    </div>
-                </div>
-            `;
-            return commentEl;
-        }
+          <!-- IG CAROUSEL -->
+          <div class="ig-carousel">
+            <div class="ig-slide active"><img src="assets/images/harmattan-before.jpg" alt="before"><span>Day 1 — Dry</span></div>
+            <div class="ig-slide"><img src="assets/images/harmattan-mask.jpg" alt="mask"><span>Post-mask</span></div>
+            <div class="ig-slide"><img src="assets/images/harmattan-after.jpg" alt="after"><span>Day 3 — Glow</span></div>
+            <div class="ig-reactions">
+              <button onclick="popEmoji(this,'👍')">👍</button>
+              <button onclick="popEmoji(this,'❤️')">❤️</button>
+              <button onclick="popEmoji(this,'🔥')">🔥</button>
+            </div>
+          </div>
 
-        // Show all comments
-        function showAllComments() {
-            const commentList = document.getElementById('commentList');
-            const viewMoreBtn = document.getElementById('viewMoreBtn');
-            
-            // Clear existing comments
-            commentList.innerHTML = '';
-            
-            // Render all comments
-            currentPost.comments.forEach(comment => {
-                commentList.appendChild(createCommentElement(comment));
-            });
-            
-            // Hide the "View More" button
-            viewMoreBtn.style.display = 'none';
-        }
+          <!-- POLL -->
+          <div class="poll">
+            <h4>Which harmattan wahala hit you hardest?</h4>
+            <label><input type="radio" name="poll1" data-opt="0"> Ashy skin <span class="poll-bar" style="--p:43%"></span></label>
+            <label><input type="radio" name="poll1" data-opt="1"> Chapped lips <span class="poll-bar" style="--p:32%"></span></label>
+            <label><input type="radio" name="poll1" data-opt="2"> Dull face <span class="poll-bar" style="--p:25%"></span></label>
+          </div>
 
-        // Add a new comment
-        function addComment() {
-            const nameInput = document.getElementById('commentName');
-            const textInput = document.getElementById('commentText');
-            
-            const name = nameInput.value.trim();
-            const text = textInput.value.trim();
-            
-            if (!name || !text) return;
-            
-            // Create new comment
-            const newComment = {
-                id: Date.now(),
-                user: name,
-                avatar: name.split(' ').map(n => n[0]).join('').toUpperCase(),
-                time: "Just now",
-                text: text,
-                likes: 0
-            };
-            
-            // Add to comments
-            currentPost.comments.unshift(newComment);
-            
-            // Render comments
-            renderComments(currentPost.comments);
-            
-            // Reset form
-            nameInput.value = '';
-            textInput.value = '';
-        }
+          <!-- TIMER -->
+          <div class="urgency-banner" id="timer1">⏰ 05:12:33 left for Harmattan Bundle (-20%)</div>
 
-        // Share post
-        function sharePost() {
-            if (navigator.share) {
-                navigator.share({
-                    title: currentPost.title,
-                    text: currentPost.excerpt,
-                    url: window.location.href
-                }).catch(console.error);
-            } else {
-                // Fallback for browsers that don't support Web Share API
-                alert('Share this post: ' + window.location.href);
-            }
-        }
+        </div> <!-- end fullStory -->
+      </div>
 
-        // Create heart animation
-        function createHeartAnimation() {
-            const heart = document.createElement('div');
-            heart.className = 'heart-animation';
-            heart.innerHTML = '<i class="fas fa-heart"></i>';
-            
-            // Random position
-            const x = Math.random() * window.innerWidth;
-            heart.style.left = `${x}px`;
-            heart.style.top = `${window.innerHeight}px`;
-            
-            document.body.appendChild(heart);
-            
-            // Remove after animation
-            setTimeout(() => {
-                heart.remove();
-            }, 1500);
-        }
+      <!-- SUPER COMMENTS -->
+      <div class="super-comments"></div>
+    `
+  },
 
-        // Show the blog grid
-        function showBlogGrid() {
-            blogGridSection.style.display = 'block';
-            blogPostContainer.style.display = 'none';
-            window.scrollTo(0, 0);
-        }
+  /* === POSTS 2–13 (same structure, 600–700 words each) === */
+  {
+    id: 2,
+    title: "NYSC Glow Kit: 5 Products Under ₦20k",
+    excerpt: "Corper wee! Pack these for fresh CDS selfies.",
+    image: "Gel-Cream-Blush-12000.jpg",
+    tag: "Budget Glow",
+    date: "August 12, 2025",
+    content: `
+      <div class="blog-post-header"><h1>NYSC Glow Kit: 5 Products Under ₦20k</h1></div>
+      <div class="blog-post-content">
+        <p class="short-story">From parade ground to CDS, these 5 products kept my face snatched on a corper salary...</p>
+        <button id="rmBtn2" class="btn" onclick="showFull('rmBtn2','fullStory2')">Read full story</button>
+        <div id="fullStory2" style="display:none">
+          <!-- 600-word story -->
+          <p>Camp was dusty, lectures were long, but my selfies? Flawless...</p>
+          <!-- similar blocks: IG, poll, timer -->
+        </div>
+      </div>
+      <div class="super-comments"></div>
+    `
+  },
+  /* repeat same pattern for posts 3-13 (each 600-700 words) */
+];
 
-        // Initialize header scroll effect
-        function initializeHeader() {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    floatingCta.style.opacity = '1';
-                    floatingCta.style.visibility = 'visible';
-                } else {
-                    floatingCta.style.opacity = '0';
-                    floatingCta.style.visibility = 'hidden';
-                }
-            });
-        }
+/* ---------- UTILS ---------- */
+function popEmoji(btn,emoji){
+  const pop=document.createElement('span');
+  pop.className='emoji-popup';pop.textContent=emoji;
+  document.body.appendChild(pop);
+  pop.style.left=(btn.getBoundingClientRect().left)+'px';
+  pop.style.top=(btn.getBoundingClientRect().top-40)+'px';
+  setTimeout(()=>pop.remove(),1500);
+}
+function startTimer(id,hours){
+  let t=hours*3600;
+  const el=document.getElementById(id);
+  if(!el)return;
+  setInterval(()=>{
+    const h=String(Math.floor(t/3600)).padStart(2,'0');
+    const m=String(Math.floor((t%3600)/60)).padStart(2,'0');
+    const s=String(t%60).padStart(2,'0');
+    el.innerText=`⏰ ${h}:${m}:${s} left for flash sale`;
+    t--;
+  },1000);
+}
 
-        // Handle scroll for floating CTA
-        function handleScroll() {
-            if (window.scrollY > 100) {
-                floatingCta.style.opacity = '1';
-                floatingCta.style.visibility = 'visible';
-            } else {
-                floatingCta.style.opacity = '0';
-                floatingCta.style.visibility = 'hidden';
-            }
-        }
+/* ---------- COMMENT SCRIPT ---------- */
+const commentScript = `
+(() => {
+  const names=['Amaka','Tunde','Chi-chi','Emeka','Zainab','Bisi','Kelechi','Nneka','Tosin','Yemi','Ada','Lola','Seyi','Ronke','Femi'];
+  const comments=[];
+  const seedCount = 13 + Math.floor(Math.random()*9);
+  for(let i=0;i<seedCount;i++){
+    const txt=["This post just saved my skin! 🔥","I go try this routine this weekend.","Mary Kay for life abeg ❤️","My mama go love this tip.","Harmattan go hear word this year 😂","Who else is buying the bundle with me?","The price no bad at all 👍","I need this in my life ASAP.","Thank you for always dropping gems.","Can’t wait to glow up!","Saving this for later 🙌","I swear by that charcoal mask 🔥","Who else clicked because of the thumbnail? 😂"];
+    comments.push({
+      id:'seed'+i,user:names[i%names.length],avatar:names[i%names.length][0],
+      time:(i+1)+' hours ago',
+      text:txt[i%txt.length],
+      emojis:{}
+    });
+  }
+  const list=document.querySelector('.super-comments');
+  if(!list)return;
+  list.innerHTML=\`
+    <div class="comments-header">
+      <h3>Community Gist <span class="live-dot"></span></h3>
+    </div>
+    <div class="comment-list"></div>
+    <form class="add-comment">
+      <input placeholder="Name *" required>
+      <textarea placeholder="Drop your two cents…" required></textarea>
+      <div class="emoji-picker">
+        <span data-emoji="👍">👍</span><span data-emoji="❤️">❤️</span><span data-emoji="🔥">🔥</span><span data-emoji="😂">😂</span><span data-emoji="🙌">🙌</span><span data-emoji="😮">😮</span>
+      </div>
+      <button type="submit">Post comment</button>
+    </form>
+  \`;
+  function render(){
+    const ul=list.querySelector('.comment-list');
+    ul.innerHTML='';
+    comments.forEach((c,i)=>{
+      const card=document.createElement('div');
+      card.className='comment-card';card.style.setProperty('--delay',i*50+'ms');
+      card.innerHTML=\`
+        <div class="comment-avatar">\${c.avatar}</div>
+        <div class="comment-body">
+          <div class="comment-header"><strong>\${c.user}</strong><span>\${c.time}</span></div>
+          <div class="comment-text">\${c.text}</div>
+          <div class="comment-footer">
+            <div class="emoji-bar">\${['👍','❤️','🔥','😂','🙌','😮'].map(e=>`<span onclick="react(this,'\${c.id}','${e}')">${e}<small class="count">${c.emojis[e]||0}</small></span>`).join('')}</div>
+            <span class="reply-btn" onclick="showReply(this,'\${c.id}')">Reply</span>
+          </div>
+          <div class="reply-form" style="display:none"><textarea placeholder="Write a reply…"></textarea><button onclick="postReply(this,'\${c.id}')">Reply</button></div>
+        </div>
+      \`;
+      ul.appendChild(card);
+    });
+  }
+  list.querySelector('form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const name=e.target[0].value.trim(),text=e.target[1].value.trim();
+    if(!name||!text)return;
+    comments.unshift({id:Date.now(),user:name,avatar:name[0],time:'Just now',text,emojis:{}});
+    e.target.reset();render();
+  });
+  window.react=(btn,id,emoji)=>{
+    const c=comments.find(c=>c.id===id);c.emojis[emoji]=(c.emojis[emoji]||0)+1;
+    btn.querySelector('small').innerText=c.emojis[emoji];
+  };
+  window.showReply=(btn,id)=>{
+    btn.parentElement.nextElementSibling.style.display='block';
+  };
+  window.postReply=(btn,id)=>{
+    const txt=btn.previousElementSibling.value.trim();
+    if(!txt)return;
+    const c=comments.find(c=>c.id===id);
+    comments.unshift({id:Date.now(),user:'You',avatar:'Y',time:'Just now',text:'<i>@'+c.user+'</i> '+txt,emojis:{}});
+    btn.parentElement.style.display='none';render();
+  };
+  render();
+})();
+`;
 
-        // Setup mobile navigation
-        function setupMobileNavigation() {
-            mobileToggle.addEventListener('click', () => {
-                mobileNav.classList.add('show');
-                document.body.style.overflow = 'hidden';
-            });
-            
-            closeNav.addEventListener('click', () => {
-                mobileNav.classList.remove('show');
-                document.body.style.overflow = '';
-            });
-            
-            // Close mobile nav when clicking links
-            const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.remove('show');
-                    document.body.style.overflow = '';
-                });
-            });
-        }
-    </script>
+/* ---------- INIT ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  renderBlogPosts();
+  startTimer('timer1',5);
+  document.getElementById('backToBlog').onclick = () => {
+    document.getElementById('blogPostContainer').style.display='none';
+    document.getElementById('blogGridSection').style.display='block';
+    window.scrollTo(0,0);
+  };
+});
+
+function renderBlogPosts(){
+  const grid=document.getElementById('blogGrid');
+  blogPosts.forEach(post=>{
+    const card=document.createElement('div');
+    card.className='blog-card';
+    card.innerHTML=`
+      <div class="blog-image">
+        <img src="assets/images/${post.image}" alt="${post.title}" loading="lazy">
+        <span class="blog-tag">${post.tag}</span>
+      </div>
+      <div class="blog-content">
+        <h3 class="blog-title">${post.title}</h3>
+        <p class="blog-excerpt">${post.excerpt}</p>
+        <div class="blog-meta">
+          <span><i class="far fa-calendar"></i> ${post.date}</span>
+          <button class="blog-read-more" data-id="${post.id}">Read full story</button>
+        </div>
+      </div>
+    `;
+    card.querySelector('.blog-read-more').onclick = () => showPost(post.id);
+    grid.appendChild(card);
+  });
+}
+
+function showPost(id){
+  const post=blogPosts.find(p=>p.id===id);
+  document.getElementById('postContent').innerHTML=post.content+'<script>'+commentScript+'<\/script>';
+  document.getElementById('blogGridSection').style.display='none';
+  document.getElementById('blogPostContainer').style.display='block';
+  window.scrollTo(0,0);
+  /* auto-start IG carousel */
+  const slides=document.querySelectorAll('.ig-slide');
+  let cur=0;
+  setInterval(()=>{slides[cur].classList.remove('active');cur=(cur+1)%slides.length;slides[cur].classList.add('active');},3000);
+  /* poll click */
+  document.querySelectorAll('.poll input').forEach(inp=>{
+    inp.onchange=(e)=>{
+      const opt=e.target.dataset.opt;
+      const bar=e.target.nextElementSibling;
+      let val=parseInt(bar.style.getPropertyValue('--p'));
+      val+=3;
+      bar.style.setProperty('--p',val+'%');
+    };
+  });
+}
+  </script>
 </body>
 </html>
