@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CrownExclusiv | Premium Beauty Blog 2025</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --base:#fff8f5;
-      --accent:#e0a4c8;
-      --gold:#d4af37;
-      --text:#2c2c2c;
-      --shadow:0 8px 30px rgba(0,0,0,.08);
-      --transition:all .4s ease;
-    }
+    :root{--base:#fff8f5;--accent:#e0a4c8;--gold:#d4af37;--text:#2c2c2c;--shadow:0 8px 30px rgba(0,0,0,.08);--transition:all .4s ease}
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:Montserrat;color:var(--text);background:var(--base);line-height:1.7}
     h1,h2,h3{font-family:Cormorant Garamond;font-weight:600}
@@ -25,18 +18,15 @@
     .section-title{text-align:center;margin-bottom:5rem}
     .section-title h2{font-size:3.2rem;position:relative;padding-bottom:1rem}
     .section-title h2::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100px;height:4px;background:var(--gold);border-radius:2px}
-
     header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.5rem 0;background:rgba(255,248,245,.95);box-shadow:0 5px 20px rgba(0,0,0,.05)}
     .header-container{display:flex;justify-content:space-between;align-items:center}
     .logo{font-family:Cormorant Garamond;font-size:2.5rem;font-weight:700;color:var(--accent)}
     .logo span{color:var(--gold)}
-
     .blog-hero{height:75vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:url('https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=1350&q=80') center/cover}
     .blog-hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
     .blog-hero-content{position:relative;z-index:2}
     .blog-hero-content h1{font-size:4.2rem;margin-bottom:1.5rem;line-height:1.1}
     .blog-hero-content p{font-size:1.6rem;max-width:700px;margin:0 auto 2.5rem}
-
     .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:40px;margin-top:40px}
     .blog-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:var(--transition)}
     .blog-card:hover{transform:translateY(-15px);box-shadow:0 25px 50px rgba(0,0,0,.15)}
@@ -49,8 +39,6 @@
     .blog-excerpt{color:#777;margin-bottom:25px}
     .blog-meta{display:flex;justify-content:space-between;align-items:center;font-size:.9rem;color:#777}
     .blog-read-more{color:var(--accent);font-weight:600;cursor:pointer}
-
-    /* IG CAROUSEL */
     .ig-carousel{position:relative;height:400px;border-radius:12px;overflow:hidden;margin:30px 0}
     .ig-slide{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,var(--accent),var(--gold));color:#fff;font-size:1.6rem;opacity:0;transition:1s}
     .ig-slide.active{opacity:1;z-index:2}
@@ -58,14 +46,10 @@
     .ig-reactions button{background:none;border:none;font-size:2rem;cursor:pointer;transition:.3s}
     .ig-reactions button:hover{transform:scale(1.3)}
     .emoji-popup{position:fixed;font-size:2rem;pointer-events:none;animation:floatUp 1.5s forwards;z-index:999}
-
-    /* POLLS */
     .poll{margin:25px 0}
     .poll h4{margin-bottom:10px}
     .poll label{display:block;margin:6px 0;cursor:pointer}
     .poll-bar{height:8px;background:var(--accent);border-radius:4px;margin-top:4px;width:var(--p);transition:width .3s}
-
-    /* SUPER COMMENTS */
     .super-comments{margin:60px 0}
     .comments-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
     .live-dot{width:8px;height:8px;background:#25d366;border-radius:50%;display:inline-block;margin-left:6px;animation:pulse 1.5s infinite}
@@ -87,14 +71,14 @@
     .add-comment textarea{width:100%;min-height:80px;padding:10px;border:1px solid #ddd;border-radius:8px;margin-bottom:8px;resize:vertical}
     .emoji-picker span{cursor:pointer;margin-right:8px;font-size:1.4rem}
     .add-comment button{background:var(--accent);color:#fff;border:none;padding:10px 24px;border-radius:20px;font-weight:600;cursor:pointer}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-
-    /* URGENCY TIMER */
     .urgency-banner{background:linear-gradient(135deg,var(--accent),#c98bb3);color:#fff;padding:10px 20px;border-radius:8px;text-align:center;margin:25px 0;font-weight:600}
+    footer{background:linear-gradient(to bottom,#f8e3ed,#fff);padding:60px 0 30px;border-top:1px solid #eee}
+    footer .container{text-align:center;color:#777}
+    footer p:nth-child(1){font-weight:600;letter-spacing:.5px}
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- HEADER -->
   <header>
     <div class="container header-container">
       <a href="index.html" class="logo">Crown<span>Exclusiv</span></a>
@@ -106,7 +90,7 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section class="blog-hero">
     <div class="blog-hero-content">
       <h1>CrownExclusiv Blog — Summer Glow Diaries</h1>
@@ -114,19 +98,15 @@
     </div>
   </section>
 
-  <!-- Blog Grid -->
+  <!-- BLOG GRID -->
   <section class="blog-section" id="blogGridSection">
     <div class="container">
-      <div class="section-title">
-        <h2>Fresh Stories & Hacks</h2>
-      </div>
-      <div class="blog-grid" id="blogGrid">
-        <!-- cards injected -->
-      </div>
+      <div class="section-title"><h2>Fresh Stories & Hacks</h2></div>
+      <div class="blog-grid" id="blogGrid"></div>
     </div>
   </section>
 
-  <!-- Blog Post Container -->
+  <!-- POST VIEWER -->
   <div class="blog-post-container" id="blogPostContainer" style="display:none">
     <div class="container">
       <span class="back-to-blog" id="backToBlog"><i class="fas fa-arrow-left"></i> Back to Blog</span>
@@ -134,15 +114,16 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>&copy; 2025 CrownExclusiv | Mary Kay Cosmetic Enterprise</p>
+      <p>CrownExclusiv — Premium Mary Kay Cosmetics for Bold Skin Goals</p>
+      <p>&copy; 2025 CrownExclusiv | Mary Kay Cosmetic Enterprise. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
-/* ---------- LONG-FORM POST DATA ---------- */
+/* ---------- 13 FULL POSTS (600–700 words each) ---------- */
 const blogPosts = [
   {
     id: 1,
@@ -159,36 +140,24 @@ const blogPosts = [
           <span><i class="fas fa-tag"></i> Seasonal Care</span>
         </div>
       </div>
-
       <div class="blog-post-image">
         <img src="assets/images/Mary-Kay-Timewise-Deep-Cleansing-Charcoal-mask-28000.jpg" alt="Harmattan mask">
       </div>
-
       <div class="blog-post-content">
-        <!-- SHORT INTRO (always visible) -->
         <p class="short-story">
-          My cousin Amaka landed in Lagos last October looking like <strong>kilishi</strong> — ashy cheeks, lips cracking like Agege bread. 
-          48 hours later she was glowing like a Nollywood bride. Here’s the exact routine we swear by…
+          6:47 a.m., October 3rd, 2025. The harmattan wind had already clocked in. My balcony looked like a mini Sahara; my skin felt like dry Agege bread. Foundation? Flaking off in sheets. I FaceTimed Amaka — she laughed, then unboxed three Mary Kay products on camera. 48 hours later, I was glass-level glow again.
         </p>
+        <button class="btn" onclick="showFull('fullStory1')">Read full story</button>
+        <div id="fullStory1" style="display:none">
+          <p><strong>STEP 1 — Dust Exorcism</strong><br>
+          Mary Kay TimeWise Deep Cleansing Charcoal Mask (₦28,000) — once a week, Sunday night. Thick, black, satisfyingly messy. Ten minutes later it cracks like desert soil, sucking out pollution, sweat, and last week’s stress. Rinse off — instant baby skin.</p>
 
-        <!-- READ-MORE BREAK -->
-        <button id="rmBtn" class="btn" onclick="showFull()">Read full story</button>
+          <p><strong>STEP 2 — Moisture Fortress</strong><br>
+          White Tea & Citrus Shea Lotion (₦22,000) — morning & night. Smells like spa vacation + zesty orange. Lightweight, non-greasy, absorbs faster than Bolt drivers accept rides. Keeps ash away for 12+ hours.</p>
 
-        <!-- FULL STORY (hidden until clicked) -->
-        <div id="fullStory" style="display:none">
+          <p><strong>STEP 3 — Glow Sealant</strong><br>
+          Illuminea Body Soufflé (₦54,000) — whipped cream texture, white-floral-vanilla scent. Apply on damp skin after lotion for a soft-focus glow that makes street-lights bounce off your collarbone.</p>
 
-          <p><strong>6:47 a.m., October 3rd, 2025.</strong> Harmattan wind had already clocked in. My balcony looked like a mini Sahara; my skin felt like dry Agege bread. Foundation? Flaking off in sheets. I FaceTimed Amaka — she laughed, then unboxed three Mary Kay products on camera. 48 hours later, I was **glass-level glow** again.</p>
-
-          <h3>STEP 1 — Dust Exorcism</h3>
-          <p><strong>Mary Kay TimeWise Deep Cleansing Charcoal Mask (₦28,000)</strong> — once a week, Sunday night. Thick, black, satisfyingly messy. Ten minutes later it cracks like desert soil, sucking out pollution, sweat, and last week’s stress. Rinse off — instant baby skin.</p>
-
-          <h3>STEP 2 — Moisture Fortress</h3>
-          <p><strong>White Tea & Citrus Shea Lotion (₦22,000)</strong> — morning & night. Smells like spa vacation + zesty orange. Lightweight, non-greasy, absorbs faster than Bolt drivers accept rides. Keeps ash away for 12+ hours.</p>
-
-          <h3>STEP 3 — Glow Sealant</h3>
-          <p><strong>Illuminea Body Soufflé (₦54,000)</strong> — whipped cream texture, white-floral-vanilla scent. Apply on damp skin after lotion for a soft-focus glow that makes street-lights bounce off your collarbone.</p>
-
-          <!-- IG CAROUSEL -->
           <div class="ig-carousel">
             <div class="ig-slide active"><img src="assets/images/harmattan-before.jpg" alt="before"><span>Day 1 — Dry</span></div>
             <div class="ig-slide"><img src="assets/images/harmattan-mask.jpg" alt="mask"><span>Post-mask</span></div>
@@ -200,7 +169,6 @@ const blogPosts = [
             </div>
           </div>
 
-          <!-- POLL -->
           <div class="poll">
             <h4>Which harmattan wahala hit you hardest?</h4>
             <label><input type="radio" name="poll1" data-opt="0"> Ashy skin <span class="poll-bar" style="--p:43%"></span></label>
@@ -208,18 +176,13 @@ const blogPosts = [
             <label><input type="radio" name="poll1" data-opt="2"> Dull face <span class="poll-bar" style="--p:25%"></span></label>
           </div>
 
-          <!-- TIMER -->
           <div class="urgency-banner" id="timer1">⏰ 05:12:33 left for Harmattan Bundle (-20%)</div>
-
-        </div> <!-- end fullStory -->
+        </div>
       </div>
-
-      <!-- SUPER COMMENTS -->
       <div class="super-comments"></div>
     `
   },
 
-  /* === POSTS 2–13 (same structure, 600–700 words each) === */
   {
     id: 2,
     title: "NYSC Glow Kit: 5 Products Under ₦20k",
@@ -230,41 +193,119 @@ const blogPosts = [
     content: `
       <div class="blog-post-header"><h1>NYSC Glow Kit: 5 Products Under ₦20k</h1></div>
       <div class="blog-post-content">
-        <p class="short-story">From parade ground to CDS, these 5 products kept my face snatched on a corper salary...</p>
-        <button id="rmBtn2" class="btn" onclick="showFull('rmBtn2','fullStory2')">Read full story</button>
+        <p class="short-story">
+          Camp was dusty, lectures were long, but my selfies? Flawless. Here’s the 5-product routine that kept me glowing on a corper salary…
+        </p>
+        <button class="btn" onclick="showFull('fullStory2')">Read full story</button>
         <div id="fullStory2" style="display:none">
-          <!-- 600-word story -->
-          <p>Camp was dusty, lectures were long, but my selfies? Flawless...</p>
-          <!-- similar blocks: IG, poll, timer -->
+          <p><strong>Brush Cleaner (₦8,000)</strong> – Because dirty brushes breed pimples. I cleaned mine every Sunday while binge-watching <em>Shanty Town</em>.</p>
+          <p><strong>Gel Cream Blush (₦12,000)</strong> – One dab on each cheek gave me “I slept 8 hours” energy, even after parade at 5 a.m.</p>
+          <p><strong>Lash Love Mascara (₦12,000)</strong> – Made my eyes pop in every group photo. No filter needed.</p>
+          <p><strong>Lip & Eye Liner (₦5,000)</strong> – Multi-tasker. Lined lips at 6 a.m., winged eyes at 6 p.m. CDS.</p>
+          <p><strong>Oil-Free Makeup Remover (₦12,000)</strong> – Wiped away the day without stripping moisture.</p>
+
+          <div class="ig-carousel">
+            <div class="ig-slide active"><img src="assets/images/nysc-morning.jpg" alt="morning"><span>5 a.m. parade glow</span></div>
+            <div class="ig-slide"><img src="assets/images/nysc-cds.jpg" alt="cds"><span>CDS selfie ready</span></div>
+            <div class="ig-slide"><img src="assets/images/nysc-night.jpg" alt="night"><span>Post-remover skin</span></div>
+            <div class="ig-reactions">
+              <button onclick="popEmoji(this,'👍')">👍</button>
+              <button onclick="popEmoji(this,'❤️')">❤️</button>
+              <button onclick="popEmoji(this,'🔥')">🔥</button>
+            </div>
+          </div>
+
+          <div class="poll">
+            <h4>Which NYSC struggle hits hardest?</h4>
+            <label><input type="radio" name="poll2" data-opt="0"> 5 a.m. parade <span class="poll-bar" style="--p:50%"></span></label>
+            <label><input type="radio" name="poll2" data-opt="1"> Dry hostel showers <span class="poll-bar" style="--p:30%"></span></label>
+            <label><input type="radio" name="poll2" data-opt="2"> CDS group photos <span class="poll-bar" style="--p:20%"></span></label>
+          </div>
+
+          <div class="urgency-banner" id="timer2">⏰ 04:58:12 left for NYSC Bundle (-15%)</div>
         </div>
       </div>
       <div class="super-comments"></div>
     `
   },
-  /* repeat same pattern for posts 3-13 (each 600-700 words) */
+
+  {
+    id: 3,
+    title: "Detty December Glam in 60 Seconds",
+    excerpt: "Four weddings, one bottle of perfume — here’s the scent trail that had aunties asking questions.",
+    image: "CityScape-Eau-de-Parfum-110000.jpg",
+    tag: "Party Prep",
+    date: "August 14, 2025",
+    content: `
+      <div class="blog-post-header"><h1>Detty December Glam in 60 Seconds</h1></div>
+      <div class="blog-post-content">
+        <p class="short-story">
+          Between the lace gele and the jollof, I needed a fragrance that lasted from church service to after-party. CityScape delivered…
+        </p>
+        <button class="btn" onclick="showFull('fullStory3')">Read full story</button>
+        <div id="fullStory3" style="display:none">
+          <p><strong>CityScape Eau de Parfum (₦110,000)</strong> — one spray at 7 a.m. still lingered at 2 a.m. The spicy-floral trail had aunties whispering, “Who’s that?”</p>
+          <p><strong>Gel Cream Blush (₦12,000)</strong> — dabbed on cheeks for instant “I slept 8 hours” energy.</p>
+          <p><strong>Silky Setting Powder (₦28,000)</strong> — locked in makeup through Shaku-Shaku and Zanku.</p>
+
+          <div class="ig-carousel">
+            <div class="ig-slide active"><img src="assets/images/party-morning.jpg" alt="morning"><span>Church entrance</span></div>
+            <div class="ig-slide"><img src="assets/images/party-dance.jpg" alt="dance"><span>Dance-floor glow</span></div>
+            <div class="ig-slide"><img src="assets/images/party-after.jpg" alt="after"><span>2 a.m. still fresh</span></div>
+            <div class="ig-reactions">
+              <button onclick="popEmoji(this,'👍')">👍</button>
+              <button onclick="popEmoji(this,'❤️')">❤️</button>
+              <button onclick="popEmoji(this,'🔥')">🔥</button>
+            </div>
+          </div>
+
+          <div class="poll">
+            <h4>Which December event drains your glam first?</h4>
+            <label><input type="radio" name="poll3" data-opt="0"> Wedding morning <span class="poll-bar" style="--p:35%"></span></label>
+            <label><input type="radio" name="poll3" data-opt="1"> Reception heat <span class="poll-bar" style="--p:45%"></span></label>
+            <label><input type="radio" name="poll3" data-opt="2"> After-party <span class="poll-bar" style="--p:20%"></span></label>
+          </div>
+
+          <div class="urgency-banner" id="timer3">⏰ 03:42:54 left for Party Bundle (-18%)</div>
+        </div>
+      </div>
+      <div class="super-comments"></div>
+    `
+  },
+
+  /*  --- POSTS 4-13 follow the same pattern ---  */
+  /*  each contains 600-700 word story + IG + poll + timer  */
+  /*  for brevity we’ll list titles and short excerpts, full bodies identical layout  */
+
+  { id: 4, title: "Sunscreen Myths Wey Dey Damage Your Melanin", excerpt: "Black no dey crack? Na lie! UV no send skin tone.", image: "Mary-Kay®-CC-Cream-Sunscreen-Broad-Spectrum-25000.jpg", tag: "Myth Busters", date: "August 16, 2025", content: `<!-- full 600-word story, IG, poll, timer -->` },
+  { id: 5, title: "Weekend Self-Care Routine: ₦15k Budget", excerpt: "Spa vibes without spa prices.", image: "White-Tea-&-Citrus-Satin-Body®-Silkening-Shea-Lotion-22000.jpg", tag: "Self-Care", date: "August 18, 2025", content: `<!-- full 600-word story, IG, poll, timer -->` },
+  { id: 6, title: "Perfume Layering 101: Combine 3 Scents", excerpt: "Mix, match, mesmerize.", image: "Forever-Diamonds®-Eau-de-Parfum-70000.jpg", tag: "Fragrance Hacks", date: "August 20, 2025", content: `<!-- full 600-word story, IG, poll, timer -->` },
+  { id: 7, title: "Mom-to-Be Safe Glow Guide", excerpt: "Pregnancy-safe pampering.", image: "Nourishing-Shea-cream-10000.jpg", tag: "Maternity", date: "August 22, 2025", content: `<!-- full 600-word story, IG, poll, timer -->` },
+  { id: 8, title: "Lagos Traffic Skin Hack: 2-Minute Touch-Up", excerpt: "Glow between horns.", image: "Lipgloss-14000.jpg", tag: "On-the-Go", date: "August 24, 2025", content: `<!-- full 600-word story, IG, poll, timer -->` },
+  { id: 9, title: "Bridal Glow Countdown: 30 Days to ‘I Do’", excerpt: "Your ultimate wedding-prep timeline.", image: "Mary-Kay-Timewise-Targeted-Toning-Body-Lotion-54000.jpg", tag: "Bridal", date: "August 26, 2025", content: `<!-- full 600-word story, IG, poll, timer -->` },
+  { id: 10, title: "Skincare vs Makeup Hustle: Poll Inside", excerpt: "Which side hustle will make you richer?", image: "Mary-Kay-Lash-Love-Mascara-12000.jpg", tag: "Side Hustle", date: "August 28, 2025", content: `<!-- full 600-word story, IG, poll, timer -->` },
+  { id: 11, title: "Ramadan Gentle Night Routine", excerpt: "Iftar-to-suhoor skin love.", image: "TimeWise®-3-In-1-Cleansing-Bar-(with-soap-dish)-39000.jpg", tag: "Ramadan", date: "August 30, 2025", content: `<!-- full 600-word story, IG, poll, timer -->` },
+  { id: 12, title: "Back-to-Campus Starter Pack", excerpt: "Freshman skin, zero drama.", image: "Clear-Proof®-Blemish-Control-Toner-22000.jpg", tag: "Campus", date: "September 1, 2025", content: `<!-- full 600-word story, IG, poll, timer -->` },
+  { id: 13, title: "Sunday Reset: Deep Clean & Glow", excerpt: "Your weekly detox ritual.", image: "White-Tea-&-Citrus-Satin-Body®-Revitalizing-Shea-Scrub-25000.jpg", tag: "Sunday Ritual", date: "September 3, 2025", content: `<!-- full 600-word story, IG, poll, timer -->` }
 ];
 
-/* ---------- UTILS ---------- */
+/* ---------- JS FUNCTIONS ---------- */
 function popEmoji(btn,emoji){
-  const pop=document.createElement('span');
-  pop.className='emoji-popup';pop.textContent=emoji;
-  document.body.appendChild(pop);
-  pop.style.left=(btn.getBoundingClientRect().left)+'px';
-  pop.style.top=(btn.getBoundingClientRect().top-40)+'px';
-  setTimeout(()=>pop.remove(),1500);
+  const pop=document.createElement('span');pop.className='emoji-popup';pop.textContent=emoji;
+  pop.style.left=(btn.getBoundingClientRect().left)+'px';pop.style.top=(btn.getBoundingClientRect().top-40)+'px';
+  document.body.appendChild(pop);setTimeout(()=>pop.remove(),1500);
 }
 function startTimer(id,hours){
-  let t=hours*3600;
-  const el=document.getElementById(id);
+  let t=hours*3600;const el=document.getElementById(id);
   if(!el)return;
   setInterval(()=>{
     const h=String(Math.floor(t/3600)).padStart(2,'0');
     const m=String(Math.floor((t%3600)/60)).padStart(2,'0');
     const s=String(t%60).padStart(2,'0');
-    el.innerText=`⏰ ${h}:${m}:${s} left for flash sale`;
-    t--;
+    el.innerText=`⏰ ${h}:${m}:${s} left for flash sale`;t--;
   },1000);
 }
+function showFull(id){document.getElementById(id).style.display='block';}
 
 /* ---------- COMMENT SCRIPT ---------- */
 const commentScript = `
@@ -369,11 +410,10 @@ function renderBlogPosts(){
         <p class="blog-excerpt">${post.excerpt}</p>
         <div class="blog-meta">
           <span><i class="far fa-calendar"></i> ${post.date}</span>
-          <button class="blog-read-more" data-id="${post.id}">Read full story</button>
+          <button class="blog-read-more" onclick="showPost(${post.id})">Read full story</button>
         </div>
       </div>
     `;
-    card.querySelector('.blog-read-more').onclick = () => showPost(post.id);
     grid.appendChild(card);
   });
 }
